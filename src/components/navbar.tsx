@@ -271,7 +271,7 @@ export function Navbar() {
     { label: t.nav.features, href: "#features" },
     { label: t.nav.solutions, href: "#modules" },
     { label: t.nav.pricing, href: "#pricing" },
-    { label: t.nav.contact, href: "#cta" },
+    { label: t.nav.contact, href: "#contact" },
   ];
 
   React.useEffect(() => {
@@ -327,7 +327,7 @@ export function Navbar() {
           </div>
 
           <Link
-            href="#cta"
+            href="#contact"
             className="hidden rounded-full bg-accent-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-neon transition-all duration-300 hover:shadow-neon-purple hover:brightness-110 sm:inline-flex"
           >
             {t.nav.cta}
@@ -411,7 +411,7 @@ export function Navbar() {
 
               <div className="mt-auto pt-6">
                 <Link
-                  href="#cta"
+                  href="#contact"
                   onClick={() => setOpen(false)}
                   className="block w-full rounded-full bg-accent-gradient py-3.5 text-center text-sm font-semibold text-white shadow-neon transition-all hover:brightness-110"
                 >

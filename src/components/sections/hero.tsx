@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LaptopMockup } from "@/components/laptop-mockup";
+import { HeroMockup } from "@/components/laptop-mockup";
 import { useI18n } from "@/i18n/provider";
 
 const container = {
@@ -95,7 +95,7 @@ export function Hero() {
             <div className="pointer-events-none absolute -left-8 top-1/4 -z-10 h-64 w-64 rounded-full bg-brand-500/30 blur-[90px] animate-aurora" />
             <div className="pointer-events-none absolute -right-8 top-1/3 -z-10 h-64 w-64 rounded-full bg-[#3FB8C4]/30 blur-[90px] animate-aurora-slow" />
 
-            <LaptopMockup />
+            <HeroMockup />
           </div>
         </motion.div>
 

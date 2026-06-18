@@ -10,8 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { LaptopMockup } from "@/components/laptop-mockup";
-import { PhoneMockup } from "@/components/phone-mockup";
+import { ErpValuePanel } from "@/components/erp-value-panel";
 import { useI18n } from "@/i18n/provider";
 
 const reveal = {
@@ -30,8 +29,7 @@ const reveal = {
 const POINT_ICONS: LucideIcon[] = [Layers, Briefcase, Zap, ShieldCheck];
 
 export function About() {
-  const { t, dir } = useI18n();
-  const isRtl = dir === "rtl";
+  const { t } = useI18n();
   const a = t.about;
   const points = a.points.map((p, i) => ({
     ...p,
@@ -106,7 +104,7 @@ export function About() {
           </div>
         </motion.div>
 
-        {/* ===== Right: desktop + mobile mockups ===== */}
+        {/* ===== Right: ERP value panel ===== */}
         <motion.div
           custom={1}
           variants={reveal}
@@ -118,24 +116,7 @@ export function About() {
           {/* glow behind */}
           <div className="pointer-events-none absolute -inset-x-10 -inset-y-8 -z-10 rounded-[40%] bg-[radial-gradient(ellipse_at_center,rgba(29,111,214,0.22),rgba(10,31,68,0.12)_55%,transparent_75%)] blur-[60px]" />
 
-          <div className="relative pb-10">
-            {/* desktop window */}
-            <div className="animate-float">
-              <LaptopMockup />
-            </div>
-            {/* mobile overlapping front corner (left for RTL, right for LTR) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.75 }}
-              whileInView={{ opacity: 1, y: 0, scale: 0.85 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, type: "spring", stiffness: 130 }}
-              className={`absolute -bottom-4 z-20 hidden origin-bottom drop-shadow-2xl sm:block ${
-                isRtl ? "-left-4 lg:-left-8" : "-right-4 lg:-right-8"
-              }`}
-            >
-              <PhoneMockup />
-            </motion.div>
-          </div>
+          <ErpValuePanel />
         </motion.div>
       </div>
     </section>

@@ -60,14 +60,58 @@ export type Dictionary = {
     titleHighlight: string;
     intro: string;
     learnMore: string;
+    collaboration: { title: string; description: string };
     cards: { title: string; description: string }[];
+    items: {
+      calculator: { title: string; description: string };
+      margin: { title: string; description: string };
+      vat: { title: string; description: string };
+      alerts: { title: string; description: string };
+      dashboard: { title: string; description: string };
+    };
+    ui: {
+      calcTitle: string;
+      priceTTC: string;
+      tva: string;
+      remise: string;
+      priceHT: string;
+      autoCalc: string;
+      marginTitle: string;
+      revenue: string;
+      costOfSales: string;
+      customerCredit: string;
+      netCost: string;
+      grossMargin: string;
+      vatTitle: string;
+      vatCollected: string;
+      vatDeductible: string;
+      vatBalance: string;
+      credit: string;
+      alertsTitle: string;
+      lowStock: string;
+      units: string;
+      currency: string;
+      receivables: string;
+      expenses: string;
+      netProfit: string;
+      revenueTTC: string;
+    };
   };
   modules: {
     badge: string;
     title1: string;
     titleHighlight: string;
     intro: string;
-    cards: { title: string; description: string }[];
+    pharmacy: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      features: { title: string; description: string }[];
+      desktop: { label: string; caption: string };
+      mobile: { label: string; caption: string };
+      cta: string;
+      liveBadge: string;
+    };
   };
   testimonials: {
     badge: string;
@@ -99,6 +143,12 @@ export type Dictionary = {
     whyBody: string;
     whyCta: string;
     points: { title: string; description: string }[];
+    valuePanelTitle: string;
+    valuePanelSubtitle: string;
+    valueStats: { value: string; label: string }[];
+    valueModulesTitle: string;
+    valueModules: string[];
+    valueFootnote: string;
   };
   pricing: {
     badge: string;
@@ -136,6 +186,36 @@ export type Dictionary = {
     placeholder: string;
     button: string;
     note: string;
+  };
+  contact: {
+    badge: string;
+    title1: string;
+    titleHighlight: string;
+    subtitle: string;
+    fields: {
+      name: string;
+      namePlaceholder: string;
+      email: string;
+      emailPlaceholder: string;
+      phone: string;
+      phonePlaceholder: string;
+      company: string;
+      companyPlaceholder: string;
+      message: string;
+      messagePlaceholder: string;
+    };
+    optional: string;
+    submit: string;
+    submitting: string;
+    successTitle: string;
+    successBody: string;
+    errorRequired: string;
+    errorEmail: string;
+    mailSubject: string;
+    infoTitle: string;
+    infoBody: string;
+    emailLabel: string;
+    responseTime: string;
   };
   footer: {
     tagline: string;
@@ -319,6 +399,11 @@ const fr: Dictionary = {
     intro:
       "Chaque module est connecté et s'adapte à votre façon de travailler—pas l'inverse. Conçu pour évoluer avec votre activité.",
     learnMore: "En savoir plus",
+    collaboration: {
+      title: "Collaboration d'équipe",
+      description:
+        "Tâches, agenda et activités partagés en temps réel pour garder toute l'équipe alignée.",
+    },
     cards: [
       {
         title: "Tableaux de bord intelligents",
@@ -336,45 +421,105 @@ const fr: Dictionary = {
           "Gestion FIFO par catégorie, alertes de péremption et de rupture, multi-langue—conçu pour s'étendre à de nouveaux métiers.",
       },
     ],
+    items: {
+      calculator: {
+        title: "Calculateur de prix automatique",
+        description:
+          "Saisissez le prix TTC, la TVA et la remise—le prix HT est calculé instantanément. Zéro calcul manuel, zéro erreur.",
+      },
+      margin: {
+        title: "Marge commerciale en temps réel",
+        description:
+          "CA, coût des ventes et avoirs combinés pour afficher votre marge nette exacte, détaillée et traçable.",
+      },
+      vat: {
+        title: "Récapitulatif fiscal (TVA)",
+        description:
+          "TVA collectée, déductible et solde calculés automatiquement—prêt pour votre déclaration.",
+      },
+      alerts: {
+        title: "Alertes de stock intelligentes",
+        description:
+          "Soyez prévenu avant la rupture : seuils bas et stock négatif signalés en temps réel.",
+      },
+      dashboard: {
+        title: "Tableau de bord financier",
+        description:
+          "Tous vos indicateurs clés—CA, bénéfice net, créances—réunis dans une vue claire et vivante.",
+      },
+    },
+    ui: {
+      calcTitle: "Calculateur de prix",
+      priceTTC: "Prix Vendre TTC",
+      tva: "TVA (%)",
+      remise: "Remise (%)",
+      priceHT: "Prix HT",
+      autoCalc: "Calcul automatique",
+      marginTitle: "Marge commerciale (TTC)",
+      revenue: "Chiffre d'affaires",
+      costOfSales: "Coût des ventes",
+      customerCredit: "Avoirs client (coût)",
+      netCost: "Coût net des ventes",
+      grossMargin: "Marge commerciale",
+      vatTitle: "Récapitulatif fiscal (TVA)",
+      vatCollected: "TVA collectée",
+      vatDeductible: "TVA déductible",
+      vatBalance: "Solde TVA",
+      credit: "Crédit",
+      alertsTitle: "Alertes stock",
+      lowStock: "Stock bas",
+      units: "unité",
+      currency: "DH",
+      receivables: "Créances",
+      expenses: "Dépenses",
+      netProfit: "Bénéfice net",
+      revenueTTC: "Chiffre d'affaires (TTC)",
+    },
   },
   modules: {
     badge: "Solutions",
-    title1: "Tout ce qu'il faut pour",
-    titleHighlight: "gérer sans effort",
+    title1: "Des solutions conçues",
+    titleHighlight: "pour votre métier",
     intro:
-      "Des solutions concrètes qui vous font gagner du temps et éliminent les erreurs—pensées pour votre activité, prêtes à l'emploi.",
-    cards: [
-      {
-        title: "Calculs 100% automatiques",
-        description:
-          "TVA, TTC, HT, marges et totaux calculés automatiquement. Zéro calcul manuel, zéro risque d'erreur.",
+      "Nous concevons des solutions de gestion sur mesure, métier par métier. Voici notre première : une solution complète pour les pharmacies et parapharmacies.",
+    pharmacy: {
+      eyebrow: "Notre solution phare",
+      title: "Une solution complète pour votre pharmacie",
+      description:
+        "Gérez ventes, stock, fournisseurs et finances depuis une seule plateforme—pensée pour le quotidien d'une pharmacie marocaine. Accessible partout, sur ordinateur comme sur mobile.",
+      features: [
+        {
+          title: "Gestion de stock & péremption",
+          description:
+            "Suivi FIFO par lot, alertes de rupture et de péremption en temps réel.",
+        },
+        {
+          title: "Ventes & facturation rapides",
+          description:
+            "Encaissez et facturez en quelques secondes, calculs TVA automatiques.",
+        },
+        {
+          title: "Tableaux de bord en temps réel",
+          description:
+            "CA, marges et trésorerie en dirhams, visibles d'un coup d'œil.",
+        },
+        {
+          title: "Achats & fournisseurs",
+          description:
+            "Bons de commande et réapprovisionnement centralisés et automatisés.",
+        },
+      ],
+      desktop: {
+        label: "Ordinateur",
+        caption: "Tableau de bord complet sur grand écran",
       },
-      {
-        title: "Factures prêtes en 1 clic",
-        description:
-          "Factures, devis, avoirs et bons de livraison générés instantanément—propres, conformes et prêts à imprimer ou envoyer.",
+      mobile: {
+        label: "Mobile",
+        caption: "Toute la gestion dans votre poche",
       },
-      {
-        title: "Remises & promotions",
-        description:
-          "Appliquez des remises par produit, par client ou sur la facture entière. Calcul automatique du net à payer.",
-      },
-      {
-        title: "Stock intelligent (FIFO)",
-        description:
-          "Suivi du stock par catégorie, alertes de péremption et de rupture, réapprovisionnement automatique.",
-      },
-      {
-        title: "Achats & fournisseurs",
-        description:
-          "Bons de commande, catalogues fournisseurs et suivi des livraisons—tout votre approvisionnement centralisé.",
-      },
-      {
-        title: "Tableaux de bord & rapports",
-        description:
-          "Chiffre d'affaires, marges et rentabilité en temps réel, en dirhams. Décidez avec des chiffres clairs.",
-      },
-    ],
+      cta: "Découvrir la solution",
+      liveBadge: "Disponible maintenant",
+    },
   },
   testimonials: {
     badge: "Témoignages",
@@ -495,6 +640,17 @@ const fr: Dictionary = {
           "Chiffrement, sauvegardes et reporting conforme à votre réglementation.",
       },
     ],
+    valuePanelTitle: "Une plateforme, toute votre activité",
+    valuePanelSubtitle: "Des résultats concrets pour votre entreprise",
+    valueStats: [
+      { value: "+30%", label: "de temps gagné sur la gestion quotidienne" },
+      { value: "−40%", label: "d'erreurs de saisie et de doublons" },
+      { value: "100%", label: "de vos données centralisées et sécurisées" },
+      { value: "24/7", label: "accès en temps réel à votre activité" },
+    ],
+    valueModulesTitle: "Tout connecté en un seul flux",
+    valueModules: ["Ventes", "Stock", "Achats", "Clients", "Finances"],
+    valueFootnote: "Une seule source de vérité, mise à jour en temps réel.",
   },
   pricing: {
     badge: "Tarifs",
@@ -578,9 +734,42 @@ const fr: Dictionary = {
     button: "Planifier une démo en direct",
     note: "Essai sans engagement · Aucune carte bancaire requise",
   },
+  contact: {
+    badge: "Contact",
+    title1: "Demandez votre",
+    titleHighlight: "démo gratuite",
+    subtitle:
+      "Remplissez le formulaire et notre équipe vous recontacte rapidement pour planifier une démonstration personnalisée de SmartGestion.",
+    fields: {
+      name: "Nom complet",
+      namePlaceholder: "Votre nom et prénom",
+      email: "Adresse e-mail",
+      emailPlaceholder: "votre@email.com",
+      phone: "Téléphone",
+      phonePlaceholder: "+212 6 00 00 00 00",
+      company: "Entreprise / Parapharmacie",
+      companyPlaceholder: "Nom de votre établissement",
+      message: "Message",
+      messagePlaceholder: "Parlez-nous de vos besoins…",
+    },
+    optional: "facultatif",
+    submit: "Demander une démo",
+    submitting: "Ouverture de votre messagerie…",
+    successTitle: "Votre messagerie va s'ouvrir",
+    successBody:
+      "Vérifiez votre application e-mail et envoyez le message déjà rédigé. Nous vous répondrons dans les plus brefs délais.",
+    errorRequired: "Merci de remplir tous les champs obligatoires.",
+    errorEmail: "Veuillez saisir une adresse e-mail valide.",
+    mailSubject: "Demande de démo — SmartGestion",
+    infoTitle: "Parlons de votre projet",
+    infoBody:
+      "Une question, un projet de digitalisation ou simplement envie d'une démo ? Écrivez-nous, nous sommes là pour vous aider.",
+    emailLabel: "Écrivez-nous directement",
+    responseTime: "Réponse sous 24h ouvrées",
+  },
   footer: {
     tagline:
-      "SmartGestion construit des solutions ERP intelligentes pour de nombreux métiers. ParaGestion, dédié aux parapharmacies, n'est que le début.",
+      "SmartGestion construit des solutions ERP intelligentes pour de nombreux métiers afin de digitaliser et piloter votre activité au quotidien.",
     columns: [
       {
         title: "Produit",
@@ -596,7 +785,7 @@ const fr: Dictionary = {
         links: [
           { label: "À propos", href: "#about" },
           { label: "Métiers à venir", href: "#about" },
-          { label: "Contact", href: "#cta" },
+          { label: "Contact", href: "#contact" },
           { label: "Blog", href: "#" },
         ],
       },
@@ -606,7 +795,7 @@ const fr: Dictionary = {
           { label: "Témoignages", href: "#testimonials" },
           { label: "FAQ", href: "#faq" },
           { label: "Guides", href: "#" },
-          { label: "Support", href: "#cta" },
+          { label: "Support", href: "#contact" },
         ],
       },
       {
@@ -621,7 +810,7 @@ const fr: Dictionary = {
     ],
     socials: [
       { label: "Site web", href: "#" },
-      { label: "Email", href: "#cta" },
+      { label: "Email", href: "#contact" },
       { label: "Telegram", href: "#" },
       { label: "WhatsApp", href: "#" },
     ],
@@ -814,6 +1003,11 @@ const en: Dictionary = {
     intro:
       "Every module is connected and adapts to the way you work—not the other way around. Built to grow with your business.",
     learnMore: "Learn more",
+    collaboration: {
+      title: "Team collaboration",
+      description:
+        "Shared tasks, calendar and activity in real time to keep the whole team aligned.",
+    },
     cards: [
       {
         title: "Smart dashboards",
@@ -831,45 +1025,105 @@ const en: Dictionary = {
           "FIFO stock by category, expiry and low-stock alerts, multi-language—built to scale to new industries.",
       },
     ],
+    items: {
+      calculator: {
+        title: "Automatic price calculator",
+        description:
+          "Enter the tax-incl. price, VAT and discount—the tax-excl. price is computed instantly. No manual math, no errors.",
+      },
+      margin: {
+        title: "Real-time commercial margin",
+        description:
+          "Revenue, cost of sales and credits combined to show your exact net margin—detailed and traceable.",
+      },
+      vat: {
+        title: "Tax summary (VAT)",
+        description:
+          "Collected, deductible and balance VAT computed automatically—ready for your filing.",
+      },
+      alerts: {
+        title: "Smart stock alerts",
+        description:
+          "Be warned before you run out: low thresholds and negative stock flagged in real time.",
+      },
+      dashboard: {
+        title: "Financial dashboard",
+        description:
+          "All your key metrics—revenue, net profit, receivables—brought together in one clear, living view.",
+      },
+    },
+    ui: {
+      calcTitle: "Price calculator",
+      priceTTC: "Selling price (incl. tax)",
+      tva: "VAT (%)",
+      remise: "Discount (%)",
+      priceHT: "Price (excl. tax)",
+      autoCalc: "Automatic calculation",
+      marginTitle: "Commercial margin (incl. tax)",
+      revenue: "Revenue",
+      costOfSales: "Cost of sales",
+      customerCredit: "Customer credits (cost)",
+      netCost: "Net cost of sales",
+      grossMargin: "Commercial margin",
+      vatTitle: "Tax summary (VAT)",
+      vatCollected: "VAT collected",
+      vatDeductible: "VAT deductible",
+      vatBalance: "VAT balance",
+      credit: "Credit",
+      alertsTitle: "Stock alerts",
+      lowStock: "Low stock",
+      units: "units",
+      currency: "DH",
+      receivables: "Receivables",
+      expenses: "Expenses",
+      netProfit: "Net profit",
+      revenueTTC: "Revenue (incl. tax)",
+    },
   },
   modules: {
     badge: "Solutions",
-    title1: "Everything you need to",
-    titleHighlight: "manage effortlessly",
+    title1: "Solutions built",
+    titleHighlight: "for your industry",
     intro:
-      "Concrete solutions that save you time and eliminate mistakes—built for your business and ready to use.",
-    cards: [
-      {
-        title: "100% automatic calculations",
-        description:
-          "VAT, incl./excl. tax, margins and totals computed automatically. No manual math, no risk of error.",
+      "We design tailored management solutions, industry by industry. Here is our first: a complete solution for pharmacies and parapharmacies.",
+    pharmacy: {
+      eyebrow: "Our flagship solution",
+      title: "A complete solution for your pharmacy",
+      description:
+        "Manage sales, stock, suppliers and finances from a single platform—built for the daily reality of a Moroccan pharmacy. Available everywhere, on desktop and mobile.",
+      features: [
+        {
+          title: "Stock & expiry management",
+          description:
+            "FIFO tracking by batch, real-time low-stock and expiry alerts.",
+        },
+        {
+          title: "Fast sales & billing",
+          description:
+            "Check out and invoice in seconds, with automatic VAT calculations.",
+        },
+        {
+          title: "Real-time dashboards",
+          description:
+            "Revenue, margins and cash in dirhams, visible at a glance.",
+        },
+        {
+          title: "Purchasing & suppliers",
+          description:
+            "Centralized, automated purchase orders and restocking.",
+        },
+      ],
+      desktop: {
+        label: "Desktop",
+        caption: "Full dashboard on the big screen",
       },
-      {
-        title: "Invoices ready in 1 click",
-        description:
-          "Invoices, quotes, credit notes and delivery slips generated instantly—clean, compliant and ready to print or send.",
+      mobile: {
+        label: "Mobile",
+        caption: "Your whole business in your pocket",
       },
-      {
-        title: "Discounts & promotions",
-        description:
-          "Apply discounts per product, per client or on the whole invoice. Net amount calculated automatically.",
-      },
-      {
-        title: "Smart inventory (FIFO)",
-        description:
-          "Track stock by category, get expiry and low-stock alerts, and auto-reorder with ease.",
-      },
-      {
-        title: "Purchasing & suppliers",
-        description:
-          "Purchase orders, supplier catalogs and delivery tracking—your whole procurement, centralized.",
-      },
-      {
-        title: "Dashboards & reports",
-        description:
-          "Revenue, margins and profitability in real time, in dirhams. Decide with clear numbers.",
-      },
-    ],
+      cta: "Explore the solution",
+      liveBadge: "Available now",
+    },
   },
   testimonials: {
     badge: "Testimonials",
@@ -989,6 +1243,17 @@ const en: Dictionary = {
           "Encryption, backups and reporting compliant with your regulations.",
       },
     ],
+    valuePanelTitle: "One platform, your entire business",
+    valuePanelSubtitle: "Real, measurable results for your company",
+    valueStats: [
+      { value: "+30%", label: "time saved on daily operations" },
+      { value: "−40%", label: "fewer data-entry errors and duplicates" },
+      { value: "100%", label: "of your data centralized and secured" },
+      { value: "24/7", label: "real-time access to your business" },
+    ],
+    valueModulesTitle: "Everything connected in one flow",
+    valueModules: ["Sales", "Inventory", "Purchasing", "Clients", "Finances"],
+    valueFootnote: "A single source of truth, updated in real time.",
   },
   pricing: {
     badge: "Pricing",
@@ -1070,9 +1335,42 @@ const en: Dictionary = {
     button: "Schedule a Live Demo",
     note: "No-commitment trial · No credit card required",
   },
+  contact: {
+    badge: "Contact",
+    title1: "Request your",
+    titleHighlight: "free demo",
+    subtitle:
+      "Fill in the form and our team will get back to you shortly to schedule a personalized SmartGestion demo.",
+    fields: {
+      name: "Full name",
+      namePlaceholder: "Your first and last name",
+      email: "Email address",
+      emailPlaceholder: "your@email.com",
+      phone: "Phone",
+      phonePlaceholder: "+212 6 00 00 00 00",
+      company: "Company / Parapharmacy",
+      companyPlaceholder: "Your business name",
+      message: "Message",
+      messagePlaceholder: "Tell us about your needs…",
+    },
+    optional: "optional",
+    submit: "Request a demo",
+    submitting: "Opening your email app…",
+    successTitle: "Your email app is opening",
+    successBody:
+      "Check your email client and send the pre-filled message. We'll get back to you as soon as possible.",
+    errorRequired: "Please fill in all required fields.",
+    errorEmail: "Please enter a valid email address.",
+    mailSubject: "Demo request — SmartGestion",
+    infoTitle: "Let's talk about your project",
+    infoBody:
+      "A question, a digitalization project, or simply want a demo? Write to us—we're here to help.",
+    emailLabel: "Email us directly",
+    responseTime: "Reply within 24 business hours",
+  },
   footer: {
     tagline:
-      "SmartGestion builds intelligent ERP solutions for many industries. ParaGestion, dedicated to parapharmacies, is just the beginning.",
+      "SmartGestion builds intelligent ERP solutions for many industries to digitize and run your business every day.",
     columns: [
       {
         title: "Product",
@@ -1088,7 +1386,7 @@ const en: Dictionary = {
         links: [
           { label: "About", href: "#about" },
           { label: "Upcoming businesses", href: "#about" },
-          { label: "Contact", href: "#cta" },
+          { label: "Contact", href: "#contact" },
           { label: "Blog", href: "#" },
         ],
       },
@@ -1098,7 +1396,7 @@ const en: Dictionary = {
           { label: "Testimonials", href: "#testimonials" },
           { label: "FAQ", href: "#faq" },
           { label: "Guides", href: "#" },
-          { label: "Support", href: "#cta" },
+          { label: "Support", href: "#contact" },
         ],
       },
       {
@@ -1113,7 +1411,7 @@ const en: Dictionary = {
     ],
     socials: [
       { label: "Website", href: "#" },
-      { label: "Email", href: "#cta" },
+      { label: "Email", href: "#contact" },
       { label: "Telegram", href: "#" },
       { label: "WhatsApp", href: "#" },
     ],
@@ -1306,6 +1604,11 @@ const ar: Dictionary = {
     intro:
       "كل وحدة مربوطة وكتتأقلم مع طريقة الخدمة ديالك، ماشي العكس. مصممة باش تكبر مع نشاطك.",
     learnMore: "اعرف أكثر",
+    collaboration: {
+      title: "تعاون الفريق",
+      description:
+        "مهام، أجندة ونشاطات مشتركة فالوقت الحقيقي باش يبقى كامل الفريق متناسق.",
+    },
     cards: [
       {
         title: "لوحات قيادة ذكية",
@@ -1323,45 +1626,101 @@ const ar: Dictionary = {
           "تدبير المخزون بنظام FIFO حسب الفئة، تنبيهات الصلاحية والنفاد، متعدد اللغات—مصمم للتوسع لمهن جديدة.",
       },
     ],
+    items: {
+      calculator: {
+        title: "حاسبة الأثمنة الأوتوماتيكية",
+        description:
+          "دخّل الثمن TTC، الـ TVA والتخفيض—الثمن HT كيتحسب فالحين. بلا حساب يدوي، بلا أخطاء.",
+      },
+      margin: {
+        title: "الهامش التجاري فالوقت الحقيقي",
+        description:
+          "رقم المعاملات، تكلفة المبيعات والأفوارات مجموعين باش يبان ليك الهامش الصافي بالضبط، مفصّل وقابل للتتبع.",
+      },
+      vat: {
+        title: "الملخص الجبائي (TVA)",
+        description:
+          "الـ TVA المحصّلة، القابلة للخصم والرصيد كيتحسبو أوتوماتيكياً—جاهزين للتصريح ديالك.",
+      },
+      alerts: {
+        title: "تنبيهات المخزون الذكية",
+        description:
+          "تنبّه قبل ما ينفد المخزون: العتبات المنخفضة والمخزون السالب كيتشاورو فالوقت الحقيقي.",
+      },
+      dashboard: {
+        title: "لوحة القيادة المالية",
+        description:
+          "كل المؤشرات المهمة—رقم المعاملات، الربح الصافي، الديون—مجموعة فعرض واضح وحي.",
+      },
+    },
+    ui: {
+      calcTitle: "حاسبة الأثمنة",
+      priceTTC: "ثمن البيع TTC",
+      tva: "TVA (%)",
+      remise: "تخفيض (%)",
+      priceHT: "الثمن HT",
+      autoCalc: "حساب أوتوماتيكي",
+      marginTitle: "الهامش التجاري (TTC)",
+      revenue: "رقم المعاملات",
+      costOfSales: "تكلفة المبيعات",
+      customerCredit: "أفوارات العملاء (التكلفة)",
+      netCost: "التكلفة الصافية للمبيعات",
+      grossMargin: "الهامش التجاري",
+      vatTitle: "الملخص الجبائي (TVA)",
+      vatCollected: "TVA محصّلة",
+      vatDeductible: "TVA قابلة للخصم",
+      vatBalance: "رصيد TVA",
+      credit: "دائن",
+      alertsTitle: "تنبيهات المخزون",
+      lowStock: "مخزون منخفض",
+      units: "وحدة",
+      currency: "درهم",
+      receivables: "الديون",
+      expenses: "المصاريف",
+      netProfit: "الربح الصافي",
+      revenueTTC: "رقم المعاملات (TTC)",
+    },
   },
   modules: {
     badge: "الحلول",
-    title1: "كلشي اللي خاصك",
-    titleHighlight: "باش تسيّر بلا تعب",
+    title1: "حلول مصممة",
+    titleHighlight: "على قياس مجالك",
     intro:
-      "حلول ملموسة كتربّح ليك الوقت وكتقضي على الأخطاء—مصممة لنشاطك وجاهزة للاستعمال.",
-    cards: [
-      {
-        title: "حسابات أوتوماتيكية 100%",
-        description:
-          "الـ TVA، TTC، HT، الهوامش والمجاميع كيتحسبو أوتوماتيكياً. بلا حساب يدوي، بلا خطر ديال الغلط.",
+      "كنصممو حلول تدبير على المقاس، مجال بمجال. ها أول وحدة ديالنا: حل كامل للصيدليات والبارافارماسيات.",
+    pharmacy: {
+      eyebrow: "الحل الرئيسي ديالنا",
+      title: "حل كامل للصيدلية ديالك",
+      description:
+        "سيّر المبيعات، المخزون، الموردين والمالية من منصة وحدة—مصممة لليومي ديال صيدلية مغربية. متاحة فكل مكان، على الحاسوب وعلى الموبايل.",
+      features: [
+        {
+          title: "تدبير المخزون والصلاحية",
+          description: "تتبّع FIFO حسب اللوط، تنبيهات النفاد والصلاحية فالوقت الحقيقي.",
+        },
+        {
+          title: "مبيعات وفوترة سريعة",
+          description: "خلّص وفوتر فثواني، مع حساب TVA أوتوماتيكي.",
+        },
+        {
+          title: "لوحات قيادة فالوقت الحقيقي",
+          description: "رقم المعاملات، الهوامش والخزينة بالدرهم، بنظرة وحدة.",
+        },
+        {
+          title: "الشراء والموردون",
+          description: "أوامر الشراء وإعادة التموين مركزية وأوتوماتيكية.",
+        },
+      ],
+      desktop: {
+        label: "الحاسوب",
+        caption: "لوحة قيادة كاملة على الشاشة الكبيرة",
       },
-      {
-        title: "فواتير جاهزة بضغطة وحدة",
-        description:
-          "فواتير، عروض، إشعارات دائنة ووصولات تسليم كيتولدو فالحين—نظيفة، مطابقة وجاهزة للطباعة ولا الإرسال.",
+      mobile: {
+        label: "الموبايل",
+        caption: "كامل التدبير فجيبك",
       },
-      {
-        title: "تخفيضات وعروض",
-        description:
-          "طبّق تخفيضات حسب المنتج، حسب الزبون ولا على الفاتورة كاملة. حساب أوتوماتيكي للصافي.",
-      },
-      {
-        title: "مخزون ذكي (FIFO)",
-        description:
-          "تتبّع المخزون حسب الفئة، تنبيهات الصلاحية والنفاد، وإعادة طلب أوتوماتيكية بسهولة.",
-      },
-      {
-        title: "الشراء والموردون",
-        description:
-          "أوامر شراء، كتالوغات الموردين وتتبّع التسليمات—كامل التموين ديالك فبلاصة وحدة.",
-      },
-      {
-        title: "لوحات قيادة وتقارير",
-        description:
-          "رقم المعاملات، الهوامش والربحية فالوقت الحقيقي، بالدرهم. قرّر بأرقام واضحة.",
-      },
-    ],
+      cta: "اكتشف الحل",
+      liveBadge: "متاح دابا",
+    },
   },
   testimonials: {
     badge: "آراء",
@@ -1476,6 +1835,17 @@ const ar: Dictionary = {
         description: "تشفير ونسخ احتياطي وتقارير مطابقة للتنظيمات ديالك.",
       },
     ],
+    valuePanelTitle: "منصة وحدة لكامل نشاطك",
+    valuePanelSubtitle: "نتائج ملموسة لشركتك",
+    valueStats: [
+      { value: "+30%", label: "ربح فالوقت فالتدبير اليومي" },
+      { value: "−40%", label: "تقليل الأخطاء والتكرار فالإدخال" },
+      { value: "100%", label: "ديال بياناتك مجمعة وآمنة" },
+      { value: "24/7", label: "ولوج فالوقت الحقيقي لنشاطك" },
+    ],
+    valueModulesTitle: "كلشي مربوط فسير واحد",
+    valueModules: ["المبيعات", "المخزون", "المشتريات", "الزبناء", "المالية"],
+    valueFootnote: "مصدر واحد للحقيقة، محيّن فالوقت الحقيقي.",
   },
   pricing: {
     badge: "الأثمنة",
@@ -1556,9 +1926,42 @@ const ar: Dictionary = {
     button: "حجز عرض مباشر",
     note: "تجربة بلا التزام · بلا بطاقة بنكية",
   },
+  contact: {
+    badge: "تواصل معنا",
+    title1: "اطلب",
+    titleHighlight: "ديمو مجاني",
+    subtitle:
+      "عمّر الفورمولير والفريق ديالنا غادي يتواصل معاك بسرعة باش يبرمج ليك عرض شخصي ديال SmartGestion.",
+    fields: {
+      name: "الاسم الكامل",
+      namePlaceholder: "السميّة والنسب ديالك",
+      email: "البريد الإلكتروني",
+      emailPlaceholder: "your@email.com",
+      phone: "الهاتف",
+      phonePlaceholder: "+212 6 00 00 00 00",
+      company: "المقاولة / البارافارماسي",
+      companyPlaceholder: "اسم المؤسسة ديالك",
+      message: "الرسالة",
+      messagePlaceholder: "هضر لينا على الحاجيات ديالك…",
+    },
+    optional: "اختياري",
+    submit: "اطلب ديمو",
+    submitting: "كنفتحو تطبيق البريد ديالك…",
+    successTitle: "تطبيق البريد ديالك غادي يتفتح",
+    successBody:
+      "شوف تطبيق البريد ديالك وصيفط الرسالة اللي مكتوبة. غادي نجاوبوك بأسرع وقت ممكن.",
+    errorRequired: "عافاك عمّر جميع الخانات الإجبارية.",
+    errorEmail: "عافاك دخّل بريد إلكتروني صحيح.",
+    mailSubject: "طلب ديمو — SmartGestion",
+    infoTitle: "نهضرو على المشروع ديالك",
+    infoBody:
+      "عندك سؤال، مشروع ديال الرقمنة، ولا بغيتي غير ديمو؟ كتب لينا—حنا هنا باش نعاونوك.",
+    emailLabel: "كتب لينا مباشرة",
+    responseTime: "الرد فظرف 24 ساعة عمل",
+  },
   footer: {
     tagline:
-      "SmartGestion كتبني حلول ERP ذكية لبزاف ديال المهن. بارا-جيستيون، المخصص للبارافارماسيات، ماشي غير البداية.",
+      "SmartGestion كتبني حلول ERP ذكية لبزاف ديال المهن باش ترقمن وتسيّر النشاط ديالك كل يوم.",
     columns: [
       {
         title: "المنتج",
@@ -1574,7 +1977,7 @@ const ar: Dictionary = {
         links: [
           { label: "حول", href: "#about" },
           { label: "مهن قادمة", href: "#about" },
-          { label: "تواصل معنا", href: "#cta" },
+          { label: "تواصل معنا", href: "#contact" },
           { label: "المدونة", href: "#" },
         ],
       },
@@ -1584,7 +1987,7 @@ const ar: Dictionary = {
           { label: "آراء العملاء", href: "#testimonials" },
           { label: "الأسئلة المتداولة", href: "#faq" },
           { label: "أدلة", href: "#" },
-          { label: "الدعم", href: "#cta" },
+          { label: "الدعم", href: "#contact" },
         ],
       },
       {
@@ -1599,7 +2002,7 @@ const ar: Dictionary = {
     ],
     socials: [
       { label: "الموقع", href: "#" },
-      { label: "البريد", href: "#cta" },
+      { label: "البريد", href: "#contact" },
       { label: "تيليغرام", href: "#" },
       { label: "واتساب", href: "#" },
     ],

@@ -53,7 +53,7 @@ export function CTA() {
 
             <div className="mt-9 flex justify-center">
               <a
-                href="#cta"
+                href="#contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-brand-700 shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
               >
                 {t.cta.button}

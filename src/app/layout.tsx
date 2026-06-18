@@ -16,7 +16,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SmartGestion — Solutions ERP intégrées pour chaque métier",
+  title: "SmartGestion",
+  applicationName: "SmartGestion",
+  icons: {
+    icon: "/logo1.png",
+    shortcut: "/logo1.png",
+    apple: "/logo1.png",
+  },
   description:
     "SmartGestion conçoit des solutions ERP intelligentes pour de nombreux métiers. Notre première solution, ParaGestion, est dédiée aux parapharmacies—et d'autres arrivent bientôt.",
   keywords: [
