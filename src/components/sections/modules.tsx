@@ -11,7 +11,6 @@ import {
   Monitor,
   Smartphone,
   ArrowRight,
-  Play,
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
@@ -34,8 +33,19 @@ const reveal: Variants = {
 const FEATURE_ICONS: LucideIcon[] = [Boxes, Receipt, LineChart, Truck];
 
 export function Modules() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const p = t.modules.pharmacy;
+  const isAr = locale === "ar";
+
+  // badge labels switch by locale
+  const badge = {
+    caLabel:    isAr ? "رقم الأعمال اليوم"  : locale === "fr" ? "CA du jour"      : "Today's revenue",
+    caValue:    isAr ? "١٢ ٨٤٠ درهم"        : "12 840 DH",
+    caUp:       isAr ? "↑ +٨٫٤٪"            : "↑ +8.4%",
+    stockLabel: isAr ? "تنبيه المخزون"       : locale === "fr" ? "Stock alertes"   : "Stock alerts",
+    stockValue: isAr ? "٣ منتجات"            : locale === "fr" ? "3 produits"       : "3 products",
+    stockWarn:  isAr ? "⚠ انتهاء الصلاحية"  : locale === "fr" ? "⚠ Péremption"    : "⚠ Expiry",
+  };
 
   return (
     <section
@@ -64,229 +74,217 @@ export function Modules() {
         </div>
 
         {/* ===== Pharmacy solution showcase ===== */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="relative mt-16 overflow-hidden rounded-[2.5rem] border border-white/10 bg-dark-900 p-1"
-        >
-          {/* gradient frame glow */}
-          <div className="pointer-events-none absolute inset-0 rounded-[2.5rem] bg-accent-gradient opacity-30 blur-[2px]" />
+        <div className="relative mt-16 grid items-center gap-12 lg:grid-cols-2 lg:gap-8">
 
-          <div className="relative overflow-hidden rounded-[2.3rem] bg-gradient-to-br from-dark-800 via-dark-900 to-black">
-            {/* ambient blobs */}
-            <div className="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(circle_at_85%_15%,rgba(63,184,196,0.22),transparent_42%),radial-gradient(circle_at_10%_90%,rgba(29,111,214,0.22),transparent_45%)]" />
+          {/* ---- Left: copy + feature list ---- */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: EASE }}
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#3FB8C4]/30 bg-[#3FB8C4]/8 px-3.5 py-1.5 text-xs font-semibold text-[#2a9fa9]">
+              <Sparkles className="h-3.5 w-3.5 text-[#3FB8C4]" />
+              {p.eyebrow}
+            </div>
+
+            <motion.h3
+              custom={1}
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false }}
+              className="mt-5 text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+            >
+              {p.title}
+            </motion.h3>
+
+            <motion.p
+              custom={2}
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false }}
+              className="mt-4 max-w-md text-sm leading-relaxed text-slate-500 dark:text-white/60"
+            >
+              {p.description}
+            </motion.p>
+
+            {/* platform pills */}
             <motion.div
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="pointer-events-none absolute -right-20 top-1/4 h-72 w-72 rounded-full bg-brand-500/20 blur-[100px]"
+              custom={3}
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false }}
+              className="mt-6 flex flex-wrap gap-2.5"
+            >
+              {[
+                { icon: Monitor, label: p.desktop.label },
+                { icon: Smartphone, label: p.mobile.label },
+              ].map(({ icon: Icon, label }) => (
+                <span
+                  key={label}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-600 ring-1 ring-inset ring-slate-200 dark:bg-white/10 dark:text-white dark:ring-white/20"
+                >
+                  <Icon className="h-3.5 w-3.5 text-[#3FB8C4]" />
+                  {label}
+                </span>
+              ))}
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#1D6FD6]/10 px-3 py-1.5 text-xs font-semibold text-[#1D6FD6] ring-1 ring-inset ring-[#1D6FD6]/20 dark:bg-[#3FB8C4]/15 dark:text-[#3FB8C4] dark:ring-[#3FB8C4]/20">
+                <motion.span
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 1.6, repeat: Infinity }}
+                  className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[#1D6FD6] to-[#3FB8C4]"
+                />
+                {p.liveBadge}
+              </span>
+            </motion.div>
+
+            {/* feature list */}
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {p.features.map((f, i) => {
+                const Icon = FEATURE_ICONS[i % FEATURE_ICONS.length];
+                return (
+                  <motion.div
+                    key={f.title}
+                    custom={4 + i}
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: false }}
+                    whileHover={{ y: -3, boxShadow: "0 8px 30px -6px rgba(63,184,196,0.18)" }}
+                    className="group/feat rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-all duration-300 hover:border-[#3FB8C4]/40 hover:bg-white dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 dark:hover:bg-white/[0.06]"
+                  >
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-gradient shadow-neon transition-transform duration-300 group-hover/feat:scale-110">
+                      <Icon className="h-4 w-4 text-white" strokeWidth={2} />
+                    </span>
+                    <p className="mt-3 text-sm font-bold text-slate-800 dark:text-white">
+                      {f.title}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-white/55">
+                      {f.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <motion.div
+              custom={8}
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: false }}
+              className="mt-8"
+            >
+              <Button asChild variant="gradient" size="md">
+                <a href="#pricing">
+                  {p.cta} <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* ---- Right: phone image, no box ---- */}
+          <div className="relative flex items-center justify-center py-8 lg:py-16">
+            {/* rotating ring decoration */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="pointer-events-none absolute h-[420px] w-[420px] rounded-full border border-dashed border-[#3FB8C4]/20"
+            />
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+              className="pointer-events-none absolute h-[300px] w-[300px] rounded-full border border-dashed border-brand-500/15"
             />
 
-            <div className="relative grid items-center gap-8 p-7 sm:p-10 lg:grid-cols-2 lg:gap-6 lg:p-14">
-              {/* ---- Left: copy + feature list ---- */}
-              <div>
-                <motion.div
-                  custom={0}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80 backdrop-blur"
-                >
-                  <Sparkles className="h-3.5 w-3.5 text-[#5CC9C9]" />
-                  {p.eyebrow}
-                </motion.div>
+            {/* glow blob behind phone */}
+            <motion.div
+              animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="pointer-events-none absolute h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(63,184,196,0.30),transparent_70%)] blur-3xl"
+            />
 
-                <motion.h3
-                  custom={1}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="mt-4 text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl"
-                >
-                  {p.title}
-                </motion.h3>
+            {/* wrapper for phone + floating badges */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: false, margin: "-60px" }}
+              transition={{ duration: 0.9, ease: EASE }}
+              className="relative z-10"
+            >
+              {/* corner accent brackets */}
+              <div className="pointer-events-none absolute -left-4 -top-4 h-10 w-10 rounded-tl-xl border-l-2 border-t-2 border-[#3FB8C4]/50" />
+              <div className="pointer-events-none absolute -right-4 -top-4 h-10 w-10 rounded-tr-xl border-r-2 border-t-2 border-[#3FB8C4]/50" />
+              <div className="pointer-events-none absolute -bottom-4 -left-4 h-10 w-10 rounded-bl-xl border-b-2 border-l-2 border-[#3FB8C4]/50" />
+              <div className="pointer-events-none absolute -bottom-4 -right-4 h-10 w-10 rounded-br-xl border-b-2 border-r-2 border-[#3FB8C4]/50" />
 
-                <motion.p
-                  custom={2}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="mt-4 max-w-md text-sm leading-relaxed text-white/60"
-                >
-                  {p.description}
-                </motion.p>
-
-                {/* platform pills */}
-                <motion.div
-                  custom={3}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="mt-6 flex flex-wrap gap-2.5"
-                >
-                  {[
-                    { icon: Monitor, label: p.desktop.label },
-                    { icon: Smartphone, label: p.mobile.label },
-                  ].map(({ icon: Icon, label }) => (
-                    <span
-                      key={label}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-white/8 px-3 py-1.5 text-xs font-semibold text-white/85 ring-1 ring-inset ring-white/10"
-                    >
-                      <Icon className="h-3.5 w-3.5 text-[#5CC9C9]" />
-                      {label}
-                    </span>
-                  ))}
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-400/15 px-3 py-1.5 text-xs font-semibold text-emerald-300 ring-1 ring-inset ring-emerald-400/20">
-                    <motion.span
-                      animate={{ opacity: [1, 0.3, 1] }}
-                      transition={{ duration: 1.6, repeat: Infinity }}
-                      className="h-1.5 w-1.5 rounded-full bg-emerald-400"
-                    />
-                    {p.liveBadge}
-                  </span>
-                </motion.div>
-
-                {/* feature list */}
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {p.features.map((f, i) => {
-                    const Icon = FEATURE_ICONS[i % FEATURE_ICONS.length];
-                    return (
-                      <motion.div
-                        key={f.title}
-                        custom={4 + i}
-                        variants={reveal}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true }}
-                        whileHover={{ y: -3 }}
-                        className="group/feat rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-white/20 hover:bg-white/[0.06]"
-                      >
-                        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-gradient shadow-neon transition-transform duration-300 group-hover/feat:scale-110">
-                          <Icon className="h-4 w-4 text-white" strokeWidth={2} />
-                        </span>
-                        <p className="mt-3 text-sm font-bold text-white">
-                          {f.title}
-                        </p>
-                        <p className="mt-1 text-xs leading-relaxed text-white/55">
-                          {f.description}
-                        </p>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-
-                <motion.div
-                  custom={8}
-                  variants={reveal}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="mt-8"
-                >
-                  <Button asChild variant="gradient" size="md">
-                    <a href="#pricing">
-                      {p.cta} <ArrowRight className="h-4 w-4" />
-                    </a>
-                  </Button>
-                </motion.div>
-              </div>
-
-              {/* ---- Right: device mockups ---- */}
+              {/* floating badge — live */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.92 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.9, ease: EASE }}
-                className="relative mx-auto flex h-[560px] w-full max-w-none items-center justify-center sm:h-[760px] lg:h-[750px]"
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="absolute -right-6 -top-5 z-20 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#1D6FD6] to-[#3FB8C4] px-3 py-1.5 text-[11px] font-bold text-white shadow-lg shadow-[#1D6FD6]/30"
               >
-                {/* glow behind device */}
-                <div className="pointer-events-none absolute inset-0 m-auto h-3/4 w-3/4 rounded-full bg-accent-gradient opacity-25 blur-[80px]" />
-
-                {/* phone */}
-                <motion.div
-                  animate={{ y: [0, 12, 0] }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.6,
-                  }}
-                  className="relative h-full w-auto max-w-none drop-shadow-[0_24px_50px_rgba(0,0,0,0.55)]"
-                >
-                  <Image
-                    src="/mobile.png"
-                    alt={p.mobile.caption}
-                    width={500}
-                    height={500}
-                    className="h-full w-auto object-contain"
-                  />
-                </motion.div>
+                <motion.span
+                  animate={{ opacity: [1, 0.3, 1] }}
+                  transition={{ duration: 1.4, repeat: Infinity }}
+                  className="h-1.5 w-1.5 rounded-full bg-white"
+                />
+                Live
               </motion.div>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* ===== Product tutorial showcase ===== */}
-        <div className="mt-24">
-          {/* video / product showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="group relative overflow-hidden rounded-4xl p-1"
-          >
-            {/* gradient border glow */}
-            <div className="absolute inset-0 rounded-4xl bg-accent-gradient opacity-50 blur-[2px]" />
-
-            <div className="relative aspect-[16/8] overflow-hidden rounded-[1.9rem] bg-dark-900">
-              <div className="absolute inset-0 bg-gradient-to-br from-dark-700 via-dark-900 to-black" />
-              <div className="absolute inset-0 opacity-60 [background:radial-gradient(circle_at_70%_40%,rgba(63,184,196,0.30),transparent_45%),radial-gradient(circle_at_30%_70%,rgba(29,111,214,0.28),transparent_45%)]" />
-              {/* light streaks */}
-              <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-gradient-to-r from-transparent via-[#3FB8C4]/40 to-transparent" />
-              <div className="absolute left-0 top-1/3 h-px w-full bg-gradient-to-r from-transparent via-brand-500/30 to-transparent" />
-
-              {/* play button */}
-              <button
-                type="button"
-                aria-label="Play product walk-through"
-                className="absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
+              {/* floating stat badge — top left (hidden on small screens to avoid clipping) */}
+              <motion.div
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                animate={{ y: [0, -5, 0] }}
+                className="absolute -left-14 top-10 z-20 hidden rounded-2xl border border-slate-200 bg-white px-3.5 py-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.09)] sm:block dark:border-white/10 dark:bg-dark-700"
               >
-                <span className="relative flex h-20 w-20 items-center justify-center rounded-full bg-accent-gradient shadow-neon transition-transform duration-300 group-hover:scale-110">
-                  <span className="absolute inset-0 animate-glow rounded-full bg-accent-gradient blur-xl" />
-                  <Play className="relative h-7 w-7 fill-white text-white" />
-                </span>
-              </button>
+                <p className="text-[10px] font-semibold text-slate-400 dark:text-white/50">{badge.caLabel}</p>
+                <p className="text-base font-bold text-slate-800 dark:text-white">{badge.caValue}</p>
+                <p className="text-[10px] font-semibold text-[#1D6FD6]">{badge.caUp}</p>
+              </motion.div>
 
-              <p className="absolute inset-x-0 bottom-6 z-10 text-center text-sm text-white/70">
-                {t.about.videoCaption}
-              </p>
-            </div>
-          </motion.div>
+              {/* floating stat badge — bottom right (hidden on small screens to avoid clipping) */}
+              <motion.div
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: 1.0, duration: 0.5 }}
+                animate={{ y: [0, 5, 0] }}
+                className="absolute -right-14 bottom-14 z-20 hidden rounded-2xl border border-slate-200 bg-white px-3.5 py-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.09)] sm:block dark:border-white/10 dark:bg-dark-700"
+              >
+                <p className="text-[10px] font-semibold text-slate-400 dark:text-white/50">{badge.stockLabel}</p>
+                <p className="text-base font-bold text-slate-800 dark:text-white">{badge.stockValue}</p>
+                <p className="text-[10px] font-semibold text-amber-500">{badge.stockWarn}</p>
+              </motion.div>
 
-          {/* mission statement */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="mx-auto mt-20 max-w-4xl text-center"
-          >
-            <p className="text-3xl font-bold leading-[1.2] tracking-tight text-dark-900 dark:text-white sm:text-4xl lg:text-5xl">
-              <span className="text-dark-900/30 dark:text-white/35">
-                {t.about.missionLead}
-              </span>
-              <br />
-              {t.about.missionBody}{" "}
-              <span className="text-gradient">{t.about.missionHighlight}</span>.
-            </p>
-          </motion.div>
+              {/* the actual phone image — floating */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="drop-shadow-[0_32px_56px_rgba(63,184,196,0.22)]"
+              >
+                <Image
+                  src="/mobile3.png"
+                  alt={p.mobile.caption}
+                  width={260}
+                  height={520}
+                  className="h-auto w-[200px] object-contain sm:w-[230px] lg:w-[260px]"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
+
+
       </div>
     </section>
   );

@@ -25,7 +25,7 @@ export function CTA() {
           variants={reveal}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-80px" }}
           className="relative overflow-hidden rounded-[2.5rem] bg-accent-gradient px-6 py-16 text-center shadow-neon-purple sm:px-12 sm:py-20"
         >
           {/* decorative layers */}

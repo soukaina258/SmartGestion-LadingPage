@@ -19,7 +19,7 @@ export function LaptopMockup() {
           <span className="h-3 w-3 rounded-full bg-[#FEBC2E]" />
           <span className="h-3 w-3 rounded-full bg-[#28C840]" />
           <div className="ms-3 hidden h-6 flex-1 items-center rounded-md bg-black/[0.04] px-3 text-[10px] text-dark-900/40 dark:bg-white/5 dark:text-white/40 sm:flex">
-            app.paragestion.com/dashboard
+            app.smartgestion.com/dashboard
           </div>
         </div>
         {/* dashboard */}

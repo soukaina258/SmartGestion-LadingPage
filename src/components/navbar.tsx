@@ -294,7 +294,7 @@ export function Navbar() {
 
         {/* Center: simple links */}
         <nav
-          className="hidden items-center lg:flex"
+          className="hidden items-center md:flex"
           onMouseLeave={() => setHovered(null)}
         >
           {navLinks.map((link) => (
@@ -328,7 +328,7 @@ export function Navbar() {
 
           <Link
             href="#contact"
-            className="hidden rounded-full bg-accent-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-neon transition-all duration-300 hover:shadow-neon-purple hover:brightness-110 sm:inline-flex"
+            className="hidden rounded-full bg-accent-gradient px-5 py-2.5 text-sm font-semibold text-white shadow-neon transition-all duration-300 hover:shadow-neon-purple hover:brightness-110 sm:inline-flex lg:inline-flex"
           >
             {t.nav.cta}
           </Link>
@@ -338,7 +338,7 @@ export function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-dark-900 text-white transition-transform hover:scale-105 md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-dark-900 text-white transition-transform hover:scale-105 md:hidden dark:bg-white/15 dark:hover:bg-white/25"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

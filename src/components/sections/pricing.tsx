@@ -173,7 +173,7 @@ export function Pricing() {
                 variants={reveal}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: false, margin: "-80px" }}
                 className={cn(
                   "relative flex flex-col rounded-3xl p-7 transition-all duration-300",
                   plan.highlighted
@@ -281,7 +281,7 @@ export function Pricing() {
                     plan.highlighted && "text-brand-600 hover:text-brand-700"
                   )}
                 >
-                  <a href="#cta">{plan.cta}</a>
+                  <a href="#contact">{plan.cta}</a>
                 </Button>
               </motion.div>
             );

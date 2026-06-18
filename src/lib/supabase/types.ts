@@ -7,6 +7,7 @@
  */
 
 export type LeadStatus = "new" | "contacted" | "qualified" | "closed" | "spam";
+export type SubscriberStatus = "active" | "unsubscribed";
 
 export interface Database {
   public: {
@@ -41,6 +42,27 @@ export interface Database {
           company?: string | null;
           message?: string;
           status?: LeadStatus;
+        };
+        Relationships: [];
+      };
+      newsletter_subscribers: {
+        Row: {
+          id: string;
+          created_at: string;
+          email: string;
+          status: SubscriberStatus;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          email: string;
+          status?: SubscriberStatus;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          email?: string;
+          status?: SubscriberStatus;
         };
         Relationships: [];
       };

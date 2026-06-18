@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { NewsletterBanner } from "@/components/newsletter-banner";
+import { WhatsAppFAB } from "@/components/whatsapp-fab";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { I18nProvider } from "@/i18n/provider";
 
 const geistSans = Geist({
@@ -24,16 +27,17 @@ export const metadata: Metadata = {
     apple: "/logo1.png",
   },
   description:
-    "SmartGestion conçoit des solutions ERP intelligentes pour de nombreux métiers. Notre première solution, ParaGestion, est dédiée aux parapharmacies—et d'autres arrivent bientôt.",
+    "SmartGestion conçoit des solutions ERP intelligentes pour de nombreux secteurs : commerce, pharmacie, restauration, distribution. Gérez ventes, stock, achats et finances depuis une seule plateforme.",
   keywords: [
     "SmartGestion",
     "ERP",
-    "ParaGestion",
-    "parapharmacie",
     "gestion",
     "facturation",
     "stock",
     "comptabilité",
+    "pharmacie",
+    "commerce",
+    "Maroc",
   ],
 };
 
@@ -59,7 +63,10 @@ export default function RootLayout({
         <I18nProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
+          <NewsletterBanner />
           <Footer />
+          <WhatsAppFAB />
+          <ScrollToTop />
         </I18nProvider>
       </body>
     </html>

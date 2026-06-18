@@ -54,7 +54,7 @@ export function About() {
           variants={reveal}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-80px" }}
         >
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-gradient">
             {a.whyEyebrow}
@@ -77,7 +77,7 @@ export function About() {
                 variants={reveal}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: false, margin: "-60px" }}
                 className="flex items-start gap-3"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-gradient text-white shadow-neon">
@@ -110,7 +110,7 @@ export function About() {
           variants={reveal}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-80px" }}
           className="relative"
         >
           {/* glow behind */}

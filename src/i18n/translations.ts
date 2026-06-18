@@ -217,10 +217,62 @@ export type Dictionary = {
     emailLabel: string;
     responseTime: string;
   };
+  newsletter: {
+    badge: string;
+    title: string;
+    brand: string;
+    subtitle: string;
+    placeholder: string;
+    button: string;
+    note: string;
+    successMessage: string;
+    alreadyMessage: string;
+    errorMessage: string;
+  };
+  legal: {
+    badge: string;
+    back: string;
+    updated: string;
+    terms: {
+      meta: string;
+      title: string;
+      intro: string;
+      refundNoticeTitle: string;
+      refundNoticeBody: string;
+      sections: { title: string; body: string }[];
+    };
+    privacy: {
+      meta: string;
+      title: string;
+      intro: string;
+      highlights: { emoji: string; title: string; desc: string }[];
+      sections: { title: string; body: string }[];
+    };
+  };
+  notFound: {
+    meta: string;
+    title: string;
+    subtitle: string;
+    home: string;
+    contact: string;
+    back: string;
+    copyright: string;
+  };
   footer: {
     tagline: string;
-    columns: { title: string; links: { label: string; href: string }[] }[];
-    socials: { label: string; href: string }[];
+    colProduct: string;
+    colCompany: string;
+    colLegal: string;
+    colSocial: string;
+    linkFeatures: string;
+    linkPricing: string;
+    linkTestimonials: string;
+    linkFaq: string;
+    linkContact: string;
+    linkAbout: string;
+    linkSolutions: string;
+    linkTerms: string;
+    link404: string;
     rights: string;
     madeWith: string;
   };
@@ -357,7 +409,7 @@ const fr: Dictionary = {
     title2: "de votre entreprise, enfin",
     titleHighlight: "simplifiée",
     subtitle:
-      "Transformez la façon de piloter vos ventes, votre stock, vos achats et vos finances avec des solutions ERP intelligentes—pensées pour chaque métier.",
+      "Transformez la façon de piloter vos ventes, votre stock, vos achats et vos finances avec des solutions ERP intelligentes, pensées pour chaque métier.",
     primaryCta: "Commencer",
     secondaryCta: "Réserver une démo",
     integrationsLabel: "Tout votre métier dans une seule solution",
@@ -397,7 +449,7 @@ const fr: Dictionary = {
     title1: "Un ERP pensé",
     titleHighlight: "pour vous",
     intro:
-      "Chaque module est connecté et s'adapte à votre façon de travailler—pas l'inverse. Conçu pour évoluer avec votre activité.",
+      "Chaque module est connecté et s'adapte à votre façon de travailler, pas l'inverse. Conçu pour évoluer avec votre activité.",
     learnMore: "En savoir plus",
     collaboration: {
       title: "Collaboration d'équipe",
@@ -413,19 +465,19 @@ const fr: Dictionary = {
       {
         title: "Automatisation des flux",
         description:
-          "Devis, factures, bons de commande et de livraison s'enchaînent automatiquement—moins de saisie manuelle, zéro oubli.",
+          "Devis, factures, bons de commande et de livraison s'enchaînent automatiquement. Moins de saisie manuelle, zéro oubli.",
       },
       {
         title: "Stock & multi-activités",
         description:
-          "Gestion FIFO par catégorie, alertes de péremption et de rupture, multi-langue—conçu pour s'étendre à de nouveaux métiers.",
+          "Gestion FIFO par catégorie, alertes de péremption et de rupture, multi-langue. Conçu pour s'étendre à de nouveaux métiers.",
       },
     ],
     items: {
       calculator: {
         title: "Calculateur de prix automatique",
         description:
-          "Saisissez le prix TTC, la TVA et la remise—le prix HT est calculé instantanément. Zéro calcul manuel, zéro erreur.",
+          "Saisissez le prix TTC, la TVA et la remise. Le prix HT est calculé instantanément. Zéro calcul manuel, zéro erreur.",
       },
       margin: {
         title: "Marge commerciale en temps réel",
@@ -435,7 +487,7 @@ const fr: Dictionary = {
       vat: {
         title: "Récapitulatif fiscal (TVA)",
         description:
-          "TVA collectée, déductible et solde calculés automatiquement—prêt pour votre déclaration.",
+          "TVA collectée, déductible et solde calculés automatiquement. Prêt pour votre déclaration.",
       },
       alerts: {
         title: "Alertes de stock intelligentes",
@@ -445,7 +497,7 @@ const fr: Dictionary = {
       dashboard: {
         title: "Tableau de bord financier",
         description:
-          "Tous vos indicateurs clés—CA, bénéfice net, créances—réunis dans une vue claire et vivante.",
+          "Tous vos indicateurs clés : CA, bénéfice net, créances, réunis dans une vue claire et vivante.",
       },
     },
     ui: {
@@ -486,7 +538,7 @@ const fr: Dictionary = {
       eyebrow: "Notre solution phare",
       title: "Une solution complète pour votre pharmacie",
       description:
-        "Gérez ventes, stock, fournisseurs et finances depuis une seule plateforme—pensée pour le quotidien d'une pharmacie marocaine. Accessible partout, sur ordinateur comme sur mobile.",
+        "Gérez ventes, stock, fournisseurs et finances depuis une seule plateforme, pensée pour le quotidien d'une pharmacie marocaine. Accessible partout, sur ordinateur comme sur mobile.",
       features: [
         {
           title: "Gestion de stock & péremption",
@@ -523,46 +575,58 @@ const fr: Dictionary = {
   },
   testimonials: {
     badge: "Témoignages",
-    title1: "Ce que disent les",
-    titleHighlight: "parapharmacies",
+    title1: "Ce que disent nos",
+    titleHighlight: "clients",
     intro:
-      "Des gérants de parapharmacie qui pilotent leur activité au quotidien avec ParaGestion.",
+      "Des dirigeants qui pilotent leur activité au quotidien avec SmartGestion.",
     items: [
       {
         quote:
-          "Depuis ParaGestion, le suivi des péremptions et le réassort se font tout seuls. On a réduit nos ruptures de 40 %.",
+          "Depuis SmartGestion, le suivi du stock et le réassort se font tout seuls. On a réduit nos ruptures de 40 %.",
         name: "Yasmine El Amrani",
         role: "Gérante, Parapharmacie Azur",
       },
       {
         quote:
-          "Le POS est ultra-rapide et la fidélité intégrée a vraiment fidélisé notre clientèle dermo-cosmétique.",
+          "Le tableau de bord en temps réel nous donne une visibilité totale sur notre CA et nos marges. Indispensable.",
         name: "Karim Benali",
-        role: "Propriétaire, ParaSanté Center",
+        role: "Directeur, RestoPro Casablanca",
       },
       {
         quote:
-          "Les tableaux de bord par catégorie m'aident à décider quoi commander. Tout est clair, en un coup d'œil.",
+          "La gestion des fournisseurs et des commandes nous a fait gagner des heures chaque semaine.",
         name: "Salma Tazi",
-        role: "Directrice, Parapharmacie Lumière",
+        role: "Directrice, Boutique Lumière",
       },
       {
         quote:
-          "La gestion des fournisseurs et des livraisons nous a fait gagner des heures chaque semaine.",
+          "Enfin un ERP pensé pour les PME marocaines. La prise en main est rapide et l'équipe très réactive.",
         name: "Omar Cherkaoui",
-        role: "Gérant, Espace Parapharma",
+        role: "Gérant, Espace Commerce",
       },
       {
         quote:
-          "Enfin un ERP pensé pour notre métier. La conformité et le reporting sont devenus un jeu d'enfant.",
+          "SmartGestion a centralisé toute notre activité : ventes, achats, stock. On gagne un temps fou.",
         name: "Nadia Berrada",
-        role: "Pharmacienne, Parapharmacie Atlas",
+        role: "PDG, Atlas Distribution",
       },
       {
         quote:
-          "Configuration rapide, équipe à l'écoute. ParaGestion a digitalisé toute notre activité en quelques jours.",
+          "Configuration en quelques jours, support disponible. On a digitalisé toute notre gestion sans stress.",
         name: "Hicham Idrissi",
-        role: "Propriétaire, ParaBeauté Store",
+        role: "Propriétaire, IdrissiStore",
+      },
+      {
+        quote:
+          "Les rapports automatiques nous permettent de prendre de meilleures décisions chaque mois.",
+        name: "Fatima Zahra Alaoui",
+        role: "Directrice financière, GroupAlaoui",
+      },
+      {
+        quote:
+          "Excellent rapport qualité-prix. SmartGestion remplace trois outils qu'on utilisait avant.",
+        name: "Youssef Mansouri",
+        role: "Gérant, TechShop Rabat",
       },
     ],
   },
@@ -570,32 +634,47 @@ const fr: Dictionary = {
     badge: "FAQ",
     title1: "Questions",
     titleHighlight: "fréquentes",
-    intro: "Tout ce qu'il faut savoir avant de démarrer avec ParaGestion.",
+    intro: "Tout ce qu'il faut savoir avant de démarrer avec SmartGestion.",
     items: [
       {
-        question: "ParaGestion est-il conçu uniquement pour les parapharmacies ?",
+        question: "SmartGestion est-il adapté à mon secteur d'activité ?",
         answer:
-          "ParaGestion est optimisé pour les parapharmacies (stock, péremptions, dermo-cosmétiques), mais l'architecture modulaire est conçue pour s'étendre à d'autres métiers très prochainement.",
+          "SmartGestion est conçu pour s'adapter à de nombreux métiers : pharmacies, parapharmacies, commerce de détail, restauration, distribution et bien d'autres. Notre architecture modulaire vous permet de n'activer que les fonctionnalités dont vous avez besoin.",
       },
       {
         question: "Puis-je l'utiliser hors-ligne ?",
         answer:
-          "Oui. La version Desktop fonctionne entièrement hors-ligne avec une licence valable 3 ans. La version En ligne inclut toutes les mises à jour.",
+          "Oui. La version Desktop fonctionne entièrement hors-ligne avec une licence valable 3 ans. La version En ligne inclut toutes les mises à jour automatiquement.",
       },
       {
         question: "Gère-t-il plusieurs points de vente ?",
         answer:
-          "Oui, vous pouvez piloter plusieurs points de vente et entrepôts, avec un stock et des analyses centralisés.",
+          "Oui, vous pouvez piloter plusieurs points de vente et entrepôts depuis une seule interface, avec un stock et des analyses centralisés en temps réel.",
       },
       {
         question: "Mes données sont-elles en sécurité ?",
         answer:
-          "Vos données sont chiffrées, sauvegardées et protégées. Le reporting respecte les exigences réglementaires de votre activité.",
+          "Vos données sont chiffrées, sauvegardées automatiquement et protégées selon les standards de sécurité les plus élevés. Vous restez propriétaire de vos données à tout moment.",
       },
       {
         question: "Combien de temps pour démarrer ?",
         answer:
-          "La configuration se fait en quelques minutes et notre équipe vous accompagne pour l'import de vos produits et de vos données.",
+          "La configuration initiale prend quelques minutes. Notre équipe vous accompagne pour l'import de vos produits, clients et données existantes, sans interruption de votre activité.",
+      },
+      {
+        question: "Quels modes de facturation proposez-vous ?",
+        answer:
+          "Nous proposons une licence Desktop (paiement unique, 3 ans) et un abonnement En ligne (mensuel ou annuel). Aucun frais caché, pas d'engagement minimum pour la version en ligne.",
+      },
+      {
+        question: "Comment sont sauvegardées mes données ?",
+        answer:
+          "Pour la version En ligne, vos données sont sauvegardées automatiquement toutes les 24 heures sur des serveurs sécurisés, avec une rétention de 30 jours. Vous pouvez également déclencher une sauvegarde manuelle à tout moment et exporter vos données en CSV ou JSON.",
+      },
+      {
+        question: "Qui peut accéder à mes données ?",
+        answer:
+          "Seuls vous et les membres de votre équipe que vous autorisez peuvent accéder à vos données. SmartGestion ne partage ni ne vend vos données à des tiers. Nos équipes internes n'y accèdent que sur votre demande explicite pour vous assister.",
       },
     ],
   },
@@ -603,7 +682,7 @@ const fr: Dictionary = {
     badge: "À propos",
     titleLead: "À propos de",
     intro:
-      "SmartGestion conçoit des solutions ERP intelligentes pour de nombreux secteurs et métiers. Notre premier produit, ParaGestion, est dédié aux parapharmacies—et d'autres solutions arrivent bientôt.",
+      "SmartGestion conçoit des solutions ERP intelligentes pour de nombreux secteurs et métiers. Notre premier produit, ParaGestion, est dédié aux parapharmacies. D'autres solutions arrivent bientôt.",
     moreDetails: "En savoir plus",
     videoCaption:
       "Découvrez comment SmartGestion rend la gestion de votre activité simple et intuitive.",
@@ -616,7 +695,7 @@ const fr: Dictionary = {
     whyTitleHighlight: "intelligentes",
     whyTitle2: "pour faire grandir votre entreprise",
     whyBody:
-      "SmartGestion réunit ventes, stock, achats, clients et finances dans une plateforme unique, claire et rapide. Conçue pour s'adapter à chaque métier—pour que vous pilotiez votre activité, pas votre logiciel.",
+      "SmartGestion réunit ventes, stock, achats, clients et finances dans une plateforme unique, claire et rapide. Conçue pour s'adapter à chaque métier, pour que vous pilotiez votre activité, pas votre logiciel.",
     whyCta: "Découvrir nos solutions",
     points: [
       {
@@ -729,7 +808,7 @@ const fr: Dictionary = {
     title1: "Prêt à optimiser",
     titleHighlight: "votre parapharmacie ?",
     subtitle:
-      "Rejoignez les parapharmacies qui pilotent leur activité avec ParaGestion. Démarrez aujourd'hui—configuration en quelques minutes.",
+      "Rejoignez les parapharmacies qui pilotent leur activité avec ParaGestion. Démarrez aujourd'hui, configuration en quelques minutes.",
     placeholder: "votre@email.com",
     button: "Planifier une démo en direct",
     note: "Essai sans engagement · Aucune carte bancaire requise",
@@ -760,62 +839,99 @@ const fr: Dictionary = {
       "Vérifiez votre application e-mail et envoyez le message déjà rédigé. Nous vous répondrons dans les plus brefs délais.",
     errorRequired: "Merci de remplir tous les champs obligatoires.",
     errorEmail: "Veuillez saisir une adresse e-mail valide.",
-    mailSubject: "Demande de démo — SmartGestion",
+    mailSubject: "Demande de démo - SmartGestion",
     infoTitle: "Parlons de votre projet",
     infoBody:
       "Une question, un projet de digitalisation ou simplement envie d'une démo ? Écrivez-nous, nous sommes là pour vous aider.",
     emailLabel: "Écrivez-nous directement",
     responseTime: "Réponse sous 24h ouvrées",
   },
+  newsletter: {
+    badge:          "Restez informé",
+    title:          "Recevez les mises à jour",
+    brand:          "SmartGestion",
+    subtitle:       "Nouvelles fonctionnalités, améliorations produit et offres exclusives — directement dans votre boîte mail. Aucun spam, jamais.",
+    placeholder:    "votre@email.com",
+    button:         "S'inscrire",
+    note:           "Aucun spam. Désabonnement en un clic à tout moment.",
+    successMessage: "Merci ! Vous recevrez nos mises à jour bientôt.",
+    alreadyMessage: "Vous êtes déjà inscrit. Merci !",
+    errorMessage:   "Une erreur est survenue. Réessayez dans un instant.",
+  },
+  legal: {
+    badge:   "Légal",
+    back:    "Retour",
+    updated: "Dernière mise à jour : juin 2026",
+    terms: {
+      meta:  "Conditions d'utilisation — SmartGestion",
+      title: "Conditions d'utilisation",
+      intro: "Veuillez lire attentivement ces conditions avant d'utiliser SmartGestion. En utilisant notre service, vous acceptez d'être lié par ces conditions.",
+      refundNoticeTitle: "⚠ Politique de remboursement importante",
+      refundNoticeBody:  "SmartGestion applique une politique de zéro remboursement. Toutes les ventes sont définitives. Nous vous encourageons à utiliser la période d'essai gratuite avant tout achat.",
+      sections: [
+        { title: "1. Acceptation des conditions",         body: "En accédant à SmartGestion ou en l'utilisant, vous acceptez d'être lié par les présentes Conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre service." },
+        { title: "2. Description du service",             body: "SmartGestion est une solution ERP en ligne et hors-ligne destinée aux entreprises de divers secteurs. Elle comprend des modules de gestion des ventes, du stock, des achats, de la facturation et des finances." },
+        { title: "3. Politique de remboursement — Aucun remboursement", body: "Toutes les ventes sont définitives. SmartGestion n'offre pas de remboursements, de crédits ou d'échanges pour les licences Desktop ou les abonnements En ligne. Nous vous encourageons à profiter de la période d'essai gratuite avant tout achat." },
+        { title: "4. Licences et abonnements",            body: "La licence Desktop est valable 3 ans à compter de la date d'achat. L'abonnement En ligne est renouvelé automatiquement selon la période choisie. Vous pouvez résilier à tout moment ; la résiliation prend effet à la fin de la période en cours." },
+        { title: "5. Propriété intellectuelle",           body: "Tous les contenus, logiciels, marques et éléments graphiques présents sur SmartGestion sont la propriété exclusive de SmartGestion ou de ses partenaires. Toute reproduction non autorisée est strictement interdite." },
+        { title: "6. Données et confidentialité",         body: "Vos données sont stockées de manière sécurisée et ne sont jamais partagées ni vendues à des tiers. Vous pouvez exporter ou supprimer vos données à tout moment via les paramètres de votre compte." },
+        { title: "7. Limitation de responsabilité",       body: "SmartGestion est fourni « en l'état ». En aucun cas SmartGestion ne pourra être tenu responsable de pertes indirectes ou de manque à gagner résultant de l'utilisation ou de l'impossibilité d'utiliser le service." },
+        { title: "8. Modifications des conditions",       body: "Nous nous réservons le droit de modifier les présentes conditions à tout moment. Les modifications entrent en vigueur dès leur publication. L'utilisation continue du service vaut acceptation des nouvelles conditions." },
+        { title: "9. Loi applicable",                     body: "Les présentes conditions sont régies par le droit marocain. Tout litige sera soumis à la juridiction compétente de Casablanca, Maroc." },
+        { title: "10. Contact",                           body: "Pour toute question relative aux présentes conditions, contactez-nous à : smartgestionmaroc@gmail.com" },
+      ],
+    },
+    privacy: {
+      meta:  "Politique de confidentialité — SmartGestion",
+      title: "Politique de confidentialité",
+      intro: "Chez SmartGestion, la protection de vos données personnelles est une priorité. Cette politique explique quelles données nous collectons, comment nous les utilisons et comment nous les protégeons.",
+      highlights: [
+        { emoji: "🔒", title: "Données chiffrées",    desc: "AES-256 au repos, TLS en transit" },
+        { emoji: "🚫", title: "Zéro revente",         desc: "Vos données ne sont jamais vendues" },
+        { emoji: "📤", title: "Export à tout moment", desc: "CSV ou JSON sur simple demande" },
+      ],
+      sections: [
+        { title: "1. Responsable du traitement",    body: "SmartGestion est responsable du traitement de vos données personnelles. Contact : smartgestionmaroc@gmail.com" },
+        { title: "2. Données collectées",           body: "Nous collectons uniquement les données nécessaires : nom, e-mail, téléphone (optionnel), nom de l'entreprise, et les données métier saisies dans l'application. Aucune donnée sensible n'est collectée." },
+        { title: "3. Finalités du traitement",      body: "Vos données servent à fournir et améliorer le service, vous contacter en cas de besoin, vous informer de votre compte ou abonnement, et respecter nos obligations légales." },
+        { title: "4. Partage des données",          body: "Nous ne vendons ni ne partageons jamais vos données personnelles à des fins commerciales. Elles peuvent être partagées avec des sous-traitants techniques uniquement sous contrat de confidentialité." },
+        { title: "5. Sécurité des données",         body: "Toutes les données sont chiffrées en transit (TLS) et au repos (AES-256). Nos serveurs sont hébergés dans des centres de données sécurisés en Europe. Des sauvegardes automatiques sont effectuées toutes les 24 heures." },
+        { title: "6. Conservation des données",     body: "Vos données sont conservées pendant toute la durée de votre relation contractuelle, plus 12 mois après résiliation. Passé ce délai, toutes vos données sont définitivement supprimées." },
+        { title: "7. Vos droits",                   body: "Conformément à la loi 09-08 (Maroc) et au RGPD, vous disposez des droits d'accès, rectification, effacement, portabilité, opposition et limitation. Contact : smartgestionmaroc@gmail.com" },
+        { title: "8. Cookies",                      body: "SmartGestion utilise uniquement des cookies strictement nécessaires (session, préférences). Aucun cookie publicitaire ou de tracking tiers n'est utilisé." },
+        { title: "9. Transferts internationaux",    body: "Vos données sont hébergées en Europe et ne sont pas transférées hors de l'EEE, sauf nécessité de service avec garanties appropriées." },
+        { title: "10. Modifications",               body: "Nous pouvons modifier cette politique à tout moment. Les modifications importantes vous seront notifiées par e-mail ou via l'application." },
+        { title: "11. Contact",                     body: "Pour toute question, contactez notre responsable de la protection des données : smartgestionmaroc@gmail.com. Réponse sous 30 jours." },
+      ],
+    },
+  },
+  notFound: {
+    meta:      "Page introuvable — SmartGestion",
+    title:     "Page introuvable",
+    subtitle:  "La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour retrouver votre chemin.",
+    home:      "Retour à l'accueil",
+    contact:   "Nous contacter",
+    back:      "Retour",
+    copyright: "Tous droits réservés.",
+  },
   footer: {
     tagline:
       "SmartGestion construit des solutions ERP intelligentes pour de nombreux métiers afin de digitaliser et piloter votre activité au quotidien.",
-    columns: [
-      {
-        title: "Produit",
-        links: [
-          { label: "Fonctionnalités", href: "#features" },
-          { label: "Tarifs", href: "#pricing" },
-          { label: "Tableau de bord", href: "#features" },
-          { label: "Sécurité", href: "#about" },
-        ],
-      },
-      {
-        title: "Entreprise",
-        links: [
-          { label: "À propos", href: "#about" },
-          { label: "Métiers à venir", href: "#about" },
-          { label: "Contact", href: "#contact" },
-          { label: "Blog", href: "#" },
-        ],
-      },
-      {
-        title: "Ressources",
-        links: [
-          { label: "Témoignages", href: "#testimonials" },
-          { label: "FAQ", href: "#faq" },
-          { label: "Guides", href: "#" },
-          { label: "Support", href: "#contact" },
-        ],
-      },
-      {
-        title: "Légal",
-        links: [
-          { label: "Conditions d'utilisation", href: "#" },
-          { label: "Politique de confidentialité", href: "#" },
-          { label: "Mentions légales", href: "#" },
-          { label: "Cookies", href: "#" },
-        ],
-      },
-    ],
-    socials: [
-      { label: "Site web", href: "#" },
-      { label: "Email", href: "#contact" },
-      { label: "Telegram", href: "#" },
-      { label: "WhatsApp", href: "#" },
-    ],
-    rights: "Tous droits réservés.",
-    madeWith: "Conçu avec soin pour les parapharmacies.",
+    colProduct:      "Produit",
+    colCompany:      "Entreprise",
+    colLegal:        "Légal",
+    colSocial:       "Réseaux sociaux",
+    linkFeatures:    "Fonctionnalités",
+    linkPricing:     "Tarifs",
+    linkTestimonials:"Témoignages",
+    linkFaq:         "FAQ",
+    linkContact:     "Contact",
+    linkAbout:       "À propos",
+    linkSolutions:   "Solutions",
+    linkTerms:       "Conditions d'utilisation",
+    link404:         "Page 404",
+    rights:          "Tous droits réservés.",
+    madeWith:        "Conçu avec soin pour les entreprises.",
   },
   dashboard: {
     currency: "DH",
@@ -961,7 +1077,7 @@ const en: Dictionary = {
     title2: "management, made",
     titleHighlight: "effortless",
     subtitle:
-      "Transform how you run your sales, inventory, purchasing and finances with intelligent ERP solutions—built for every industry.",
+      "Transform how you run your sales, inventory, purchasing and finances with intelligent ERP solutions, built for every industry.",
     primaryCta: "Get Started",
     secondaryCta: "Book a Demo",
     integrationsLabel: "Your entire business in a single solution",
@@ -1001,7 +1117,7 @@ const en: Dictionary = {
     title1: "An ERP built",
     titleHighlight: "around you",
     intro:
-      "Every module is connected and adapts to the way you work—not the other way around. Built to grow with your business.",
+      "Every module is connected and adapts to the way you work, not the other way around. Built to grow with your business.",
     learnMore: "Learn more",
     collaboration: {
       title: "Team collaboration",
@@ -1017,29 +1133,29 @@ const en: Dictionary = {
       {
         title: "Workflow automation",
         description:
-          "Quotes, invoices, purchase and delivery orders flow automatically—less manual entry, nothing forgotten.",
+          "Quotes, invoices, purchase and delivery orders flow automatically. Less manual entry, nothing forgotten.",
       },
       {
         title: "Inventory & multi-business",
         description:
-          "FIFO stock by category, expiry and low-stock alerts, multi-language—built to scale to new industries.",
+          "FIFO stock by category, expiry and low-stock alerts, multi-language. Built to scale to new industries.",
       },
     ],
     items: {
       calculator: {
         title: "Automatic price calculator",
         description:
-          "Enter the tax-incl. price, VAT and discount—the tax-excl. price is computed instantly. No manual math, no errors.",
+          "Enter the tax-incl. price, VAT and discount. The tax-excl. price is computed instantly. No manual math, no errors.",
       },
       margin: {
         title: "Real-time commercial margin",
         description:
-          "Revenue, cost of sales and credits combined to show your exact net margin—detailed and traceable.",
+          "Revenue, cost of sales and credits combined to show your exact net margin, detailed and traceable.",
       },
       vat: {
         title: "Tax summary (VAT)",
         description:
-          "Collected, deductible and balance VAT computed automatically—ready for your filing.",
+          "Collected, deductible and balance VAT computed automatically. Ready for your filing.",
       },
       alerts: {
         title: "Smart stock alerts",
@@ -1127,46 +1243,58 @@ const en: Dictionary = {
   },
   testimonials: {
     badge: "Testimonials",
-    title1: "What parapharmacy",
-    titleHighlight: "owners say",
+    title1: "What our",
+    titleHighlight: "clients say",
     intro:
-      "Parapharmacy owners running their business every day with ParaGestion.",
+      "Business owners running their operations every day with SmartGestion.",
     items: [
       {
         quote:
-          "Since ParaGestion, expiry tracking and reordering run on their own. We cut stockouts by 40%.",
+          "Since SmartGestion, stock tracking and reordering run on their own. We cut stockouts by 40%.",
         name: "Yasmine El Amrani",
         role: "Owner, Parapharmacie Azur",
       },
       {
         quote:
-          "The POS is lightning fast, and built-in loyalty really retained our dermo-cosmetics customers.",
+          "Real-time dashboards give us full visibility on revenue and margins. Absolutely essential.",
         name: "Karim Benali",
-        role: "Owner, ParaSanté Center",
+        role: "Director, RestoPro Casablanca",
       },
       {
         quote:
-          "Category dashboards help me decide what to order. Everything is clear, at a glance.",
+          "Supplier and order management saved us hours every single week.",
         name: "Salma Tazi",
-        role: "Director, Parapharmacie Lumière",
+        role: "Director, Boutique Lumière",
       },
       {
         quote:
-          "Supplier and delivery management saved us hours every single week.",
+          "Finally an ERP built for Moroccan SMEs. Easy to get started and the team is very responsive.",
         name: "Omar Cherkaoui",
-        role: "Owner, Espace Parapharma",
+        role: "Owner, Espace Commerce",
       },
       {
         quote:
-          "Finally an ERP built for our trade. Compliance and reporting became effortless.",
+          "SmartGestion centralized everything: sales, purchasing, stock. We save so much time.",
         name: "Nadia Berrada",
-        role: "Pharmacist, Parapharmacie Atlas",
+        role: "CEO, Atlas Distribution",
       },
       {
         quote:
-          "Quick setup and a supportive team. ParaGestion digitized our whole business in days.",
+          "Set up in a few days, support always available. We digitized our entire operation stress-free.",
         name: "Hicham Idrissi",
-        role: "Owner, ParaBeauté Store",
+        role: "Owner, IdrissiStore",
+      },
+      {
+        quote:
+          "Automated reports help us make better decisions every month.",
+        name: "Fatima Zahra Alaoui",
+        role: "CFO, GroupAlaoui",
+      },
+      {
+        quote:
+          "Excellent value. SmartGestion replaces three separate tools we used before.",
+        name: "Youssef Mansouri",
+        role: "Owner, TechShop Rabat",
       },
     ],
   },
@@ -1174,32 +1302,47 @@ const en: Dictionary = {
     badge: "FAQ",
     title1: "Frequently asked",
     titleHighlight: "questions",
-    intro: "Everything you need to know before getting started with ParaGestion.",
+    intro: "Everything you need to know before getting started with SmartGestion.",
     items: [
       {
-        question: "Is ParaGestion only for parapharmacies?",
+        question: "Is SmartGestion suitable for my industry?",
         answer:
-          "ParaGestion is optimized for parapharmacies (stock, expiry, dermo-cosmetics), but its modular architecture is designed to expand to other businesses very soon.",
+          "SmartGestion is built to adapt to many business types: pharmacies, parapharmacies, retail, restaurants, distribution and more. Our modular architecture lets you activate only the features you need.",
       },
       {
         question: "Can I use it offline?",
         answer:
-          "Yes. The Desktop version works fully offline with a license valid for 3 years. The Online version includes all updates.",
+          "Yes. The Desktop version works fully offline with a license valid for 3 years. The Online version includes all updates automatically.",
       },
       {
         question: "Does it support multiple stores?",
         answer:
-          "Yes, you can run multiple points of sale and warehouses, with centralized stock and analytics.",
+          "Yes, you can manage multiple points of sale and warehouses from a single interface, with centralized real-time stock and analytics.",
       },
       {
         question: "Is my data safe?",
         answer:
-          "Your data is encrypted, backed up and protected. Reporting meets the regulatory requirements of your business.",
+          "Your data is encrypted, automatically backed up and protected to the highest security standards. You remain the owner of your data at all times.",
       },
       {
         question: "How long does it take to get started?",
         answer:
-          "Setup takes only minutes, and our team helps you import your products and data.",
+          "Initial setup takes just a few minutes. Our team guides you through importing your existing products, customers and data — with no disruption to your operations.",
+      },
+      {
+        question: "What pricing models do you offer?",
+        answer:
+          "We offer a Desktop license (one-time payment, 3 years) and an Online subscription (monthly or annual). No hidden fees, no minimum commitment for the online version.",
+      },
+      {
+        question: "How is my data backed up?",
+        answer:
+          "For the Online version, your data is automatically backed up every 24 hours on secure servers with a 30-day retention period. You can also trigger a manual backup at any time and export your data as CSV or JSON.",
+      },
+      {
+        question: "Who can access my data?",
+        answer:
+          "Only you and the team members you authorise can access your data. SmartGestion never shares or sells your data to third parties. Our internal teams only access it on your explicit request to assist you.",
       },
     ],
   },
@@ -1368,55 +1511,92 @@ const en: Dictionary = {
     emailLabel: "Email us directly",
     responseTime: "Reply within 24 business hours",
   },
+  newsletter: {
+    badge:          "Stay informed",
+    title:          "Get SmartGestion",
+    brand:          "updates",
+    subtitle:       "New features, product improvements and exclusive offers — straight to your inbox. No spam, ever.",
+    placeholder:    "your@email.com",
+    button:         "Subscribe",
+    note:           "No spam. Unsubscribe in one click at any time.",
+    successMessage: "Thank you! You'll receive our updates soon.",
+    alreadyMessage: "You're already subscribed. Thank you!",
+    errorMessage:   "Something went wrong. Please try again in a moment.",
+  },
+  legal: {
+    badge:   "Legal",
+    back:    "Back",
+    updated: "Last updated: June 2026",
+    terms: {
+      meta:  "Terms of use — SmartGestion",
+      title: "Terms of use",
+      intro: "Please read these terms carefully before using SmartGestion. By using our service, you agree to be bound by these terms.",
+      refundNoticeTitle: "⚠ Important refund policy",
+      refundNoticeBody:  "SmartGestion enforces a zero-refund policy. All sales are final. We encourage you to use the free trial period before purchasing.",
+      sections: [
+        { title: "1. Acceptance of terms",         body: "By accessing or using SmartGestion, you agree to be bound by these Terms of use. If you do not accept these terms, please do not use our service." },
+        { title: "2. Service description",         body: "SmartGestion is an online and offline ERP solution for businesses across various sectors, including modules for sales, inventory, purchasing, invoicing, and finance management." },
+        { title: "3. Refund policy — No refunds",  body: "All sales are final. SmartGestion does not offer refunds, credits, or exchanges for Desktop licenses or Online subscriptions for any reason. We encourage you to use the free trial before purchasing." },
+        { title: "4. Licenses and subscriptions",  body: "The Desktop license is valid for 3 years from the purchase date. The Online subscription renews automatically. You may cancel at any time; cancellation takes effect at the end of the current period." },
+        { title: "5. Intellectual property",       body: "All content, software, trademarks, and graphics on SmartGestion are the exclusive property of SmartGestion or its partners. Any unauthorized reproduction is strictly prohibited." },
+        { title: "6. Data and privacy",            body: "Your data is stored securely and is never shared or sold to third parties. You may export or delete your data at any time through your account settings." },
+        { title: "7. Limitation of liability",     body: "SmartGestion is provided 'as is'. In no event shall SmartGestion be liable for indirect losses or loss of profit resulting from use of or inability to use the service." },
+        { title: "8. Changes to terms",            body: "We reserve the right to modify these terms at any time. Changes take effect upon publication. Continued use of the service constitutes acceptance of the updated terms." },
+        { title: "9. Governing law",               body: "These terms are governed by Moroccan law. Any disputes shall be subject to the jurisdiction of the courts of Casablanca, Morocco." },
+        { title: "10. Contact",                    body: "For any questions regarding these terms, contact us at: smartgestionmaroc@gmail.com" },
+      ],
+    },
+    privacy: {
+      meta:  "Privacy policy — SmartGestion",
+      title: "Privacy policy",
+      intro: "At SmartGestion, protecting your personal data is a priority. This policy explains what data we collect, how we use it, and how we protect it.",
+      highlights: [
+        { emoji: "🔒", title: "Encrypted data",    desc: "AES-256 at rest, TLS in transit" },
+        { emoji: "🚫", title: "Never sold",         desc: "Your data is never shared or sold" },
+        { emoji: "📤", title: "Export anytime",     desc: "CSV or JSON on request" },
+      ],
+      sections: [
+        { title: "1. Data controller",             body: "SmartGestion is responsible for processing your personal data. Contact: smartgestionmaroc@gmail.com" },
+        { title: "2. Data collected",              body: "We only collect necessary data: name, email, phone (optional), company name, and the business data you enter in the application. No sensitive data is collected." },
+        { title: "3. Purposes of processing",      body: "Your data is used to provide and improve the service, contact you when needed, inform you about your account or subscription, and fulfil our legal obligations." },
+        { title: "4. Data sharing",                body: "We never sell or share your personal data for commercial purposes. Data may be shared with technical subcontractors only under confidentiality agreements." },
+        { title: "5. Data security",               body: "All data is encrypted in transit (TLS) and at rest (AES-256). Our servers are hosted in secure European data centres. Automatic backups run every 24 hours with 30-day retention." },
+        { title: "6. Data retention",              body: "Your data is retained for the duration of your contract plus 12 months after cancellation. After this period, all your data is permanently deleted." },
+        { title: "7. Your rights",                 body: "Under Moroccan law 09-08 and GDPR, you have rights of access, rectification, erasure, portability, objection, and restriction. Contact: smartgestionmaroc@gmail.com" },
+        { title: "8. Cookies",                     body: "SmartGestion only uses strictly necessary cookies (session, preferences). No advertising or third-party tracking cookies are used." },
+        { title: "9. International transfers",     body: "Your data is hosted in Europe and is not transferred outside the EEA, except where necessary with appropriate safeguards." },
+        { title: "10. Policy changes",             body: "We may update this policy at any time. Significant changes will be notified by email or via the application." },
+        { title: "11. Contact",                    body: "For any data protection enquiries: smartgestionmaroc@gmail.com. We commit to responding within 30 days." },
+      ],
+    },
+  },
+  notFound: {
+    meta:      "Page not found — SmartGestion",
+    title:     "Page not found",
+    subtitle:  "The page you are looking for does not exist or has been moved. Go back home to find your way.",
+    home:      "Back to home",
+    contact:   "Contact us",
+    back:      "Back",
+    copyright: "All rights reserved.",
+  },
   footer: {
     tagline:
       "SmartGestion builds intelligent ERP solutions for many industries to digitize and run your business every day.",
-    columns: [
-      {
-        title: "Product",
-        links: [
-          { label: "Features", href: "#features" },
-          { label: "Pricing", href: "#pricing" },
-          { label: "Dashboard", href: "#features" },
-          { label: "Security", href: "#about" },
-        ],
-      },
-      {
-        title: "Company",
-        links: [
-          { label: "About", href: "#about" },
-          { label: "Upcoming businesses", href: "#about" },
-          { label: "Contact", href: "#contact" },
-          { label: "Blog", href: "#" },
-        ],
-      },
-      {
-        title: "Resources",
-        links: [
-          { label: "Testimonials", href: "#testimonials" },
-          { label: "FAQ", href: "#faq" },
-          { label: "Guides", href: "#" },
-          { label: "Support", href: "#contact" },
-        ],
-      },
-      {
-        title: "Legal",
-        links: [
-          { label: "Terms of use", href: "#" },
-          { label: "Privacy policy", href: "#" },
-          { label: "Legal notice", href: "#" },
-          { label: "Cookies", href: "#" },
-        ],
-      },
-    ],
-    socials: [
-      { label: "Website", href: "#" },
-      { label: "Email", href: "#contact" },
-      { label: "Telegram", href: "#" },
-      { label: "WhatsApp", href: "#" },
-    ],
-    rights: "All rights reserved.",
-    madeWith: "Crafted with care for parapharmacies.",
+    colProduct:      "Product",
+    colCompany:      "Company",
+    colLegal:        "Legal",
+    colSocial:       "Social",
+    linkFeatures:    "Features",
+    linkPricing:     "Pricing",
+    linkTestimonials:"Testimonials",
+    linkFaq:         "FAQ",
+    linkContact:     "Contact",
+    linkAbout:       "About",
+    linkSolutions:   "Solutions",
+    linkTerms:       "Terms of use",
+    link404:         "404 Page",
+    rights:          "All rights reserved.",
+    madeWith:        "Crafted with care for businesses.",
   },
   dashboard: {
     currency: "DH",
@@ -1724,44 +1904,57 @@ const ar: Dictionary = {
   },
   testimonials: {
     badge: "آراء",
-    title1: "شنو كيقولو أصحاب",
-    titleHighlight: "البارافارماسيات",
-    intro: "أصحاب بارافارماسيات كيسيّرو النشاط ديالهم كل يوم مع ParaGestion.",
+    title1: "شنو كيقولو",
+    titleHighlight: "عملاؤنا",
+    intro: "أصحاب المشاريع اللي كيسيّرو نشاطهم كل يوم مع SmartGestion.",
     items: [
       {
         quote:
-          "من بعد ParaGestion، تتبّع الصلاحيات وإعادة الطلب وليو أوتوماتيكيين. نقصنا النفاد بـ 40%.",
+          "من بعد SmartGestion، تتبّع الستوك وإعادة الطلب وليو أوتوماتيكيين. نقصنا النفاد بـ 40%.",
         name: "ياسمين العمراني",
         role: "صاحبة، بارافارماسي أزور",
       },
       {
         quote:
-          "نقطة البيع سريعة بزاف، وبرنامج الوفاء المدمج خلّى الزبناء ديال الديرمو-كوزمتيك أوفياء.",
+          "لوحة القيادة فالوقت الحقيقي كتعطينا رؤية كاملة على رقم الأعمال والهامش. ضرورية بزاف.",
         name: "كريم بنعلي",
-        role: "صاحب، بارا-سانتي سونتر",
+        role: "مدير، RestoPro الدار البيضاء",
       },
       {
         quote:
-          "لوحات القيادة حسب الفئة كتعاوني نقرر شنو نطلب. كلشي واضح بنظرة وحدة.",
+          "تدبير الموردين والطلبيات وفّرلنا ساعات كل أسبوع.",
         name: "سلمى التازي",
-        role: "مديرة، بارافارماسي لوميير",
+        role: "مديرة، بوتيك لوميير",
       },
       {
-        quote: "تدبير الموردين والتسليمات وفّرلنا ساعات كل أسبوع.",
+        quote:
+          "أخيراً ERP مصمم للمقاولات المغربية الصغيرة. سهل التعلم والفريق متعاون بزاف.",
         name: "عمر الشرقاوي",
-        role: "صاحب، إسباس بارافارما",
+        role: "صاحب، إسباس كوميرس",
       },
       {
         quote:
-          "أخيراً برنامج ERP مصمم لمهنتنا. المطابقة والتقارير وليو ساهلين بزاف.",
+          "SmartGestion جمّع كلشي: المبيعات، المشتريات، الستوك. ربحنا وقت كبير.",
         name: "نادية برادة",
-        role: "صيدلانية، بارافارماسي أطلس",
+        role: "رئيسة، أطلس ديستريبوسيون",
       },
       {
         quote:
-          "تهييء سريع وفريق متعاون. ParaGestion رقمن كامل النشاط ديالنا فأيام.",
+          "تهييء فأيام، دعم دائماً موجود. رقّمنا كامل تدبيرنا بدون ضغط.",
         name: "هشام الإدريسي",
-        role: "صاحب، بارا-بوتي ستور",
+        role: "صاحب، إدريسي ستور",
+      },
+      {
+        quote:
+          "التقارير الأوتوماتيكية كتعاوننا نأخدو قرارات أحسن كل شهر.",
+        name: "فاطمة الزهراء العلوي",
+        role: "مديرة مالية، غروب العلوي",
+      },
+      {
+        quote:
+          "ثمن مناسب بزاف. SmartGestion عوّض تلاتة أدوات كنا كنستعملوهم من قبل.",
+        name: "يوسف المنصوري",
+        role: "صاحب، تيك شوب الرباط",
       },
     ],
   },
@@ -1769,32 +1962,47 @@ const ar: Dictionary = {
     badge: "أسئلة",
     title1: "الأسئلة",
     titleHighlight: "المتداولة",
-    intro: "كلشي خاصك تعرفو قبل ما تبدا مع ParaGestion.",
+    intro: "كلشي خاصك تعرفو قبل ما تبدا مع SmartGestion.",
     items: [
       {
-        question: "واش ParaGestion خاص فقط بالبارافارماسيات؟",
+        question: "واش SmartGestion مناسب لقطاعي؟",
         answer:
-          "ParaGestion محسّن للبارافارماسيات (المخزون، الصلاحيات، الديرمو-كوزمتيك)، ولكن البنية المعيارية مصممة باش تتوسع لمهن أخرى قريباً.",
+          "SmartGestion مصمم باش يتكيّف مع بزاف ديال أنواع المشاريع: صيدليات، بارافارماسيات، تجارة بالتفصيل، مطاعم، توزيع وغيرها. البنية المعيارية ديالنا كتخليك تفعّل غير الوظائف اللي محتاجها.",
       },
       {
         question: "واش نقدر نستعملو بلا أنترنيت؟",
         answer:
-          "أيه. نسخة Desktop كتخدم بكاملها بلا أنترنيت برخصة صالحة 3 سنين. نسخة أونلاين فيها جميع التحديثات.",
+          "أيه. نسخة Desktop كتخدم بكاملها بلا أنترنيت برخصة صالحة 3 سنين. نسخة أونلاين فيها جميع التحديثات أوتوماتيكياً.",
       },
       {
         question: "واش كيدعم بزاف ديال نقط البيع؟",
         answer:
-          "أيه، تقدر تسيّر بزاف ديال نقط البيع والمستودعات، بمخزون وتحليلات مركزية.",
+          "أيه، تقدر تسيّر بزاف ديال نقط البيع والمستودعات من واجهة وحدة، بمخزون وتحليلات مركزية فالوقت الحقيقي.",
       },
       {
         question: "واش البيانات ديالي فأمان؟",
         answer:
-          "البيانات ديالك مشفّرة، فيها نسخ احتياطي ومحمية. التقارير كتحترم المتطلبات التنظيمية ديال نشاطك.",
+          "البيانات ديالك مشفّرة، فيها نسخ احتياطي أوتوماتيكي ومحمية بأعلى معايير الأمن. أنت دائماً صاحب البيانات ديالك.",
       },
       {
         question: "شحال كياخد باش نبدا؟",
         answer:
-          "التهييء كياخد دقائق، والفريق ديالنا كيعاونك فاستيراد المنتجات والبيانات ديالك.",
+          "التهييء الأولي كياخد دقائق. الفريق ديالنا كيعاونك فاستيراد المنتجات والزبناء والبيانات الموجودة — بدون توقف النشاط ديالك.",
+      },
+      {
+        question: "شنو هي أنماط التسعير اللي كتقدموها؟",
+        answer:
+          "كنقدمو رخصة Desktop (دفعة وحدة، 3 سنين) واشتراك أونلاين (شهري أو سنوي). ما كاينش مصاريف خفية، ما كاينش التزام أدنى لنسخة الأونلاين.",
+      },
+      {
+        question: "كيفاش كتتسجّل البيانات ديالي احتياطياً؟",
+        answer:
+          "لنسخة الأونلاين، البيانات ديالك كتتسجّل أوتوماتيكياً كل 24 ساعة فسيرفرات آمنة مع احتفاظ 30 يوم. تقدر كذلك تفعّل نسخة احتياطية يدوية فأي وقت وتصدّر البيانات ديالك بـ CSV أو JSON.",
+      },
+      {
+        question: "شكون يقدر يوصل للبيانات ديالي؟",
+        answer:
+          "غير أنت والأعضاء ديال فريقك اللي أنت سمحتيلهم يقدرو يوصلو للبيانات ديالك. SmartGestion ما كتشاركش ولا كتبيعش البيانات ديالك لأطراف ثالثة. الفرق الداخلية ديالنا غير كتوصل إليها بطلب صريح منك باش تعاونك.",
       },
     ],
   },
@@ -1959,55 +2167,92 @@ const ar: Dictionary = {
     emailLabel: "كتب لينا مباشرة",
     responseTime: "الرد فظرف 24 ساعة عمل",
   },
+  newsletter: {
+    badge:          "ابقى على اطلاع",
+    title:          "تلقى آخر تحديثات",
+    brand:          "SmartGestion",
+    subtitle:       "ميزات جديدة، تحسينات للمنتج وعروض حصرية — مباشرة في بريدك الإلكتروني. بدون سبام أبدًا.",
+    placeholder:    "بريدك@الإلكتروني.com",
+    button:         "اشترك",
+    note:           "بدون سبام. إلغاء الاشتراك بنقرة واحدة في أي وقت.",
+    successMessage: "شكراً! ستتلقى تحديثاتنا قريباً.",
+    alreadyMessage: "أنت مشترك بالفعل. شكراً!",
+    errorMessage:   "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  },
+  legal: {
+    badge:   "قانوني",
+    back:    "رجوع",
+    updated: "آخر تحديث: يونيو ٢٠٢٦",
+    terms: {
+      meta:  "شروط الاستخدام — SmartGestion",
+      title: "شروط الاستخدام",
+      intro: "يرجى قراءة هذه الشروط بعناية قبل استخدام SmartGestion. باستخدام خدمتنا، فإنك توافق على الالتزام بهذه الشروط.",
+      refundNoticeTitle: "⚠ سياسة الاسترداد المهمة",
+      refundNoticeBody:  "تطبّق SmartGestion سياسة عدم الاسترداد. جميع المبيعات نهائية. نشجعك على استخدام فترة التجربة المجانية قبل الشراء.",
+      sections: [
+        { title: "١. قبول الشروط",               body: "بالوصول إلى SmartGestion أو استخدامها، فإنك توافق على الالتزام بشروط الاستخدام هذه. إذا لم توافق على هذه الشروط، يرجى عدم استخدام خدمتنا." },
+        { title: "٢. وصف الخدمة",                body: "SmartGestion هو حل ERP عبر الإنترنت وبدون اتصال للمؤسسات في مختلف القطاعات، ويشمل وحدات إدارة المبيعات والمخزون والمشتريات والفواتير والمالية." },
+        { title: "٣. سياسة الاسترداد — لا استرداد", body: "جميع المبيعات نهائية. لا تقدم SmartGestion أي استرداد أو ائتمان أو استبدال لتراخيص سطح المكتب أو اشتراكات الإنترنت. نشجعك على تجربة المنتج مجاناً قبل الشراء." },
+        { title: "٤. التراخيص والاشتراكات",       body: "ترخيص سطح المكتب صالح لمدة ٣ سنوات من تاريخ الشراء. يتجدد الاشتراك عبر الإنترنت تلقائياً. يمكنك الإلغاء في أي وقت ويسري في نهاية الفترة الحالية." },
+        { title: "٥. الملكية الفكرية",            body: "جميع المحتويات والبرامج والعلامات التجارية والرسومات على SmartGestion هي ملكية حصرية لـ SmartGestion أو شركائها. يُحظر أي تكاثر غير مصرح به." },
+        { title: "٦. البيانات والخصوصية",         body: "يتم تخزين بياناتك بأمان ولا تُشارك أو تُباع لأطراف ثالثة. يمكنك تصدير أو حذف بياناتك في أي وقت من خلال إعدادات حسابك." },
+        { title: "٧. تحديد المسؤولية",            body: "يُقدَّم SmartGestion 'كما هو'. لن تكون SmartGestion مسؤولة عن أي خسائر غير مباشرة أو خسارة أرباح ناتجة عن استخدام الخدمة أو عدم القدرة على استخدامها." },
+        { title: "٨. التعديلات على الشروط",       body: "نحتفظ بالحق في تعديل هذه الشروط في أي وقت. تسري التعديلات عند نشرها. الاستمرار في استخدام الخدمة يعني قبول الشروط المحدّثة." },
+        { title: "٩. القانون المطبّق",            body: "تخضع هذه الشروط للقانون المغربي. تختص المحاكم المختصة في الدار البيضاء، المغرب بالنظر في أي نزاع." },
+        { title: "١٠. التواصل",                   body: "لأي أسئلة تتعلق بهذه الشروط، يرجى التواصل معنا على: smartgestionmaroc@gmail.com" },
+      ],
+    },
+    privacy: {
+      meta:  "سياسة الخصوصية — SmartGestion",
+      title: "سياسة الخصوصية",
+      intro: "في SmartGestion، حماية بياناتك الشخصية أولوية. تشرح هذه السياسة البيانات التي نجمعها وكيفية استخدامها وحمايتها.",
+      highlights: [
+        { emoji: "🔒", title: "بيانات مشفّرة",        desc: "AES-256 في حالة السكون، TLS في النقل" },
+        { emoji: "🚫", title: "لا مبيع للبيانات",      desc: "بياناتك لا تُباع أبداً" },
+        { emoji: "📤", title: "تصدير في أي وقت",      desc: "CSV أو JSON عند الطلب" },
+      ],
+      sections: [
+        { title: "١. المسؤول عن المعالجة",        body: "SmartGestion مسؤولة عن معالجة بياناتك الشخصية. للتواصل: smartgestionmaroc@gmail.com" },
+        { title: "٢. البيانات المُجمَّعة",         body: "نجمع فقط البيانات الضرورية: الاسم، البريد الإلكتروني، الهاتف (اختياري)، اسم الشركة، والبيانات المهنية المُدخلة في التطبيق. لا نجمع أي بيانات حساسة." },
+        { title: "٣. أغراض المعالجة",             body: "تُستخدم بياناتك لتقديم الخدمة وتحسينها، والتواصل عند الحاجة، وإبلاغك بحسابك أو اشتراكك، والوفاء بالتزاماتنا القانونية." },
+        { title: "٤. مشاركة البيانات",             body: "لا نبيع بياناتك الشخصية أو نشاركها لأغراض تجارية. يمكن مشاركتها مع مقاولين تقنيين فقط بموجب اتفاقيات سرية." },
+        { title: "٥. أمان البيانات",              body: "جميع البيانات مشفّرة أثناء النقل (TLS) وفي حالة السكون (AES-256). خوادمنا مستضافة في مراكز بيانات آمنة في أوروبا. تتم النسخ الاحتياطية التلقائية كل ٢٤ ساعة." },
+        { title: "٦. الاحتفاظ بالبيانات",         body: "يتم الاحتفاظ ببياناتك طوال فترة علاقتك التعاقدية مع SmartGestion، بالإضافة إلى ١٢ شهراً بعد الإلغاء. بعد ذلك، تُحذف جميع بياناتك نهائياً." },
+        { title: "٧. حقوقك",                      body: "وفقاً للقانون المغربي 09-08 والناظم الأوروبي (GDPR)، لديك حقوق الوصول والتصحيح والحذف والنقل والاعتراض. تواصل: smartgestionmaroc@gmail.com" },
+        { title: "٨. ملفات الارتباط",             body: "تستخدم SmartGestion فقط ملفات الارتباط الضرورية (الجلسة، التفضيلات). لا تُستخدم ملفات ارتباط إعلانية أو تتبع من طرف ثالث." },
+        { title: "٩. النقل الدولي",               body: "بياناتك مستضافة في أوروبا ولا تُنقل خارج المنطقة الاقتصادية الأوروبية، إلا عند الضرورة مع الضمانات المناسبة." },
+        { title: "١٠. التعديلات",                 body: "يمكننا تحديث هذه السياسة في أي وقت. ستُبلَّغ بالتغييرات المهمة عبر البريد الإلكتروني أو التطبيق." },
+        { title: "١١. التواصل",                   body: "لأي استفسارات تتعلق بحماية بياناتك: smartgestionmaroc@gmail.com. نلتزم بالرد خلال ٣٠ يوماً." },
+      ],
+    },
+  },
+  notFound: {
+    meta:      "الصفحة غير موجودة — SmartGestion",
+    title:     "الصفحة غير موجودة",
+    subtitle:  "الصفحة التي تبحث عنها غير موجودة أو تم نقلها. عد إلى الصفحة الرئيسية للعثور على طريقك.",
+    home:      "العودة إلى الرئيسية",
+    contact:   "تواصل معنا",
+    back:      "رجوع",
+    copyright: "جميع الحقوق محفوظة.",
+  },
   footer: {
     tagline:
       "SmartGestion كتبني حلول ERP ذكية لبزاف ديال المهن باش ترقمن وتسيّر النشاط ديالك كل يوم.",
-    columns: [
-      {
-        title: "المنتج",
-        links: [
-          { label: "الميزات", href: "#features" },
-          { label: "الأثمنة", href: "#pricing" },
-          { label: "لوحة القيادة", href: "#features" },
-          { label: "الأمان", href: "#about" },
-        ],
-      },
-      {
-        title: "الشركة",
-        links: [
-          { label: "حول", href: "#about" },
-          { label: "مهن قادمة", href: "#about" },
-          { label: "تواصل معنا", href: "#contact" },
-          { label: "المدونة", href: "#" },
-        ],
-      },
-      {
-        title: "موارد",
-        links: [
-          { label: "آراء العملاء", href: "#testimonials" },
-          { label: "الأسئلة المتداولة", href: "#faq" },
-          { label: "أدلة", href: "#" },
-          { label: "الدعم", href: "#contact" },
-        ],
-      },
-      {
-        title: "قانوني",
-        links: [
-          { label: "شروط الاستخدام", href: "#" },
-          { label: "سياسة الخصوصية", href: "#" },
-          { label: "الإشعار القانوني", href: "#" },
-          { label: "ملفات الارتباط", href: "#" },
-        ],
-      },
-    ],
-    socials: [
-      { label: "الموقع", href: "#" },
-      { label: "البريد", href: "#contact" },
-      { label: "تيليغرام", href: "#" },
-      { label: "واتساب", href: "#" },
-    ],
-    rights: "جميع الحقوق محفوظة.",
-    madeWith: "مصمم بعناية للبارافارماسيات.",
+    colProduct:      "المنتج",
+    colCompany:      "الشركة",
+    colLegal:        "قانوني",
+    colSocial:       "التواصل الاجتماعي",
+    linkFeatures:    "الميزات",
+    linkPricing:     "الأثمنة",
+    linkTestimonials:"آراء العملاء",
+    linkFaq:         "الأسئلة المتداولة",
+    linkContact:     "تواصل معنا",
+    linkAbout:       "حول",
+    linkSolutions:   "الحلول",
+    linkTerms:       "شروط الاستخدام",
+    link404:         "صفحة 404",
+    rights:          "جميع الحقوق محفوظة.",
+    madeWith:        "مصمم بعناية للمشاريع.",
   },
   dashboard: {
     currency: "درهم",

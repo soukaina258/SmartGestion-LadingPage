@@ -75,7 +75,7 @@ function PriceCalculatorVisual() {
   const { t } = useI18n();
   const ui = t.features.ui;
   const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-80px" });
 
   const TTC = 1290;
   const TVA = 20;
@@ -176,7 +176,7 @@ function MarginVisual() {
   const { t } = useI18n();
   const ui = t.features.ui;
   const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-80px" });
 
   const rows = [
     { label: ui.revenue, value: "4 250,00", sign: "", muted: false },
@@ -250,7 +250,7 @@ function VatVisual() {
   const { t } = useI18n();
   const ui = t.features.ui;
   const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-80px" });
 
   const items = [
     { label: ui.vatCollected, value: "1 240,50", pct: 39, color: "from-emerald-500 to-emerald-400", dot: "bg-emerald-500" },
@@ -365,7 +365,7 @@ function AlertsVisual() {
             key={p.ref}
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ delay: 0.15 + i * 0.12, ease: EASE }}
             className="flex items-center gap-2.5 rounded-xl border border-amber-500/15 bg-white px-2.5 py-2 dark:border-white/10 dark:bg-dark-800"
           >
@@ -407,7 +407,7 @@ function DashboardVisual() {
   const { t } = useI18n();
   const ui = t.features.ui;
   const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-80px" });
   const ca = useCountUp(4250, inView, 1.4);
 
   const kpis = [
@@ -504,7 +504,7 @@ export function Features() {
             variants={headerReveal}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: false }}
           >
             <Badge variant="light" className="mb-5 gap-1.5 shadow-sm">
               <Sparkles className="h-3.5 w-3.5 text-brand-600" />
@@ -516,7 +516,7 @@ export function Features() {
             variants={headerReveal}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="text-4xl font-bold leading-[1.1] tracking-tight text-dark-900 dark:text-white sm:text-5xl"
           >
             {t.features.title1}{" "}
@@ -527,7 +527,7 @@ export function Features() {
             variants={headerReveal}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-dark-900/55 dark:text-white/55"
           >
             {t.features.intro}
@@ -602,7 +602,7 @@ export function Features() {
             variants={reveal}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, margin: "-80px" }}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 280, damping: 24 }}
             className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-accent-gradient p-6 text-white shadow-neon lg:col-span-2"
@@ -667,7 +667,7 @@ function FeatureCard({
       variants={reveal}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-80px" }}
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 280, damping: 24 }}
       className={`group relative flex flex-col overflow-hidden rounded-3xl border border-black/[0.08] bg-white p-6 shadow-[0_2px_24px_-10px_rgba(15,23,42,0.1)] transition-colors duration-300 hover:border-brand-500/30 hover:shadow-card-lift dark:border-white/10 dark:bg-dark-800 dark:hover:border-white/20 ${className}`}

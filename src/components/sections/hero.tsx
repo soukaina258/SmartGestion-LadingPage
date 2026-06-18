@@ -78,12 +78,12 @@ export function Hero() {
           className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Button asChild variant="gradient" size="lg">
-            <a href="#cta">
+            <a href="#about">
               {t.hero.primaryCta} <ArrowRight className="h-4 w-4" />
             </a>
           </Button>
           <Button asChild variant="light" size="lg">
-            <a href="#modules">{t.hero.secondaryCta}</a>
+            <a href="#contact">{t.hero.secondaryCta}</a>
           </Button>
         </motion.div>
 

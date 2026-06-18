@@ -54,10 +54,7 @@ export function Contact() {
       id="contact"
       className="relative overflow-hidden bg-white py-24 dark:bg-dark-900"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-500/10 blur-3xl" />
-        <div className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-teal-400/10 blur-3xl" />
-      </div>
+
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* heading */}
@@ -65,7 +62,7 @@ export function Contact() {
           variants={reveal}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-80px" }}
           className="mx-auto max-w-2xl text-center"
         >
           <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-500/20 bg-brand-500/10 px-3 py-1 text-xs font-medium text-brand-600 dark:text-brand-400">
@@ -86,7 +83,7 @@ export function Contact() {
             variants={reveal}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, margin: "-80px" }}
             className="relative overflow-hidden rounded-[2rem] bg-accent-gradient p-8 text-white shadow-neon-purple lg:col-span-2"
           >
             <div className="pointer-events-none absolute inset-0">
@@ -137,7 +134,7 @@ export function Contact() {
             variants={reveal}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: false, margin: "-80px" }}
             className="rounded-[2rem] border border-black/[0.06] bg-white p-6 shadow-[0_20px_60px_-25px_rgba(15,23,42,0.25)] dark:border-white/10 dark:bg-dark-800 sm:p-8 lg:col-span-3"
           >
             {sent ? (
@@ -160,7 +157,7 @@ export function Contact() {
                 </button>
               </div>
             ) : (
-              <form action={formAction} noValidate className="space-y-5">
+              <form action={formAction} noValidate className="relative space-y-5">
                 {/* Honeypot: hidden from humans, bots tend to fill it. */}
                 <div className="absolute left-[-9999px]" aria-hidden="true">
                   <label htmlFor="contact-website">Website</label>
