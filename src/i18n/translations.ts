@@ -272,6 +272,7 @@ export type Dictionary = {
     linkAbout: string;
     linkSolutions: string;
     linkTerms: string;
+    linkPrivacy: string;
     link404: string;
     rights: string;
     madeWith: string;
@@ -929,6 +930,7 @@ const fr: Dictionary = {
     linkAbout:       "À propos",
     linkSolutions:   "Solutions",
     linkTerms:       "Conditions d'utilisation",
+    linkPrivacy:     "Politique de confidentialité",
     link404:         "Page 404",
     rights:          "Tous droits réservés.",
     madeWith:        "Conçu avec soin pour les entreprises.",
@@ -1594,6 +1596,7 @@ const en: Dictionary = {
     linkAbout:       "About",
     linkSolutions:   "Solutions",
     linkTerms:       "Terms of use",
+    linkPrivacy:     "Privacy policy",
     link404:         "404 Page",
     rights:          "All rights reserved.",
     madeWith:        "Crafted with care for businesses.",
@@ -2250,6 +2253,7 @@ const ar: Dictionary = {
     linkAbout:       "حول",
     linkSolutions:   "الحلول",
     linkTerms:       "شروط الاستخدام",
+    linkPrivacy:     "سياسة الخصوصية",
     link404:         "صفحة 404",
     rights:          "جميع الحقوق محفوظة.",
     madeWith:        "مصمم بعناية للمشاريع.",

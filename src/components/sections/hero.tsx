@@ -1,10 +1,66 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroMockup } from "@/components/laptop-mockup";
 import { useI18n } from "@/i18n/provider";
+
+/* Scales the full desktop mockup down on small screens so the entire
+   dashboard is visible without horizontal scroll. */
+function MockupWrapper() {
+  const innerRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const update = () => {
+      const outer = outerRef.current;
+      const inner = innerRef.current;
+      if (!outer || !inner) return;
+
+      const containerW = outer.offsetWidth;
+      const MOCK_W = 800;
+      const scale = containerW / MOCK_W;
+
+      // Apply scale to the inner div
+      inner.style.transform = `scale(${scale})`;
+      inner.style.transformOrigin = "top left";
+      inner.style.width = `${MOCK_W}px`;
+
+      // Measure natural height of the mockup content then shrink outer to match
+      const naturalH = inner.scrollHeight;
+      outer.style.height = `${naturalH * scale}px`;
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    // Also run after fonts/images load
+    window.addEventListener("load", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("load", update);
+    };
+  }, []);
+
+  return (
+    <>
+      {/* mobile only */}
+      <div className="block sm:hidden">
+        <div ref={outerRef} className="relative w-full overflow-hidden rounded-xl">
+          <div ref={innerRef}>
+            <HeroMockup />
+          </div>
+        </div>
+      </div>
+
+      {/* sm+: normal */}
+      <div className="hidden sm:block">
+        <HeroMockup />
+      </div>
+    </>
+  );
+}
 
 const container = {
   hidden: {},
@@ -87,7 +143,7 @@ export function Hero() {
           </Button>
         </motion.div>
 
-        {/* ParaGestion desktop mockup */}
+        {/* Dashboard mockup */}
         <motion.div variants={item} className="relative mt-14 flex justify-center pb-4">
           <div className="relative w-full max-w-4xl">
             {/* soft colored aura behind the dashboard */}
@@ -95,7 +151,12 @@ export function Hero() {
             <div className="pointer-events-none absolute -left-8 top-1/4 -z-10 h-64 w-64 rounded-full bg-brand-500/30 blur-[90px] animate-aurora" />
             <div className="pointer-events-none absolute -right-8 top-1/3 -z-10 h-64 w-64 rounded-full bg-[#3FB8C4]/30 blur-[90px] animate-aurora-slow" />
 
-            <HeroMockup />
+            {/*
+              Mobile: the mockup is a rich dashboard — too wide for small screens.
+              Wrap in a container that on xs/sm uses aspect-ratio + overflow-hidden
+              and scales the inner content down via transform so nothing clips.
+            */}
+            <MockupWrapper />
           </div>
         </motion.div>
 

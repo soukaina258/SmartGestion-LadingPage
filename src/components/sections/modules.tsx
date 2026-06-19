@@ -276,7 +276,8 @@ export function Modules() {
                   alt={p.mobile.caption}
                   width={260}
                   height={520}
-                  className="h-auto w-[200px] object-contain sm:w-[230px] lg:w-[260px]"
+                  className="w-[200px] object-contain sm:w-[230px] lg:w-[260px]"
+                  style={{ height: "auto" }}
                   priority
                 />
               </motion.div>
