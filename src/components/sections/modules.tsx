@@ -272,7 +272,7 @@ export function Modules() {
                 className="drop-shadow-[0_32px_56px_rgba(63,184,196,0.22)]"
               >
                 <Image
-                  src="/mobile3.png"
+                  src="/mobile4.png"
                   alt={p.mobile.caption}
                   width={260}
                   height={520}
