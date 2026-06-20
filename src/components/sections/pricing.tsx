@@ -31,17 +31,17 @@ const PRICE_CONFIG: Record<string, { highlighted?: boolean; prices: PriceConfig 
       online: { kind: "free" },
     },
   },
-  premium: {
-    highlighted: true,
-    prices: {
-      desktop: { kind: "amount", value: "499 DH" },
-      online: { kind: "amount", value: "499 DH" },
-    },
-  },
   standard: {
+    highlighted: true,
     prices: {
       desktop: { kind: "amount", value: "299 DH" },
       online: { kind: "amount", value: "299 DH" },
+    },
+  },
+  custom: {
+    prices: {
+      desktop: { kind: "quote" },
+      online: { kind: "quote" },
     },
   },
 };
@@ -57,7 +57,8 @@ const reveal = {
 
 export function Pricing() {
   const { t } = useI18n();
-  const [mode, setMode] = React.useState<Mode>("online");
+  // Focus on the Desktop (offline) version for now.
+  const mode: Mode = "desktop";
 
   const MODE_META = {
     desktop: { label: t.pricing.modeDesktop, icon: Monitor, tagIcon: WifiOff, tag: t.pricing.tagNoUpdates },
@@ -76,12 +77,12 @@ export function Pricing() {
         return { price: t.pricing.onQuote, period: "" };
       return {
         price: pc.value ?? "",
-        period: m === "desktop" ? t.pricing.period3Years : t.pricing.periodPerYear,
+        period: t.pricing.periodPerYear,
       };
     };
-    // backup feature is exclusive to the Premium desktop (offline) version
+    // backup feature is exclusive to the Standard desktop (offline) version
     const features =
-      p.key === "premium" && mode === "desktop"
+      p.key === "standard" && mode === "desktop"
         ? [...p.features, t.pricing.desktopBackup]
         : p.features;
     return {
@@ -121,44 +122,11 @@ export function Pricing() {
           </p>
         </div>
 
-        {/* Desktop / Online toggle */}
+        {/* Desktop (offline) — current focus */}
         <div className="mt-9 flex justify-center">
-          <div className="inline-flex items-center gap-1 rounded-full border border-black/10 bg-zinc-100 p-1 dark:border-white/10 dark:bg-white/5">
-            {(Object.keys(MODE_META) as Mode[]).map((m) => {
-              const Icon = MODE_META[m].icon;
-              const active = mode === m;
-              return (
-                <button
-                  key={m}
-                  type="button"
-                  onClick={() => setMode(m)}
-                  className={cn(
-                    "flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all",
-                    active
-                      ? "bg-accent-gradient text-white shadow-neon"
-                      : "text-dark-900/60 hover:text-dark-900 dark:text-white/60 dark:hover:text-white"
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  {MODE_META[m].label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* mode tag */}
-        <div className="mt-4 flex justify-center">
-          <span
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium",
-              mode === "online"
-                ? "border-brand-500/40 bg-brand-500/10 text-brand-600 dark:text-brand-400"
-                : "border-amber-400/40 bg-amber-400/10 text-amber-600 dark:text-amber-300"
-            )}
-          >
-            <meta.tagIcon className="h-3.5 w-3.5" />
-            {meta.tag}
+          <span className="inline-flex items-center gap-2 rounded-full bg-accent-gradient px-5 py-2 text-sm font-medium text-white shadow-neon">
+            <Monitor className="h-4 w-4" />
+            {t.pricing.modeDesktop}
           </span>
         </div>
 

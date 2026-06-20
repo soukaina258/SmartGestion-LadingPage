@@ -272,11 +272,11 @@ export function Modules() {
                 className="drop-shadow-[0_32px_56px_rgba(63,184,196,0.22)]"
               >
                 <Image
-                  src="/mobile4.png"
+                  src="/iMac.png"
                   alt={p.mobile.caption}
-                  width={260}
-                  height={520}
-                  className="w-[200px] object-contain sm:w-[230px] lg:w-[260px]"
+                  width={560}
+                  height={460}
+                  className="w-[320px] object-contain sm:w-[420px] lg:w-[520px]"
                   style={{ height: "auto" }}
                   priority
                 />

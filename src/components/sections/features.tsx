@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { motion, useInView, animate, type Variants } from "framer-motion";
 import {
   TrendingUp,
@@ -605,12 +606,32 @@ export function Features() {
             viewport={{ once: false, margin: "-80px" }}
             whileHover={{ y: -6 }}
             transition={{ type: "spring", stiffness: 280, damping: 24 }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-accent-gradient p-6 text-white shadow-neon lg:col-span-2"
+            className="group relative flex min-h-[320px] flex-col justify-between overflow-hidden rounded-3xl bg-accent-gradient p-6 text-white shadow-neon lg:col-span-2"
           >
+            {/* ambient glow blobs */}
             <div className="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/10 blur-2xl" />
             <div className="pointer-events-none absolute -bottom-10 -left-6 h-28 w-28 rounded-full bg-white/5 blur-2xl" />
-            <Sparkles className="h-7 w-7" />
-            <div className="mt-6">
+
+            {/* iMac mockup — floating, glowing, tilts on hover */}
+            <div className="pointer-events-none absolute inset-x-0 top-10 z-0 flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-3xl" />
+                <Image
+                  src="/Mac2.png"
+                  alt="SmartGestion ERP on Mac"
+                  width={420}
+                  height={360}
+                  priority={false}
+                  className="w-[100%] max-w-[340px] mx-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.45)] transition-transform duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-[1.04]"
+                />
+              </div>
+            </div>
+
+            {/* readability gradient over the image bottom */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-2/3 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
+
+            <Sparkles className="relative z-10 h-7 w-7" />
+            <div className="relative z-10 mt-6">
               <h3 className="text-lg font-bold leading-snug">
                 {t.features.title1} {t.features.titleHighlight}
               </h3>

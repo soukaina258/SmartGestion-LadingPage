@@ -248,7 +248,15 @@ function LangSelector({ stacked = false }: { stacked?: boolean }) {
 
 function BrandLogo() {
   return (
-    <Link href="#top" className="group flex items-center">
+    <Link
+      href="/"
+      onClick={(e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      aria-label="Back to top"
+      className="group flex items-center"
+    >
       <Image
         src="/logo3.png"
         alt="SmartGestion — Integrated ERP Solutions"
@@ -287,14 +295,14 @@ export function Navbar() {
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-black/[0.06] bg-white/80 px-3 py-2 shadow-[0_10px_35px_-12px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-dark-800/80 sm:px-4"
+        className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-black/[0.06] bg-white/80 px-3 py-2 shadow-[0_10px_35px_-12px_rgba(15,23,42,0.16)] backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-dark-800/80 sm:px-4"
       >
         {/* Left: brand */}
         <BrandLogo />
 
         {/* Center: simple links */}
         <nav
-          className="hidden items-center md:flex"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex"
           onMouseLeave={() => setHovered(null)}
         >
           {navLinks.map((link) => (
