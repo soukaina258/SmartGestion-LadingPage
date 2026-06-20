@@ -9,7 +9,6 @@ import {
   LineChart,
   Truck,
   Monitor,
-  Smartphone,
   ArrowRight,
   Sparkles,
   type LucideIcon,
@@ -121,7 +120,6 @@ export function Modules() {
             >
               {[
                 { icon: Monitor, label: p.desktop.label },
-                { icon: Smartphone, label: p.mobile.label },
               ].map(({ icon: Icon, label }) => (
                 <span
                   key={label}

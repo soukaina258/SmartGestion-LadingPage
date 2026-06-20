@@ -537,9 +537,9 @@ const fr: Dictionary = {
       "Nous concevons des solutions de gestion sur mesure, métier par métier. Voici notre première : une solution complète pour les pharmacies et parapharmacies.",
     pharmacy: {
       eyebrow: "Notre solution phare",
-      title: "Une solution complète pour votre pharmacie",
+      title: "Une solution complète pour votre parapharmacie",
       description:
-        "Gérez ventes, stock, fournisseurs et finances depuis une seule plateforme, pensée pour le quotidien d'une pharmacie marocaine. Accessible partout, sur ordinateur comme sur mobile.",
+        "Gérez ventes, stock, fournisseurs et finances depuis une seule plateforme, pensée pour le quotidien d'une parapharmacie marocaine. Disponible sur ordinateur.",
       features: [
         {
           title: "Gestion de stock & péremption",
@@ -1208,9 +1208,9 @@ const en: Dictionary = {
       "We design tailored management solutions, industry by industry. Here is our first: a complete solution for pharmacies and parapharmacies.",
     pharmacy: {
       eyebrow: "Our flagship solution",
-      title: "A complete solution for your pharmacy",
+      title: "A complete solution for your parapharmacy",
       description:
-        "Manage sales, stock, suppliers and finances from a single platform—built for the daily reality of a Moroccan pharmacy. Available everywhere, on desktop and mobile.",
+        "Manage sales, stock, suppliers and finances from a single platform—built for the daily reality of a Moroccan parapharmacy. Available on desktop.",
       features: [
         {
           title: "Stock & expiry management",
@@ -1877,9 +1877,9 @@ const ar: Dictionary = {
       "كنصممو حلول تدبير على المقاس، مجال بمجال. ها أول وحدة ديالنا: حل كامل للصيدليات والبارافارماسيات.",
     pharmacy: {
       eyebrow: "الحل الرئيسي ديالنا",
-      title: "حل كامل للصيدلية ديالك",
+      title: "حل كامل للبارافارماسي ديالك",
       description:
-        "سيّر المبيعات، المخزون، الموردين والمالية من منصة وحدة—مصممة لليومي ديال صيدلية مغربية. متاحة فكل مكان، على الحاسوب وعلى الموبايل.",
+        "سيّر المبيعات، المخزون، الموردين والمالية من منصة وحدة—مصممة لليومي ديال بارافارماسي مغربية. متاحة على الحاسوب.",
       features: [
         {
           title: "تدبير المخزون والصلاحية",
