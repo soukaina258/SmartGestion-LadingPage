@@ -74,7 +74,7 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-3">
               {[
-                { label: t.footer.linkSolutions,    href: "#modules" },
+                { label: t.footer.linkSolutions,    href: "#industries" },
                 { label: t.footer.linkTestimonials, href: "#testimonials" },
                 { label: t.footer.linkFaq,          href: "#faq" },
               ].map((l) => (

@@ -97,6 +97,37 @@ export type Dictionary = {
       revenueTTC: string;
     };
   };
+  industries: {
+    badge: string;
+    title1: string;
+    titleHighlight: string;
+    intro: string;
+    nicheLabel: string;
+    standardLabel: string;
+    cta: string;
+    items: {
+      key: "parapharmacy" | "optic" | "automobile" | "standard";
+      name: string;
+      tagline: string;
+      description: string;
+      tags: string[];
+    }[];
+    showcase: {
+      eyebrow: string;
+      title: string;
+      description: string;
+      platform: string;
+      liveBadge: string;
+      features: { title: string; description: string }[];
+      cta: string;
+      caLabel: string;
+      caValue: string;
+      caUp: string;
+      stockLabel: string;
+      stockValue: string;
+      stockWarn: string;
+    };
+  };
   modules: {
     badge: string;
     title1: string;
@@ -527,6 +558,87 @@ const fr: Dictionary = {
       expenses: "Dépenses",
       netProfit: "Bénéfice net",
       revenueTTC: "Chiffre d'affaires (TTC)",
+    },
+  },
+  industries: {
+    badge: "Nos versions",
+    title1: "Une solution pour",
+    titleHighlight: "chaque métier",
+    intro:
+      "SmartGestion existe en versions métier, pensées pour les besoins spécifiques de votre secteur — et en version standard pour toute entreprise.",
+    nicheLabel: "Version métier",
+    standardLabel: "Version standard",
+    cta: "Découvrir",
+    items: [
+      {
+        key: "parapharmacy",
+        name: "Parapharmacie",
+        tagline: "Notre solution phare",
+        description:
+          "Stock par lot, péremption, ventes rapides et facturation TVA — pensée pour le quotidien d'une parapharmacie.",
+        tags: ["Péremption FIFO", "Ventes & TVA", "Fournisseurs"],
+      },
+      {
+        key: "optic",
+        name: "Optique",
+        tagline: "Version métier",
+        description:
+          "Gestion des montures, verres et ordonnances, suivi clients et ventes adaptées au magasin d'optique.",
+        tags: ["Montures & verres", "Ordonnances", "Fiches clients"],
+      },
+      {
+        key: "automobile",
+        name: "Automobile",
+        tagline: "Version métier",
+        description:
+          "Pièces détachées, références fournisseurs, devis et réparations — adaptée aux garages et magasins de pièces auto.",
+        tags: ["Pièces & références", "Devis & réparations", "Achats"],
+      },
+      {
+        key: "standard",
+        name: "Standard",
+        tagline: "Version standard",
+        description:
+          "L'essentiel d'un ERP pour toute entreprise : ventes, stock, achats, clients et finances dans une seule plateforme.",
+        tags: ["Ventes & stock", "Achats & clients", "Finances"],
+      },
+    ],
+    showcase: {
+      eyebrow: "Toutes nos versions sont disponibles",
+      title: "Une plateforme, pensée pour votre métier",
+      description:
+        "SmartGestion réunit ventes, stock, fournisseurs et finances dans une seule plateforme — déclinée par métier et disponible dès aujourd'hui sur ordinateur.",
+      platform: "Ordinateur",
+      liveBadge: "Disponible maintenant",
+      features: [
+        {
+          title: "Gestion de stock & péremption",
+          description:
+            "Suivi FIFO par lot, alertes de rupture et de péremption en temps réel.",
+        },
+        {
+          title: "Ventes & facturation rapides",
+          description:
+            "Encaissez et facturez en quelques secondes, calculs TVA automatiques.",
+        },
+        {
+          title: "Tableaux de bord en temps réel",
+          description:
+            "CA, marges et trésorerie en dirhams, visibles d'un coup d'œil.",
+        },
+        {
+          title: "Achats & fournisseurs",
+          description:
+            "Bons de commande et réapprovisionnement centralisés et automatisés.",
+        },
+      ],
+      cta: "Demander une démo",
+      caLabel: "CA du jour",
+      caValue: "12 840 DH",
+      caUp: "↑ +8.4%",
+      stockLabel: "Stock alertes",
+      stockValue: "3 produits",
+      stockWarn: "⚠ Péremption",
     },
   },
   modules: {
@@ -1200,6 +1312,87 @@ const en: Dictionary = {
       revenueTTC: "Revenue (incl. tax)",
     },
   },
+  industries: {
+    badge: "Our editions",
+    title1: "One solution for",
+    titleHighlight: "every business",
+    intro:
+      "SmartGestion comes in industry editions, built for the specific needs of your sector — and a standard edition for any business.",
+    nicheLabel: "Industry edition",
+    standardLabel: "Standard edition",
+    cta: "Explore",
+    items: [
+      {
+        key: "parapharmacy",
+        name: "Parapharmacy",
+        tagline: "Our flagship solution",
+        description:
+          "Batch stock, expiry tracking, fast sales and VAT billing — built for the daily reality of a parapharmacy.",
+        tags: ["FIFO expiry", "Sales & VAT", "Suppliers"],
+      },
+      {
+        key: "optic",
+        name: "Optic",
+        tagline: "Industry edition",
+        description:
+          "Manage frames, lenses and prescriptions, with customer tracking and sales tailored to optical stores.",
+        tags: ["Frames & lenses", "Prescriptions", "Customer records"],
+      },
+      {
+        key: "automobile",
+        name: "Automobile",
+        tagline: "Industry edition",
+        description:
+          "Spare parts, supplier references, quotes and repairs — tailored to garages and auto-parts stores.",
+        tags: ["Parts & references", "Quotes & repairs", "Purchasing"],
+      },
+      {
+        key: "standard",
+        name: "Standard",
+        tagline: "Standard edition",
+        description:
+          "The core of an ERP for any business: sales, stock, purchasing, clients and finances in a single platform.",
+        tags: ["Sales & stock", "Purchasing & clients", "Finances"],
+      },
+    ],
+    showcase: {
+      eyebrow: "All our editions are available",
+      title: "One platform, built for your industry",
+      description:
+        "SmartGestion brings sales, stock, suppliers and finances into a single platform — tailored by industry and available today on desktop.",
+      platform: "Desktop",
+      liveBadge: "Available now",
+      features: [
+        {
+          title: "Stock & expiry management",
+          description:
+            "FIFO tracking by batch, real-time low-stock and expiry alerts.",
+        },
+        {
+          title: "Fast sales & billing",
+          description:
+            "Check out and invoice in seconds, with automatic VAT calculations.",
+        },
+        {
+          title: "Real-time dashboards",
+          description:
+            "Revenue, margins and cash in dirhams, visible at a glance.",
+        },
+        {
+          title: "Purchasing & suppliers",
+          description:
+            "Centralized, automated purchase orders and restocking.",
+        },
+      ],
+      cta: "Request a demo",
+      caLabel: "Today's revenue",
+      caValue: "12 840 DH",
+      caUp: "↑ +8.4%",
+      stockLabel: "Stock alerts",
+      stockValue: "3 products",
+      stockWarn: "⚠ Expiry",
+    },
+  },
   modules: {
     badge: "Solutions",
     title1: "Solutions built",
@@ -1867,6 +2060,83 @@ const ar: Dictionary = {
       expenses: "المصاريف",
       netProfit: "الربح الصافي",
       revenueTTC: "رقم المعاملات (TTC)",
+    },
+  },
+  industries: {
+    badge: "النسخ ديالنا",
+    title1: "حل واحد",
+    titleHighlight: "لكل مجال",
+    intro:
+      "SmartGestion كاينة بنسخ حسب المجال، مصممة للحاجيات الخاصة بالقطاع ديالك — وبنسخة ستاندارد لأي مقاولة.",
+    nicheLabel: "نسخة مجال",
+    standardLabel: "نسخة ستاندارد",
+    cta: "اكتشف",
+    items: [
+      {
+        key: "parapharmacy",
+        name: "بارافارماسي",
+        tagline: "الحل الرئيسي ديالنا",
+        description:
+          "مخزون حسب اللوط، الصلاحية، مبيعات سريعة وفوترة TVA — مصممة لليومي ديال بارافارماسي.",
+        tags: ["الصلاحية FIFO", "المبيعات وTVA", "الموردون"],
+      },
+      {
+        key: "optic",
+        name: "البصريات",
+        tagline: "نسخة مجال",
+        description:
+          "تدبير الإطارات والعدسات والوصفات الطبية، مع تتبّع العملاء ومبيعات مناسبة لمحل البصريات.",
+        tags: ["إطارات وعدسات", "وصفات طبية", "ملفات العملاء"],
+      },
+      {
+        key: "automobile",
+        name: "السيارات",
+        tagline: "نسخة مجال",
+        description:
+          "قطع الغيار، مراجع الموردين، الدوفي والإصلاحات — مناسبة للميكانيك ومحلات قطع الغيار.",
+        tags: ["القطع والمراجع", "دوفي وإصلاحات", "الشراء"],
+      },
+      {
+        key: "standard",
+        name: "ستاندارد",
+        tagline: "نسخة ستاندارد",
+        description:
+          "أساسيات ERP لأي مقاولة: مبيعات، مخزون، شراء، عملاء ومالية فمنصة وحدة.",
+        tags: ["مبيعات ومخزون", "شراء وعملاء", "المالية"],
+      },
+    ],
+    showcase: {
+      eyebrow: "جميع النسخ ديالنا متاحة",
+      title: "منصة وحدة، مصممة للمجال ديالك",
+      description:
+        "SmartGestion كتجمع المبيعات، المخزون، الموردين والمالية فمنصة وحدة — مقسّمة حسب المجال ومتاحة دابا على الحاسوب.",
+      platform: "الحاسوب",
+      liveBadge: "متاح دابا",
+      features: [
+        {
+          title: "تدبير المخزون والصلاحية",
+          description: "تتبّع FIFO حسب اللوط، تنبيهات النفاد والصلاحية فالوقت الحقيقي.",
+        },
+        {
+          title: "مبيعات وفوترة سريعة",
+          description: "خلّص وفوتر فثواني، مع حساب TVA أوتوماتيكي.",
+        },
+        {
+          title: "لوحات قيادة فالوقت الحقيقي",
+          description: "رقم المعاملات، الهوامش والخزينة بالدرهم، بنظرة وحدة.",
+        },
+        {
+          title: "الشراء والموردون",
+          description: "أوامر الشراء وإعادة التموين مركزية وأوتوماتيكية.",
+        },
+      ],
+      cta: "اطلب عرضاً تجريبياً",
+      caLabel: "رقم الأعمال اليوم",
+      caValue: "١٢ ٨٤٠ درهم",
+      caUp: "↑ +٨٫٤٪",
+      stockLabel: "تنبيه المخزون",
+      stockValue: "٣ منتجات",
+      stockWarn: "⚠ انتهاء الصلاحية",
     },
   },
   modules: {

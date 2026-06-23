@@ -277,7 +277,7 @@ export function Navbar() {
   const navLinks = [
     { label: t.nav.about, href: "#about" },
     { label: t.nav.features, href: "#features" },
-    { label: t.nav.solutions, href: "#modules" },
+    { label: t.nav.solutions, href: "#industries" },
     { label: t.nav.pricing, href: "#pricing" },
     { label: t.nav.contact, href: "#contact" },
   ];
