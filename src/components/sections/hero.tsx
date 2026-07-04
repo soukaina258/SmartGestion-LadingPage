@@ -134,7 +134,7 @@ export function Hero() {
           className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Button asChild variant="gradient" size="lg">
-            <a href="#about">
+            <a href="#pricing">
               {t.hero.primaryCta} <ArrowRight className="h-4 w-4" />
             </a>
           </Button>

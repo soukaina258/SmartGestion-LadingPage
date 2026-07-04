@@ -10,6 +10,8 @@ import {
   Cloud,
   RefreshCw,
   WifiOff,
+  Flame,
+  Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -24,7 +26,10 @@ type PriceConfig = {
   online: { kind: "free" | "amount" | "quote"; value?: string };
 };
 
-const PRICE_CONFIG: Record<string, { highlighted?: boolean; prices: PriceConfig }> = {
+const PRICE_CONFIG: Record<
+  string,
+  { highlighted?: boolean; promo?: boolean; prices: PriceConfig }
+> = {
   demo: {
     prices: {
       desktop: { kind: "free" },
@@ -33,6 +38,7 @@ const PRICE_CONFIG: Record<string, { highlighted?: boolean; prices: PriceConfig 
   },
   standard: {
     highlighted: true,
+    promo: true,
     prices: {
       desktop: { kind: "amount", value: "299 DH" },
       online: { kind: "amount", value: "299 DH" },
@@ -92,6 +98,7 @@ export function Pricing() {
       features,
       cta: p.cta,
       highlighted: cfg.highlighted,
+      promo: cfg.promo,
       prices: { desktop: resolve("desktop"), online: resolve("online") },
       isFree: cfg.prices[mode].kind === "free",
     };
@@ -156,6 +163,20 @@ export function Pricing() {
                   </span>
                 )}
 
+                {plan.promo && (
+                  <motion.span
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: false }}
+                    animate={{ scale: [1, 1.06, 1] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -right-2 -top-3 z-10 flex items-center gap-1 whitespace-nowrap rounded-full bg-red-500 px-2.5 py-1 text-[11px] font-extrabold text-white shadow-lg shadow-red-500/40 ring-2 ring-white"
+                  >
+                    <Flame className="h-3 w-3 fill-white" />
+                    {t.pricing.promoBadge}
+                  </motion.span>
+                )}
+
                 <div className="flex flex-col gap-1">
                   <h3
                     className={cn(
@@ -179,7 +200,25 @@ export function Pricing() {
                   </p>
                 </div>
 
-                <div className="mt-5 flex items-end gap-1.5">
+                {plan.promo && (
+                  <div className="mt-5 flex items-center gap-2">
+                    <span className="relative text-lg font-semibold text-white/60">
+                      <span className="line-through decoration-red-300 decoration-2">
+                        {t.pricing.promoOriginalPrice}
+                      </span>
+                    </span>
+                    <span className="rounded-md bg-white/20 px-2 py-0.5 text-[11px] font-bold text-white">
+                      {t.pricing.promoDiscount}
+                    </span>
+                  </div>
+                )}
+
+                <div
+                  className={cn(
+                    "flex items-end gap-1.5",
+                    plan.promo ? "mt-1" : "mt-5"
+                  )}
+                >
                   <span className="text-4xl font-extrabold tracking-tight">
                     {p.price}
                   </span>
@@ -194,6 +233,13 @@ export function Pricing() {
                     {p.period}
                   </span>
                 </div>
+
+                {plan.promo && (
+                  <p className="mt-2 flex items-center gap-1.5 text-[11px] font-semibold text-white/90">
+                    <Clock className="h-3.5 w-3.5" />
+                    {t.pricing.promoUrgency}
+                  </p>
+                )}
                 <p
                   className={cn(
                     "mt-1 flex items-center gap-1.5 text-[11px]",

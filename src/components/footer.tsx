@@ -12,9 +12,9 @@ const WaIcon  = () => <svg viewBox="0 0 24 24" className="h-4 w-4" fill="current
 const TkIcon  = () => <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" /></svg>;
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://www.instagram.com/smar.tgestion/",                                          iconCls: "hover:border-[#e1306c]/40 hover:bg-[#e1306c]/10 hover:text-[#e1306c]",                                                               Icon: IgIcon },
+  { label: "Instagram", href: "https://www.instagram.com/smartgestion.app/",                                          iconCls: "hover:border-[#e1306c]/40 hover:bg-[#e1306c]/10 hover:text-[#e1306c]",                                                               Icon: IgIcon },
   { label: "Facebook",  href: "https://www.facebook.com/profile.php?id=61591082665957",                            iconCls: "hover:border-[#1877F2]/40 hover:bg-[#1877F2]/10 hover:text-[#1877F2]",                                                               Icon: FbIcon },
-  { label: "WhatsApp",  href: "https://wa.me/212660145157",                                                         iconCls: "hover:border-[#25D366]/40 hover:bg-[#25D366]/10 hover:text-[#25D366]",                                                               Icon: WaIcon },
+  { label: "WhatsApp",  href: "https://wa.me/212707875976",                                                         iconCls: "hover:border-[#25D366]/40 hover:bg-[#25D366]/10 hover:text-[#25D366]",                                                               Icon: WaIcon },
   { label: "TikTok",    href: "https://www.tiktok.com/@smartgestion1?is_from_webapp=1&sender_device=pc",            iconCls: "hover:border-black/30 hover:bg-black/8 hover:text-black dark:hover:border-white/30 dark:hover:bg-white/10 dark:hover:text-white",    Icon: TkIcon },
 ];
 
