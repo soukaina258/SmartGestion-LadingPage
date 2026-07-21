@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Check,
   Sparkles,
+  PlayCircle,
   type LucideIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -358,6 +359,44 @@ export function Industries() {
               </motion.div>
             </motion.div>
           </div>
+        </div>
+
+        {/* ===== Video tutorial ===== */}
+        <div className="mx-auto mt-24 max-w-4xl text-center">
+          <motion.div
+            custom={0}
+            variants={reveal}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: false, margin: "-80px" }}
+          >
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#3FB8C4]/30 bg-[#3FB8C4]/8 px-3.5 py-1.5 text-xs font-semibold text-[#2a9fa9]">
+              <PlayCircle className="h-3.5 w-3.5 text-[#3FB8C4]" />
+              {sc.videoTitle}
+            </div>
+            <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-slate-500 dark:text-white/60">
+              {sc.videoSubtitle}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: false, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: EASE }}
+            className="relative mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-[0_24px_60px_-24px_rgba(63,184,196,0.35)] dark:border-white/10 dark:bg-white/[0.03]"
+          >
+            <div className="relative aspect-video w-full">
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src="https://www.youtube-nocookie.com/embed/uIYKo-hWFsk?rel=0"
+                title={sc.videoTitle}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

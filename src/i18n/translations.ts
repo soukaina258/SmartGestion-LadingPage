@@ -126,6 +126,8 @@ export type Dictionary = {
       stockLabel: string;
       stockValue: string;
       stockWarn: string;
+      videoTitle: string;
+      videoSubtitle: string;
     };
   };
   modules: {
@@ -643,6 +645,8 @@ const fr: Dictionary = {
       stockLabel: "Stock alertes",
       stockValue: "3 produits",
       stockWarn: "⚠ Péremption",
+      videoTitle: "Découvrez SmartGestion en action",
+      videoSubtitle: "Regardez notre tutoriel vidéo pour voir comment l'application fonctionne.",
     },
   },
   modules: {
@@ -1399,6 +1403,8 @@ const en: Dictionary = {
       stockLabel: "Stock alerts",
       stockValue: "3 products",
       stockWarn: "⚠ Expiry",
+      videoTitle: "See SmartGestion in action",
+      videoSubtitle: "Watch our video tutorial to see how the app works.",
     },
   },
   modules: {
@@ -2149,6 +2155,8 @@ const ar: Dictionary = {
       stockLabel: "تنبيه المخزون",
       stockValue: "٣ منتجات",
       stockWarn: "⚠ انتهاء الصلاحية",
+      videoTitle: "شوف SmartGestion فالخدمة",
+      videoSubtitle: "تفرج فالفيديو التعليمي ديالنا باش تشوف كيفاش خدام التطبيق.",
     },
   },
   modules: {
