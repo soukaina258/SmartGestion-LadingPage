@@ -10,6 +10,7 @@ import { useI18n } from "@/i18n/provider";
 /* Scales the full desktop mockup down on small screens so the entire
    dashboard is visible without horizontal scroll. */
 function MockupWrapper() {
+  const { dir } = useI18n();
   const innerRef = useRef<HTMLDivElement>(null);
   const outerRef = useRef<HTMLDivElement>(null);
 
@@ -23,10 +24,26 @@ function MockupWrapper() {
       const MOCK_W = 800;
       const scale = containerW / MOCK_W;
 
+      // In RTL the content flows from the right edge, so scale from the
+      // right; otherwise the dashboard gets shifted/cut off in Arabic.
+      const isRtl = dir === "rtl";
+
       // Apply scale to the inner div
       inner.style.transform = `scale(${scale})`;
-      inner.style.transformOrigin = "top left";
+      inner.style.transformOrigin = `top ${isRtl ? "right" : "left"}`;
       inner.style.width = `${MOCK_W}px`;
+
+      // Anchor the fixed-width inner div to the correct edge so the scaled
+      // dashboard stays aligned inside the container.
+      inner.style.position = "absolute";
+      inner.style.top = "0";
+      if (isRtl) {
+        inner.style.right = "0";
+        inner.style.left = "auto";
+      } else {
+        inner.style.left = "0";
+        inner.style.right = "auto";
+      }
 
       // Measure natural height of the mockup content then shrink outer to match
       const naturalH = inner.scrollHeight;
@@ -41,7 +58,7 @@ function MockupWrapper() {
       window.removeEventListener("resize", update);
       window.removeEventListener("load", update);
     };
-  }, []);
+  }, [dir]);
 
   return (
     <>

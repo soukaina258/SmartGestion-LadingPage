@@ -1,5 +1,6 @@
 "use server";
 
+import { sendNewsletterNotification } from "@/lib/email";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export type NewsletterState =
@@ -32,6 +33,20 @@ export async function subscribeNewsletter(
       }
       console.error("[newsletter] insert error:", error.message);
       return { status: "error", code: "server_error" };
+    }
+
+    // Notify the business inbox of the new subscriber. Never let an email
+    // failure break the subscription — the row is already persisted.
+    try {
+      const emailResult = await sendNewsletterNotification({ email });
+      if (!emailResult.ok) {
+        console.error(
+          "[newsletter] notification email failed:",
+          emailResult.error,
+        );
+      }
+    } catch (emailErr) {
+      console.error("[newsletter] notification email threw:", emailErr);
     }
 
     return { status: "success", code: "subscribed" };

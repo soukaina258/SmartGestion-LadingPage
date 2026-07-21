@@ -1,28 +1,15 @@
 "use client";
 
-import { useActionState, useRef, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, CheckCircle, Sparkles, Bell } from "lucide-react";
-import { subscribeNewsletter, type NewsletterState } from "@/app/actions/newsletter";
+import { ArrowRight, Bell } from "lucide-react";
 import { useI18n } from "@/i18n/provider";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const initial: NewsletterState = { status: "idle" };
-
 export function NewsletterBanner() {
   const { t } = useI18n();
   const n = t.newsletter;
-  const [state, action, pending] = useActionState(subscribeNewsletter, initial);
-  const inputRef = useRef<HTMLInputElement>(null);
   const reduced = useReducedMotion();
-
-  // clear input on success
-  useEffect(() => {
-    if (state.status === "success" && inputRef.current) {
-      inputRef.current.value = "";
-    }
-  }, [state.status]);
 
   return (
     <section className="relative overflow-hidden bg-white px-4 py-10 dark:bg-dark-900 sm:px-6 lg:px-8">
@@ -83,79 +70,60 @@ export function NewsletterBanner() {
               </p>
             </div>
 
-            {/* right — form */}
-            <div className="w-full max-w-md lg:w-auto lg:min-w-[420px]">
-              {state.status === "success" ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, ease: EASE }}
-                  className="flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-6 py-4 backdrop-blur-sm"
-                >
-                  <CheckCircle className="h-5 w-5 shrink-0 text-emerald-300" />
-                  <p className="text-sm font-semibold text-white">
-                    {state.code === "already" ? n.alreadyMessage : n.successMessage}
-                  </p>
-                </motion.div>
-              ) : (
-                <form action={action}>
-                  <div className="flex flex-col gap-3 sm:flex-row">
-                    {/* email input */}
-                    <div className="group relative flex-1">
-                      <input
-                        ref={inputRef}
-                        type="email"
-                        name="email"
-                        required
-                        placeholder={n.placeholder}
-                        className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-white/40 outline-none backdrop-blur-sm transition-all duration-200 focus:border-white/50 focus:bg-white/15 focus:ring-2 focus:ring-white/20"
-                      />
-                    </div>
+            {/* right — WhatsApp CTA */}
+            <div className="flex w-full flex-col items-center gap-3 lg:w-auto lg:items-end">
+              <motion.a
+                href="https://wa.me/212620849779"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Message Smartgestion on WhatsApp"
+                whileHover={reduced ? {} : { scale: 1.04, y: -2 }}
+                whileTap={reduced ? {} : { scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-2xl px-8 py-4 text-base font-bold text-white shadow-[0_10px_40px_-8px_rgba(63,184,196,0.65)] transition-shadow duration-300 hover:shadow-[0_18px_55px_-6px_rgba(92,201,201,0.85)]"
+              >
+                {/* animated brand gradient base */}
+                <span className="absolute inset-0 bg-[linear-gradient(120deg,#0A1F44_0%,#1D6FD6_40%,#3FB8C4_70%,#5CC9C9_100%)] bg-[length:220%_220%] animate-gradient-x" />
+                {/* subtle top-light overlay */}
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/25 via-transparent to-transparent" />
+                {/* glowing border */}
+                <span className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/25" />
+                {/* hover glow ring */}
+                <span className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 shadow-[0_0_0_2px_rgba(255,255,255,0.5)] transition-opacity duration-300 group-hover:opacity-100" />
+                {/* shimmer sweep */}
+                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-[900ms] ease-out group-hover:translate-x-full" />
 
-                    {/* submit button */}
-                    <motion.button
-                      type="submit"
-                      disabled={pending}
-                      whileHover={reduced ? {} : { scale: 1.03, y: -1 }}
-                      whileTap={reduced ? {} : { scale: 0.97 }}
-                      transition={{ duration: 0.15 }}
-                      className="group relative inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#1D6FD6] shadow-[0_4px_20px_rgba(255,255,255,0.25)] transition-all duration-200 hover:bg-white/95 hover:shadow-[0_8px_30px_rgba(255,255,255,0.35)] disabled:opacity-60"
-                    >
-                      {/* shimmer on hover */}
-                      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#3FB8C4]/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-                      <span className="relative flex items-center gap-2">
-                        {pending ? (
-                          <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                          </svg>
-                        ) : (
-                          <>
-                            <Sparkles className="h-3.5 w-3.5" />
-                            {n.button}
-                            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                          </>
-                        )}
-                      </span>
-                    </motion.button>
-                  </div>
+                {/* whatsapp icon */}
+                <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur-sm transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  {/* live pulse ring */}
+                  <motion.span
+                    animate={reduced ? {} : { scale: [1, 1.9], opacity: [0.55, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+                    className="absolute inset-0 rounded-full bg-white/40"
+                  />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="relative h-5 w-5 text-white drop-shadow-sm"
+                    aria-hidden="true"
+                  >
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.9 11.9 0 005.71 1.454h.006c6.585 0 11.946-5.359 11.949-11.893a11.821 11.821 0 00-3.481-8.464" />
+                  </svg>
+                </span>
 
-                  {/* error message */}
-                  {state.status === "error" && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-2.5 text-xs text-red-300"
-                    >
-                      {n.errorMessage}
-                    </motion.p>
-                  )}
+                <span className="relative flex flex-col items-start leading-tight">
+                  <span className="text-[11px] font-medium uppercase tracking-wide text-white/80">
+                    {n.badge}
+                  </span>
+                  <span className="text-base font-bold drop-shadow-sm">
+                    {n.button}
+                  </span>
+                </span>
 
-                  <p className="mt-3 text-xs text-white/40">
-                    {n.note}
-                  </p>
-                </form>
-              )}
+                <ArrowRight className="relative h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+              </motion.a>
+
+              <p className="text-xs text-white/45">{n.note}</p>
             </div>
           </div>
         </div>

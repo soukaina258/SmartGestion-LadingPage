@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
-const WA_NUMBER = "212707875976";
+const WA_NUMBER = "212620849779";
 const WA_URL = `https://wa.me/${WA_NUMBER}`;
 
 const EASE = [0.16, 1, 0.3, 1] as const;
