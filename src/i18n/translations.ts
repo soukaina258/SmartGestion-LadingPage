@@ -874,9 +874,9 @@ const fr: Dictionary = {
     onQuote: "Sur devis",
     trialNote: "Accompagnement par notre équipe · sans remboursement",
     desktopBackup: "Sauvegarde des données",
-    promoBadge: "-70% · Offre de lancement",
-    promoOriginalPrice: "1000 DH",
-    promoDiscount: "Économisez 701 DH",
+    promoBadge: "-80% · Offre de lancement",
+    promoOriginalPrice: "1500 DH",
+    promoDiscount: "Économisez 1201 DH",
     promoUrgency: "Offre limitée · Places restreintes",
     plans: [
       {
@@ -1631,9 +1631,9 @@ const en: Dictionary = {
     onQuote: "On quote",
     trialNote: "Guided by our team · no refund",
     desktopBackup: "Data backup",
-    promoBadge: "-70% · Launch offer",
-    promoOriginalPrice: "1000 DH",
-    promoDiscount: "Save 701 DH",
+    promoBadge: "-80% · Launch offer",
+    promoOriginalPrice: "1500 DH",
+    promoDiscount: "Save 1201 DH",
     promoUrgency: "Limited offer · Few spots left",
     plans: [
       {
@@ -2375,9 +2375,9 @@ const ar: Dictionary = {
     onQuote: "حسب الطلب",
     trialNote: "مرافقة من طرف فريقنا · بلا استرجاع",
     desktopBackup: "نسخة احتياطية للبيانات",
-    promoBadge: "-70% · عرض الإطلاق",
-    promoOriginalPrice: "1000 درهم",
-    promoDiscount: "وفّر 701 درهم",
+    promoBadge: "-80% · عرض الإطلاق",
+    promoOriginalPrice: "1500 درهم",
+    promoDiscount: "وفّر 1201 درهم",
     promoUrgency: "عرض محدود · أماكن قليلة متبقية",
     plans: [
       {
