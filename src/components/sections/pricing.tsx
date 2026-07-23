@@ -40,8 +40,8 @@ const PRICE_CONFIG: Record<
     highlighted: true,
     promo: true,
     prices: {
-      desktop: { kind: "amount", value: "299 DH" },
-      online: { kind: "amount", value: "299 DH" },
+      desktop: { kind: "amount", value: "300 DH" },
+      online: { kind: "amount", value: "300 DH" },
     },
   },
   custom: {

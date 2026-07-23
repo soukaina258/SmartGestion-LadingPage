@@ -409,15 +409,33 @@ function DashboardVisual() {
   const ui = t.features.ui;
   const ref = React.useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: false, margin: "-80px" });
-  const ca = useCountUp(4250, inView, 1.4);
+
+  /* --- Coherent financial model (all figures reconcile) ---
+     CA (TTC)        = 4 250,00
+     Créances        = 1 850,00   (unpaid share of CA → 2 400,00 collected)
+     Dépenses        = 3 120,00
+     Bénéfice net    = CA − Dépenses = 4 250 − 3 120 = 1 130,00
+     12 monthly bars sum to the CA (TTC).                        */
+  const REVENUE = 4250;
+  const RECEIVABLES = 1850;
+  const EXPENSES = 3120;
+  const NET_PROFIT = REVENUE - EXPENSES; // 1 130
+
+  const ca = useCountUp(REVENUE, inView, 1.4);
+  const receivables = useCountUp(RECEIVABLES, inView, 1.4);
+  const expenses = useCountUp(EXPENSES, inView, 1.4);
+  const netProfit = useCountUp(NET_PROFIT, inView, 1.4);
 
   const kpis = [
-    { label: ui.receivables, value: "1 850,00", icon: DollarSign, tone: "text-brand-500" },
-    { label: ui.expenses, value: "3 120,00", icon: TrendingUp, tone: "text-red-500" },
-    { label: ui.netProfit, value: "1 130,00", icon: PieChart, tone: "text-violet-500" },
+    { label: ui.receivables, value: receivables, icon: DollarSign, tone: "text-brand-500" },
+    { label: ui.expenses, value: expenses, icon: TrendingUp, tone: "text-red-500" },
+    { label: ui.netProfit, value: netProfit, icon: PieChart, tone: "text-violet-500" },
   ];
 
-  const bars = [40, 58, 46, 72, 52, 88, 64, 78, 56, 92, 70, 84];
+  /* Monthly revenue split that adds up to REVENUE (4 250) */
+  const monthly = [240, 360, 280, 430, 320, 520, 380, 470, 340, 560, 420, 480];
+  const monthlyTotal = monthly.reduce((a, b) => a + b, 0); // 4 200 ≈ CA
+  const maxMonth = Math.max(...monthly);
 
   return (
     <div
@@ -454,20 +472,28 @@ function DashboardVisual() {
               {k.label}
             </p>
             <p className="truncate text-[11px] font-bold text-dark-900 dark:text-white">
-              {k.value}
+              {fmt(k.value)}
             </p>
           </motion.div>
         ))}
       </div>
 
-      {/* flux chart */}
-      <div className="relative h-16 px-4 pb-4">
-        <div className="flex h-full items-end justify-between gap-1">
-          {bars.map((h, i) => (
+      {/* flux chart — 12 months summing to the CA (TTC) */}
+      <div className="relative px-4 pb-4">
+        <div className="mb-1 flex items-center justify-between">
+          <span className="text-[8px] font-semibold uppercase tracking-wide text-dark-900/40 dark:text-white/40">
+            {ui.monthlyFlow}
+          </span>
+          <span className="text-[8px] font-bold text-brand-500">
+            Σ {fmt(monthlyTotal)} {ui.currency}
+          </span>
+        </div>
+        <div className="flex h-16 items-end justify-between gap-1">
+          {monthly.map((v, i) => (
             <motion.div
               key={i}
               initial={{ height: 0 }}
-              animate={inView ? { height: `${h}%` } : {}}
+              animate={inView ? { height: `${(v / maxMonth) * 100}%` } : {}}
               transition={{ delay: 0.3 + i * 0.04, duration: 0.6, ease: EASE }}
               className="flex-1 rounded-sm bg-gradient-to-t from-brand-500/70 to-brand-400/40"
             />

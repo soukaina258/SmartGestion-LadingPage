@@ -10,6 +10,7 @@ export type Dictionary = {
     platform: string;
     features: string;
     modules: string;
+    reports: string;
     solutions: string;
     pricing: string;
     about: string;
@@ -95,6 +96,7 @@ export type Dictionary = {
       expenses: string;
       netProfit: string;
       revenueTTC: string;
+      monthlyFlow: string;
     };
   };
   industries: {
@@ -102,16 +104,12 @@ export type Dictionary = {
     title1: string;
     titleHighlight: string;
     intro: string;
-    nicheLabel: string;
-    standardLabel: string;
+    flagshipLabel: string;
+    nicheName: string;
+    nicheTagline: string;
+    highlights: { title: string; description: string }[];
+    stats: { value: string; label: string }[];
     cta: string;
-    items: {
-      key: "parapharmacy" | "optic" | "automobile" | "standard";
-      name: string;
-      tagline: string;
-      description: string;
-      tags: string[];
-    }[];
     showcase: {
       eyebrow: string;
       title: string;
@@ -129,6 +127,129 @@ export type Dictionary = {
       videoTitle: string;
       videoSubtitle: string;
     };
+  };
+  reports: {
+    badge: string;
+    title1: string;
+    titleHighlight: string;
+    intro: string;
+    biEyebrow: string;
+    biTitle: string;
+    biDescription: string;
+    tabs: { key: string; label: string; title: string; description: string; kpis: { label: string; value: string }[] }[];
+    sales: {
+      kpis: { label: string; value: string; accent?: "up" | "down" | "neutral" }[];
+      evolutionTitle: string;
+      trendTitle: string;
+      productTableTitle: string;
+      productCols: { product: string; qty: string; revenue: string; margin: string; stock: string };
+      products: { name: string; qty: string; revenue: string; margin: string; stock: string; bar: number }[];
+      topTitle: string;
+      lowTitle: string;
+      categoryTitle: string;
+      categories: { name: string; percent: string; value: string; color: string; slice: number }[];
+      clientTableTitle: string;
+      clientCols: { client: string; orders: string; revenue: string; basket: string; last: string };
+      clients: { name: string; orders: string; revenue: string; basket: string; last: string }[];
+      hourTitle: string;
+      dayTitle: string;
+      days: string[];
+      dayValues: number[];
+    };
+    products2: {
+      tableTitle: string;
+      cols: { product: string; category: string; bought: string; sold: string; revenue: string; margin: string; stock: string };
+      rows: { name: string; category: string; bought: string; sold: string; revenue: string; margin: string; stock: string }[];
+      topRevenueTitle: string;
+      topProfitTitle: string;
+      topQtyTitle: string;
+      topRevenue: { name: string; bar: number }[];
+      topProfit: { name: string; bar: number }[];
+      topQty: { name: string; bar: number }[];
+      fastTitle: string;
+      slowTitle: string;
+      fast: { name: string; bar: number }[];
+      slow: { name: string; bar: number }[];
+    };
+    inventory2: {
+      kpis: { label: string; value: string; accent?: "up" | "down" | "neutral" }[];
+      movementsTitle: string;
+      movementsSubtitle: string;
+      movCols: { date: string; product: string; type: string; qty: string; ref: string };
+      movements: { date: string; product: string; type: string; direction: "in" | "out"; qty: string; ref: string }[];
+      lowTitle: string;
+      lowCols: { product: string; stock: string; min: string; value: string };
+      low: { name: string; stock: string; min: string; value: string }[];
+      overTitle: string;
+      overSubtitle: string;
+      over: { name: string; stock: string; sold: string; value: string }[];
+      unsoldTitle: string;
+      unsoldSubtitle: string;
+      unsoldCols: { product: string; stock: string; sold: string; days: string; value: string };
+      unsold: { name: string; stock: string; sold: string; days: string; value: string }[];
+    };
+    purchases2: {
+      kpis: { label: string; value: string }[];
+      trendTitle: string;
+      supplierTitle: string;
+      supplierCols: { supplier: string; orders: string; products: string; amount: string; avg: string };
+      suppliers: { name: string; orders: string; products: string; amount: string; avg: string }[];
+      productTitle: string;
+      productCols: { product: string; qty: string; cost: string; supplier: string; last: string };
+      products: { name: string; qty: string; cost: string; supplier: string; last: string }[];
+    };
+    finance2: {
+      plTitle: string;
+      pl: { revenue: string; revenueVal: string; cogsLabel: string; cogsVal: string; grossLabel: string; grossVal: string; opexLabel: string; opexVal: string; netLabel: string; netVal: string; netNegative: boolean };
+      expensesTitle: string;
+      expensesCols: { category: string; amount: string; percent: string };
+      expenses: { name: string; amount: string; percent: string; color: string; slice: number }[];
+      marginTitle: string;
+      marginByProduct: string;
+      marginByCategory: string;
+      marginCols: { name: string; revenue: string; cost: string; margin: string; marginPct: string };
+      marginProducts: { name: string; revenue: string; cost: string; margin: string; marginPct: string }[];
+      marginCategories: { name: string; revenue: string; cost: string; margin: string; marginPct: string }[];
+      cashTitle: string;
+      cashKpis: { label: string; value: string; accent: "up" | "down" | "neutral" }[];
+      vatTitle: string;
+      vatSubtitle: string;
+      vat: { collectedLabel: string; collectedVal: string; deductibleLabel: string; deductibleVal: string; balanceLabel: string; balanceVal: string };
+    };
+    customers2: {
+      topTitle: string;
+      topCols: { client: string; invoices: string; revenue: string; profit: string; avg: string; due: string; last: string };
+      top: { name: string; invoices: string; revenue: string; profit: string; avg: string; due: string; last: string }[];
+      balanceTitle: string;
+      balanceKpis: { label: string; value: string; accent: "up" | "down" | "neutral" }[];
+      loyaltyTitle: string;
+      loyaltyKpis: { label: string; value: string }[];
+      newTitle: string;
+      newValues: number[];
+      inactiveTitle: string;
+      inactiveSubtitle: string;
+      inactiveCols: { client: string; revenue: string; last: string; days: string };
+      inactive: { name: string; revenue: string; last: string; days: string }[];
+    };
+    performance2: {
+      compareTitle: string;
+      compareSubtitle: string;
+      compare: { label: string; value: string; prev: string; change: string; direction: "up" | "down" | "flat" }[];
+      growthTitle: string;
+      growth: { label: string; value: string; direction: "up" | "down" | "flat" }[];
+      profitTitle: string;
+      profitSubtitle: string;
+      profitCols: { product: string; qty: string; revenue: string; profit: string; margin: string };
+      profit: { name: string; qty: string; revenue: string; profit: string; margin: string }[];
+      alertsTitle: string;
+      alerts: { text: string; level: "warning" | "info" | "success" }[];
+    };
+    exportNote: string;
+    exportFormats: string[];
+    modulesTitle: string;
+    modulesSubtitle: string;
+    modules: { name: string; description: string }[];
+    cta: string;
   };
   modules: {
     badge: string;
@@ -361,10 +482,60 @@ export type Dictionary = {
     };
     statusPending: string;
     statusPaid: string;
+    productAnalysis: {
+      title: string;
+      subtitle: string;
+      period: string;
+      category: string;
+      allCategories: string;
+      product: string;
+      optional: string;
+      searchProduct: string;
+      tabOverview: string;
+      tabBest: string;
+      tabSlow: string;
+      tabSmart: string;
+      bestSeller: string;
+      units: string;
+      totalSold: string;
+      revenueTTC: string;
+      totalProfit: string;
+      differentProducts: string;
+      avgPerSale: string;
+      top10: string;
+      salesBreakdown: string;
+    };
+    salesEvolution: {
+      title: string;
+    };
+    productFilter: {
+      title: string;
+      subtitle: string;
+      qtySold: string;
+      totalAmount: string;
+      salesCount: string;
+      avgPrice: string;
+      differentProducts: string;
+      searchResults: string;
+      colDate: string;
+      colProduct: string;
+      colBarcode: string;
+      colQty: string;
+      colUnitPrice: string;
+      colTotal: string;
+      colSource: string;
+      colDocument: string;
+      colClient: string;
+      sourcePassing: string;
+      sourceInvoice: string;
+      showing: string;
+      print: string;
+    };
     sidebar: {
       sectionDashboard: string;
       workspace: string;
       dashboard: string;
+      reports: string;
       sectionSales: string;
       invoices: string;
       quotes: string;
@@ -373,12 +544,16 @@ export type Dictionary = {
       deliveryNotes: string;
       sectionPurchases: string;
       purchaseOrders: string;
+      discounts: string;
       expenses: string;
+      supplierCreditNotes: string;
       sectionContacts: string;
       clients: string;
       suppliers: string;
       sectionStock: string;
       products: string;
+      sectionPortfolio: string;
+      portfolio: string;
       sectionSystem: string;
       settings: string;
     };
@@ -391,6 +566,7 @@ const fr: Dictionary = {
     platform: "Plateforme",
     features: "Fonctionnalités",
     modules: "Modules",
+    reports: "Rapports",
     solutions: "Solutions",
     about: "À propos",
     pricing: "Tarifs",
@@ -485,9 +661,9 @@ const fr: Dictionary = {
   features: {
     badge: "Fonctionnalités",
     title1: "Un ERP pensé",
-    titleHighlight: "pour vous",
+    titleHighlight: "pour votre parapharmacie",
     intro:
-      "Chaque module est connecté et s'adapte à votre façon de travailler, pas l'inverse. Conçu pour évoluer avec votre activité.",
+      "Chaque module — comptoir, lots, laboratoires, TVA — est connecté et s'adapte au quotidien de votre parapharmacie, pas l'inverse. Conçu pour évoluer avec votre officine.",
     learnMore: "En savoir plus",
     collaboration: {
       title: "Collaboration d'équipe",
@@ -515,27 +691,27 @@ const fr: Dictionary = {
       calculator: {
         title: "Calculateur de prix automatique",
         description:
-          "Saisissez le prix TTC, la TVA et la remise. Le prix HT est calculé instantanément. Zéro calcul manuel, zéro erreur.",
+          "Saisissez le prix TTC, la TVA et la remise sur vos produits parapharma. Le prix HT est calculé instantanément. Zéro calcul manuel, zéro erreur au comptoir.",
       },
       margin: {
         title: "Marge commerciale en temps réel",
         description:
-          "CA, coût des ventes et avoirs combinés pour afficher votre marge nette exacte, détaillée et traçable.",
+          "CA, coût d'achat laboratoire et avoirs combinés pour afficher votre marge nette exacte, par produit et par rayon.",
       },
       vat: {
         title: "Récapitulatif fiscal (TVA)",
         description:
-          "TVA collectée, déductible et solde calculés automatiquement. Prêt pour votre déclaration.",
+          "TVA collectée, déductible et solde calculés automatiquement sur vos ventes et achats laboratoires. Prêt pour votre déclaration.",
       },
       alerts: {
-        title: "Alertes de stock intelligentes",
+        title: "Alertes stock, lots & péremptions",
         description:
-          "Soyez prévenu avant la rupture : seuils bas et stock négatif signalés en temps réel.",
+          "Soyez prévenu avant la rupture ou la péremption : seuils bas, stock négatif et lots proches de la date signalés en temps réel.",
       },
       dashboard: {
         title: "Tableau de bord financier",
         description:
-          "Tous vos indicateurs clés : CA, bénéfice net, créances, réunis dans une vue claire et vivante.",
+          "Tous vos indicateurs clés : CA, bénéfice net, créances et valeur du stock, réunis dans une vue claire et vivante.",
       },
     },
     ui: {
@@ -564,56 +740,51 @@ const fr: Dictionary = {
       expenses: "Dépenses",
       netProfit: "Bénéfice net",
       revenueTTC: "Chiffre d'affaires (TTC)",
+      monthlyFlow: "Flux mensuel",
     },
   },
   industries: {
-    badge: "Nos versions",
-    title1: "Une solution pour",
-    titleHighlight: "chaque métier",
+    badge: "Solution parapharmacie",
+    title1: "Le logiciel pensé pour",
+    titleHighlight: "votre parapharmacie",
     intro:
-      "SmartGestion existe en versions métier, pensées pour les besoins spécifiques de votre secteur — et en version standard pour toute entreprise.",
-    nicheLabel: "Version métier",
-    standardLabel: "Version standard",
-    cta: "Découvrir",
-    items: [
+      "SmartGestion est conçu de A à Z pour le quotidien d'une parapharmacie marocaine : gestion des lots, suivi des péremptions, ventes rapides et facturation conforme à la TVA.",
+    flagshipLabel: "Notre solution phare",
+    nicheName: "Parapharmacie",
+    nicheTagline: "Une plateforme dédiée, pas un ERP générique",
+    highlights: [
       {
-        key: "parapharmacy",
-        name: "Parapharmacie",
-        tagline: "Notre solution phare",
+        title: "Suivi des lots & péremptions",
         description:
-          "Stock par lot, péremption, ventes rapides et facturation TVA — pensée pour le quotidien d'une parapharmacie.",
-        tags: ["Péremption FIFO", "Ventes & TVA", "Fournisseurs"],
+          "Gestion FIFO par lot avec alertes automatiques de rupture et de péremption, pour ne plus jamais vendre un produit expiré.",
       },
       {
-        key: "optic",
-        name: "Optique",
-        tagline: "Version métier",
+        title: "Ventes & facturation TVA",
         description:
-          "Gestion des montures, verres et ordonnances, suivi clients et ventes adaptées au magasin d'optique.",
-        tags: ["Montures & verres", "Ordonnances", "Fiches clients"],
+          "Encaissez en quelques secondes, éditez des factures conformes et calculez la TVA automatiquement à chaque vente.",
       },
       {
-        key: "automobile",
-        name: "Automobile",
-        tagline: "Version métier",
+        title: "Achats & fournisseurs",
         description:
-          "Pièces détachées, références fournisseurs, devis et réparations — adaptée aux garages et magasins de pièces auto.",
-        tags: ["Pièces & références", "Devis & réparations", "Achats"],
+          "Bons de commande, réapprovisionnement et suivi des fournisseurs centralisés dans une seule interface.",
       },
       {
-        key: "standard",
-        name: "Standard",
-        tagline: "Version standard",
+        title: "Pilotage en temps réel",
         description:
-          "L'essentiel d'un ERP pour toute entreprise : ventes, stock, achats, clients et finances dans une seule plateforme.",
-        tags: ["Ventes & stock", "Achats & clients", "Finances"],
+          "CA, marges, trésorerie et alertes de stock en dirhams, visibles d'un coup d'œil sur votre tableau de bord.",
       },
     ],
+    stats: [
+      { value: "-40%", label: "de ruptures de stock" },
+      { value: "2×", label: "plus rapide à l'encaissement" },
+      { value: "100%", label: "conforme TVA Maroc" },
+    ],
+    cta: "Demander une démo",
     showcase: {
-      eyebrow: "Toutes nos versions sont disponibles",
-      title: "Une plateforme, pensée pour votre métier",
+      eyebrow: "Disponible dès aujourd'hui",
+      title: "Une plateforme complète pour votre parapharmacie",
       description:
-        "SmartGestion réunit ventes, stock, fournisseurs et finances dans une seule plateforme — déclinée par métier et disponible dès aujourd'hui sur ordinateur.",
+        "SmartGestion réunit ventes, stock, fournisseurs et finances dans une seule plateforme — pensée pour la parapharmacie et disponible dès aujourd'hui sur ordinateur.",
       platform: "Ordinateur",
       liveBadge: "Disponible maintenant",
       features: [
@@ -648,6 +819,386 @@ const fr: Dictionary = {
       videoTitle: "Découvrez SmartGestion en action",
       videoSubtitle: "Regardez notre tutoriel vidéo pour voir comment l'application fonctionne.",
     },
+  },
+  reports: {
+    badge: "Business Intelligence",
+    title1: "Pilotez chaque chiffre avec",
+    titleHighlight: "des rapports avancés",
+    intro:
+      "Un centre d'analyse complet dédié à votre parapharmacie : ventes au comptoir, produits, stock & lots, achats laboratoires, TVA et clients — filtrés par période, produit, rayon, laboratoire ou date de péremption, avec export en un clic.",
+    biEyebrow: "Business Intelligence Center",
+    biTitle: "7 tableaux d'analyse, une seule vue à 360°",
+    biDescription:
+      "Basculez entre les modules d'analyse pour comprendre votre activité en profondeur. Chaque onglet réunit KPIs, graphiques et tableaux exportables.",
+    tabs: [
+      {
+        key: "sales",
+        label: "Ventes",
+        title: "Analyse des ventes",
+        description:
+          "CA, marges, TVA collectée et évolution des ventes, avec le détail produit par produit et vos meilleures ventes.",
+        kpis: [
+          { label: "CA (TTC)", value: "400,00 DH" },
+          { label: "TVA collectée", value: "66,67 DH" },
+          { label: "Marge", value: "7,0%" },
+        ],
+      },
+      {
+        key: "products",
+        label: "Produits",
+        title: "Analyse produits",
+        description:
+          "Rotation, top revenus, top profits, produits à rotation rapide ou lente — pour optimiser vos assortiments.",
+        kpis: [
+          { label: "Achetés", value: "20" },
+          { label: "Vendus", value: "4" },
+          { label: "Valeur stock", value: "1 395 DH" },
+        ],
+      },
+      {
+        key: "inventory",
+        label: "Stock",
+        title: "Valorisation du stock",
+        description:
+          "Valeur d'achat, valeur de vente, profit attendu, mouvements de stock, ruptures et alertes de péremption.",
+        kpis: [
+          { label: "Valeur achat", value: "1 395 DH" },
+          { label: "Valeur vente", value: "1 500 DH" },
+          { label: "Profit attendu", value: "105 DH" },
+        ],
+      },
+      {
+        key: "purchases",
+        label: "Achats",
+        title: "Analyse des achats",
+        description:
+          "Total des achats, tendance, coût et achats par fournisseur — pour négocier et acheter au meilleur prix.",
+        kpis: [
+          { label: "Total achats", value: "1 860 DH" },
+          { label: "Commandes", value: "1" },
+          { label: "Fournisseurs", value: "1" },
+        ],
+      },
+      {
+        key: "finance",
+        label: "Finances",
+        title: "Compte de résultat",
+        description:
+          "Chiffre d'affaires, coût des marchandises, marge brute, charges et résultat net, avec répartition des dépenses.",
+        kpis: [
+          { label: "Marge brute", value: "28 DH" },
+          { label: "Charges", value: "1 500 DH" },
+          { label: "Résultat net", value: "-1 100 DH" },
+        ],
+      },
+      {
+        key: "customers",
+        label: "Clients",
+        title: "Analyse clients",
+        description:
+          "Top clients, encours, taux de fidélité, clients récurrents et clients inactifs à 30/60/90 jours.",
+        kpis: [
+          { label: "Encaissé", value: "300 DH" },
+          { label: "Fidélité", value: "100%" },
+          { label: "Récurrents", value: "1" },
+        ],
+      },
+      {
+        key: "performance",
+        label: "Performance",
+        title: "Comparaison de périodes",
+        description:
+          "Période actuelle vs précédente, croissance du CA, du profit et des clients, rentabilité par produit et alertes.",
+        kpis: [
+          { label: "Croissance CA", value: "+100%" },
+          { label: "Croissance clients", value: "+100%" },
+          { label: "Marge", value: "7%" },
+        ],
+      },
+    ],
+    sales: {
+      kpis: [
+        { label: "CA (TTC)", value: "400,00 DH" },
+        { label: "CA (HT)", value: "333,33 DH" },
+        { label: "TVA collectée", value: "66,67 DH" },
+        { label: "Total ventes", value: "3" },
+        { label: "Facture moyenne", value: "133,33 DH" },
+        { label: "Bénéfice", value: "28,00 DH", accent: "up" },
+        { label: "Marge %", value: "7,0%", accent: "up" },
+      ],
+      evolutionTitle: "Évolution du CA",
+      trendTitle: "Tendance des ventes",
+      productTableTitle: "Ventes par produit",
+      productCols: { product: "Produit", qty: "Qté", revenue: "CA TTC", margin: "Marge %", stock: "Stock" },
+      products: [
+        { name: "Écran solaire SPF50", qty: "4", revenue: "400,00 DH", margin: "7,0%", stock: "15", bar: 100 },
+        { name: "Crème Eucerin", qty: "3", revenue: "285,00 DH", margin: "12,5%", stock: "22", bar: 71 },
+        { name: "Sérum vitamine C", qty: "2", revenue: "240,00 DH", margin: "18,0%", stock: "8", bar: 60 },
+        { name: "Gel nettoyant", qty: "2", revenue: "120,00 DH", margin: "9,4%", stock: "31", bar: 30 },
+      ],
+      topTitle: "Meilleures ventes",
+      lowTitle: "Ventes les plus faibles",
+      categoryTitle: "Ventes par catégorie",
+      categories: [
+        { name: "Solaires", percent: "46%", value: "400 DH", color: "#3FB8C4", slice: 46 },
+        { name: "Soins visage", percent: "34%", value: "285 DH", color: "#1D6FD6", slice: 34 },
+        { name: "Hygiène", percent: "20%", value: "120 DH", color: "#7C9CF0", slice: 20 },
+      ],
+      clientTableTitle: "Ventes par client",
+      clientCols: { client: "Client", orders: "Achats", revenue: "CA TTC", basket: "Panier moyen", last: "Dernier achat" },
+      clients: [
+        { name: "Ahmed Benani", orders: "2", revenue: "300,00 DH", basket: "150,00 DH", last: "22/07/2026" },
+        { name: "Sofia Alami", orders: "1", revenue: "240,00 DH", basket: "240,00 DH", last: "21/07/2026" },
+        { name: "Karim Idrissi", orders: "1", revenue: "120,00 DH", basket: "120,00 DH", last: "20/07/2026" },
+      ],
+      hourTitle: "Ventes par heure",
+      dayTitle: "Ventes par jour de semaine",
+      days: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+      dayValues: [45, 62, 100, 38, 71, 88, 24],
+    },
+    products2: {
+      tableTitle: "Analyse des produits",
+      cols: {
+        product: "Produit",
+        category: "Catégorie",
+        bought: "Qté achetée",
+        sold: "Qté vendue",
+        revenue: "CA TTC",
+        margin: "Marge %",
+        stock: "Stock",
+      },
+      rows: [
+        { name: "Écran solaire SPF50", category: "Solaires", bought: "20", sold: "4", revenue: "400,00 DH", margin: "7,0%", stock: "15" },
+        { name: "Crème Eucerin", category: "Soins visage", bought: "30", sold: "3", revenue: "285,00 DH", margin: "12,5%", stock: "22" },
+        { name: "Sérum vitamine C", category: "Soins visage", bought: "10", sold: "2", revenue: "240,00 DH", margin: "18,0%", stock: "8" },
+        { name: "Gel nettoyant", category: "Hygiène", bought: "40", sold: "2", revenue: "120,00 DH", margin: "9,4%", stock: "31" },
+      ],
+      topRevenueTitle: "Top CA",
+      topProfitTitle: "Top bénéfice",
+      topQtyTitle: "Top quantité",
+      topRevenue: [
+        { name: "Écran solaire", bar: 100 },
+        { name: "Crème Eucerin", bar: 71 },
+        { name: "Sérum vit. C", bar: 60 },
+        { name: "Gel nettoyant", bar: 30 },
+      ],
+      topProfit: [
+        { name: "Sérum vit. C", bar: 100 },
+        { name: "Crème Eucerin", bar: 78 },
+        { name: "Écran solaire", bar: 52 },
+        { name: "Gel nettoyant", bar: 34 },
+      ],
+      topQty: [
+        { name: "Écran solaire", bar: 100 },
+        { name: "Crème Eucerin", bar: 75 },
+        { name: "Sérum vit. C", bar: 50 },
+        { name: "Gel nettoyant", bar: 50 },
+      ],
+      fastTitle: "Produits à rotation rapide",
+      slowTitle: "Produits à rotation lente",
+      fast: [
+        { name: "Écran solaire", bar: 100 },
+        { name: "Crème Eucerin", bar: 82 },
+        { name: "Sérum vit. C", bar: 64 },
+      ],
+      slow: [
+        { name: "Gel nettoyant", bar: 90 },
+        { name: "Baume lèvres", bar: 62 },
+        { name: "Shampoing doux", bar: 40 },
+      ],
+    },
+    inventory2: {
+      kpis: [
+        { label: "Valeur d'achat", value: "1 395,00 DH" },
+        { label: "Valeur de vente", value: "1 500,00 DH" },
+        { label: "Bénéfice attendu", value: "105,00 DH", accent: "up" },
+        { label: "Valeur d'inventaire", value: "1 395,00 DH" },
+      ],
+      movementsTitle: "Mouvements de stock",
+      movementsSubtitle: "Enregistrés lors des commandes/ajustements",
+      movCols: { date: "Date", product: "Produit", type: "Type", qty: "Qté", ref: "Référence" },
+      movements: [
+        { date: "22/07/2026 18:34", product: "Écran solaire SPF50", type: "Entrée", direction: "in", qty: "+20", ref: "BC-2026-0001" },
+        { date: "22/07/2026 15:10", product: "Écran solaire SPF50", type: "Sortie", direction: "out", qty: "-4", ref: "FAC-2026-0003" },
+        { date: "21/07/2026 11:02", product: "Crème Eucerin", type: "Entrée", direction: "in", qty: "+30", ref: "BC-2026-0002" },
+        { date: "20/07/2026 16:45", product: "Sérum vitamine C", type: "Sortie", direction: "out", qty: "-2", ref: "FAC-2026-0001" },
+      ],
+      lowTitle: "Stock faible",
+      lowCols: { product: "Produit", stock: "Stock", min: "Stock min", value: "Valeur stock" },
+      low: [
+        { name: "Sérum vitamine C", stock: "8", min: "10", value: "560,00 DH" },
+        { name: "Baume lèvres", stock: "3", min: "12", value: "90,00 DH" },
+      ],
+      overTitle: "Surstock",
+      overSubtitle: "Stock élevé, ventes faibles",
+      over: [
+        { name: "Gel nettoyant", stock: "31", sold: "2", value: "930,00 DH" },
+        { name: "Shampoing doux", stock: "48", sold: "1", value: "720,00 DH" },
+      ],
+      unsoldTitle: "Produits invendus",
+      unsoldSubtitle: "Invendus depuis 30 / 60 / 90 jours",
+      unsoldCols: { product: "Produit", stock: "Stock", sold: "Qté vendue", days: "Jours", value: "Valeur stock" },
+      unsold: [
+        { name: "Masque argile", stock: "18", sold: "0", days: "34", value: "540,00 DH" },
+        { name: "Huile d'argan", stock: "9", sold: "0", days: "61", value: "810,00 DH" },
+        { name: "Crème mains", stock: "24", sold: "0", days: "92", value: "480,00 DH" },
+      ],
+    },
+    purchases2: {
+      kpis: [
+        { label: "Total achats", value: "1 860,00 DH" },
+        { label: "Achat moyen", value: "1 860,00 DH" },
+        { label: "Coût d'achat", value: "1 860,00 DH" },
+        { label: "Nombre de commandes", value: "1" },
+      ],
+      trendTitle: "Tendance des achats",
+      supplierTitle: "Achats par fournisseur",
+      supplierCols: { supplier: "Fournisseur", orders: "Commandes", products: "Produits", amount: "Montant", avg: "Achat moyen" },
+      suppliers: [
+        { name: "Najib Distribution", orders: "1", products: "1", amount: "1 860,00 DH", avg: "1 860,00 DH" },
+        { name: "Pharma Nord", orders: "2", products: "5", amount: "1 240,00 DH", avg: "620,00 DH" },
+        { name: "CosmoMaroc", orders: "1", products: "3", amount: "780,00 DH", avg: "780,00 DH" },
+      ],
+      productTitle: "Achats par produit",
+      productCols: { product: "Produit", qty: "Qté achetée", cost: "Coût moyen", supplier: "Fournisseur", last: "Dernier achat" },
+      products: [
+        { name: "Écran solaire SPF50", qty: "20", cost: "93,00 DH", supplier: "Najib Distribution", last: "22/07/2026" },
+        { name: "Crème Eucerin", qty: "30", cost: "62,00 DH", supplier: "Pharma Nord", last: "21/07/2026" },
+        { name: "Sérum vitamine C", qty: "10", cost: "98,00 DH", supplier: "CosmoMaroc", last: "20/07/2026" },
+      ],
+    },
+    finance2: {
+      plTitle: "Compte de résultat",
+      pl: {
+        revenue: "Chiffre d'affaires",
+        revenueVal: "400,00 DH",
+        cogsLabel: "Coût des marchandises vendues",
+        cogsVal: "372,00 DH",
+        grossLabel: "Bénéfice brut",
+        grossVal: "28,00 DH",
+        opexLabel: "Charges d'exploitation",
+        opexVal: "1 500,00 DH",
+        netLabel: "Bénéfice net",
+        netVal: "-1 100,00 DH",
+        netNegative: true,
+      },
+      expensesTitle: "Rapport des dépenses",
+      expensesCols: { category: "Catégorie", amount: "Montant", percent: "Pourcentage" },
+      expenses: [
+        { name: "Loyer", amount: "1 500,00 DH", percent: "62,5%", color: "#3FB8C4", slice: 62.5 },
+        { name: "Salaires", amount: "600,00 DH", percent: "25,0%", color: "#1D6FD6", slice: 25 },
+        { name: "Électricité", amount: "300,00 DH", percent: "12,5%", color: "#7C9CF0", slice: 12.5 },
+      ],
+      marginTitle: "Marge commerciale",
+      marginByProduct: "Par produit",
+      marginByCategory: "Par catégorie",
+      marginCols: { name: "Nom", revenue: "CA", cost: "Coût", margin: "Marge", marginPct: "Marge %" },
+      marginProducts: [
+        { name: "Écran solaire SPF50", revenue: "400,00 DH", cost: "372,00 DH", margin: "28,00 DH", marginPct: "7,0%" },
+        { name: "Crème Eucerin", revenue: "285,00 DH", cost: "249,00 DH", margin: "36,00 DH", marginPct: "12,5%" },
+      ],
+      marginCategories: [
+        { name: "Solaires", revenue: "400,00 DH", cost: "372,00 DH", margin: "28,00 DH", marginPct: "7,0%" },
+        { name: "Soins visage", revenue: "525,00 DH", cost: "441,00 DH", margin: "84,00 DH", marginPct: "16,0%" },
+      ],
+      cashTitle: "Flux de trésorerie",
+      cashKpis: [
+        { label: "Entrées", value: "400,00 DH", accent: "up" },
+        { label: "Sorties", value: "3 360,00 DH", accent: "down" },
+        { label: "Solde", value: "-2 960,00 DH", accent: "down" },
+      ],
+      vatTitle: "Rapport TVA",
+      vatSubtitle: "Prêt pour la déclaration fiscale",
+      vat: {
+        collectedLabel: "TVA collectée",
+        collectedVal: "66,67 DH",
+        deductibleLabel: "TVA déductible",
+        deductibleVal: "560,00 DH",
+        balanceLabel: "Solde TVA",
+        balanceVal: "-493,33 DH",
+      },
+    },
+    customers2: {
+      topTitle: "Meilleurs clients",
+      topCols: { client: "Client", invoices: "Factures", revenue: "CA TTC", profit: "Bénéfice", avg: "Facture moyenne", due: "Solde dû", last: "Dernier achat" },
+      top: [
+        { name: "Ahmed Benani", invoices: "2", revenue: "300,00 DH", profit: "21,00 DH", avg: "150,00 DH", due: "0,00 DH", last: "22/07/2026" },
+        { name: "Sofia Alami", invoices: "1", revenue: "240,00 DH", profit: "43,00 DH", avg: "240,00 DH", due: "120,00 DH", last: "21/07/2026" },
+        { name: "Karim Idrissi", invoices: "1", revenue: "120,00 DH", profit: "11,00 DH", avg: "120,00 DH", due: "0,00 DH", last: "20/07/2026" },
+      ],
+      balanceTitle: "Solde clients",
+      balanceKpis: [
+        { label: "Payé", value: "300,00 DH", accent: "up" },
+        { label: "Restant", value: "120,00 DH", accent: "down" },
+        { label: "Crédit", value: "0,00 DH", accent: "neutral" },
+      ],
+      loyaltyTitle: "Clients fidèles",
+      loyaltyKpis: [
+        { label: "Récurrents", value: "1" },
+        { label: "Une seule fois", value: "2" },
+        { label: "Taux de fidélité", value: "100%" },
+      ],
+      newTitle: "Nouveaux clients",
+      newValues: [30, 55, 42, 70, 60, 88, 100],
+      inactiveTitle: "Clients inactifs",
+      inactiveSubtitle: "Sans achat depuis 30 / 60 / 90 jours",
+      inactiveCols: { client: "Client", revenue: "CA TTC", last: "Dernier achat", days: "Jours" },
+      inactive: [
+        { name: "Yassine Fahim", revenue: "180,00 DH", last: "20/06/2026", days: "32" },
+        { name: "Nadia Cherkaoui", revenue: "450,00 DH", last: "18/05/2026", days: "65" },
+        { name: "Omar Tazi", revenue: "90,00 DH", last: "14/04/2026", days: "99" },
+      ],
+    },
+    performance2: {
+      compareTitle: "Comparaison de périodes",
+      compareSubtitle: "Période actuelle vs période précédente",
+      compare: [
+        { label: "Chiffre d'affaires", value: "400,00 DH", prev: "Précédent : 0,00 DH", change: "100%", direction: "up" },
+        { label: "Bénéfice", value: "-1 100,00 DH", prev: "Précédent : 0,00 DH", change: "—", direction: "flat" },
+        { label: "Dépenses", value: "1 500,00 DH", prev: "Précédent : 0,00 DH", change: "100%", direction: "up" },
+        { label: "Marge", value: "7%", prev: "Précédent : 0%", change: "100%", direction: "up" },
+        { label: "Ventes", value: "3", prev: "Précédent : 0", change: "100%", direction: "up" },
+        { label: "Achats", value: "1 860,00 DH", prev: "Précédent : 0,00 DH", change: "100%", direction: "up" },
+      ],
+      growthTitle: "Rapport de croissance",
+      growth: [
+        { label: "Croissance CA", value: "+100,0%", direction: "up" },
+        { label: "Croissance bénéfice", value: "—", direction: "flat" },
+        { label: "Croissance dépenses", value: "+100,0%", direction: "up" },
+        { label: "Croissance clients", value: "+100,0%", direction: "up" },
+      ],
+      profitTitle: "Rentabilité des produits",
+      profitSubtitle: "Triez par bénéfice, marge, CA ou quantité",
+      profitCols: { product: "Produit", qty: "Qté vendue", revenue: "CA TTC", profit: "Bénéfice", margin: "Marge %" },
+      profit: [
+        { name: "Écran solaire SPF50", qty: "4", revenue: "400,00 DH", profit: "28,00 DH", margin: "7,0%" },
+        { name: "Crème Eucerin", qty: "3", revenue: "285,00 DH", profit: "36,00 DH", margin: "12,5%" },
+        { name: "Sérum vitamine C", qty: "2", revenue: "240,00 DH", profit: "43,00 DH", margin: "18,0%" },
+      ],
+      alertsTitle: "Alertes",
+      alerts: [
+        { text: "Bénéfice net négatif : les charges dépassent la marge brute.", level: "warning" },
+        { text: "Solde TVA déductible en votre faveur : -493,33 DH.", level: "info" },
+        { text: "CA en hausse de 100% par rapport à la période précédente.", level: "success" },
+      ],
+    },
+    exportNote: "Exportez ou imprimez chaque tableau en un clic",
+    exportFormats: ["CSV", "Excel", "PDF", "Impression"],
+    modulesTitle: "Et bien plus encore",
+    modulesSubtitle:
+      "SmartGestion couvre tout le cycle de gestion de votre parapharmacie, du devis au bilan.",
+    modules: [
+      { name: "Ventes au comptoir", description: "Encaissement rapide au comptoir avec lecture code-barres." },
+      { name: "Devis & factures", description: "Devis, factures et conversion en un clic, conformes TVA." },
+      { name: "Bons de livraison", description: "Suivez chaque livraison et sa réception." },
+      { name: "Avoirs clients & fournisseurs", description: "Gérez retours et avoirs des deux côtés." },
+      { name: "Bons de commande & achats", description: "Commandes fournisseurs et réapprovisionnement." },
+      { name: "Remises", description: "Remises définies sur les bons de commande, suivies automatiquement." },
+      { name: "Dépenses", description: "Enregistrez et catégorisez toutes vos charges." },
+      { name: "Portfolio documentaire", description: "Documents, dossiers et notes (chèques, contrats…) centralisés." },
+      { name: "Multi-entrepôts", description: "Pilotez le stock sur plusieurs entrepôts." },
+    ],
+    cta: "Demander une démo",
   },
   modules: {
     badge: "Solutions",
@@ -812,45 +1363,45 @@ const fr: Dictionary = {
       "Bâtir des solutions ERP simples, accessibles et transparentes pour les",
     missionHighlight: "métiers en croissance",
     whyEyebrow: "Pourquoi nous choisir",
-    whyTitle1: "Des solutions ERP",
-    whyTitleHighlight: "intelligentes",
-    whyTitle2: "pour faire grandir votre entreprise",
+    whyTitle1: "L'ERP",
+    whyTitleHighlight: "intelligent",
+    whyTitle2: "pensé pour votre parapharmacie",
     whyBody:
-      "SmartGestion réunit ventes, stock, achats, clients et finances dans une plateforme unique, claire et rapide. Conçue pour s'adapter à chaque métier, pour que vous pilotiez votre activité, pas votre logiciel.",
+      "SmartGestion ParaPharmacie réunit ventes au comptoir, stock, lots & péremptions, achats laboratoires, clients et finances dans une plateforme unique, claire et rapide. Conçue pour le quotidien d'une parapharmacie, pour que vous vous occupiez de vos patients, pas de votre logiciel.",
     whyCta: "Découvrir nos solutions",
     points: [
       {
-        title: "Tout-en-un",
+        title: "Tout-en-un pour la parapharmacie",
         description:
-          "Une seule plateforme pour toute votre activité, fini les outils éparpillés.",
+          "Comptoir, stock, lots, laboratoires et caisse dans une seule plateforme, fini les outils éparpillés.",
       },
       {
         title: "Pensé pour votre métier",
         description:
-          "Des modules spécialisés, adaptés à votre secteur et à votre façon de travailler.",
+          "Gestion des lots et péremptions, fiches produits par DCI et marque, alertes de rupture adaptées à votre rayon.",
       },
       {
-        title: "Simple & rapide",
+        title: "Simple & rapide au comptoir",
         description:
-          "Configuration en quelques minutes et accompagnement par notre équipe.",
+          "Vente par code-barres, encaissement fluide et prise en main en quelques minutes avec notre équipe.",
       },
       {
-        title: "Données sécurisées",
+        title: "Conforme & sécurisé",
         description:
-          "Chiffrement, sauvegardes et reporting conforme à votre réglementation.",
+          "Traçabilité des lots, chiffrement, sauvegardes et reporting conforme à la réglementation pharmaceutique.",
       },
     ],
-    valuePanelTitle: "Une plateforme, toute votre activité",
-    valuePanelSubtitle: "Des résultats concrets pour votre entreprise",
+    valuePanelTitle: "Une plateforme, toute votre parapharmacie",
+    valuePanelSubtitle: "Des résultats concrets pour votre officine",
     valueStats: [
-      { value: "+30%", label: "de temps gagné sur la gestion quotidienne" },
-      { value: "−40%", label: "d'erreurs de saisie et de doublons" },
-      { value: "100%", label: "de vos données centralisées et sécurisées" },
-      { value: "24/7", label: "accès en temps réel à votre activité" },
+      { value: "+30%", label: "de temps gagné au comptoir et sur la gestion" },
+      { value: "−40%", label: "de pertes sur produits périmés et ruptures" },
+      { value: "100%", label: "de vos lots tracés et vos données sécurisées" },
+      { value: "24/7", label: "accès en temps réel à votre stock et vos ventes" },
     ],
     valueModulesTitle: "Tout connecté en un seul flux",
-    valueModules: ["Ventes", "Stock", "Achats", "Clients", "Finances"],
-    valueFootnote: "Une seule source de vérité, mise à jour en temps réel.",
+    valueModules: ["Comptoir", "Stock & Lots", "Laboratoires", "Clients", "Finances"],
+    valueFootnote: "Une seule source de vérité, du comptoir au stock, en temps réel.",
   },
   pricing: {
     badge: "Tarifs",
@@ -876,7 +1427,7 @@ const fr: Dictionary = {
     desktopBackup: "Sauvegarde des données",
     promoBadge: "-80% · Offre de lancement",
     promoOriginalPrice: "1500 DH",
-    promoDiscount: "Économisez 1201 DH",
+    promoDiscount: "Économisez 1200 DH",
     promoUrgency: "Offre limitée · Places restreintes",
     plans: [
       {
@@ -1119,10 +1670,60 @@ const fr: Dictionary = {
     },
     statusPending: "En attente",
     statusPaid: "Payée",
+    productAnalysis: {
+      title: "Analyse des Ventes Produits",
+      subtitle: "Performance des produits (Factures payées/reste à payer & Ventes Passagers)",
+      period: "Période",
+      category: "Catégorie (Marque)",
+      allCategories: "Toutes les catégories",
+      product: "Produit",
+      optional: "(optionnel)",
+      searchProduct: "Rechercher par nom, code-barres, référence...",
+      tabOverview: "Vue d'ensemble",
+      tabBest: "Meilleurs produits",
+      tabSlow: "Ventes lentes",
+      tabSmart: "Analyses intelligentes",
+      bestSeller: "MEILLEURE VENTE",
+      units: "unités",
+      totalSold: "TOTAL PRODUITS VENDUS",
+      revenueTTC: "CHIFFRE D'AFFAIRES (TTC)",
+      totalProfit: "BÉNÉFICE TOTAL",
+      differentProducts: "PRODUITS DIFFÉRENTS",
+      avgPerSale: "VALEUR MOYENNE / VENTE",
+      top10: "TOP 10 PRODUITS (CA TTC)",
+      salesBreakdown: "RÉPARTITION DES VENTES",
+    },
+    salesEvolution: {
+      title: "ÉVOLUTION DES VENTES",
+    },
+    productFilter: {
+      title: "Filtre Produit",
+      subtitle: "Historique des ventes par produit (Factures & Ventes Passagers)",
+      qtySold: "QUANTITÉ VENDUE",
+      totalAmount: "MONTANT TOTAL",
+      salesCount: "NOMBRE DE VENTES",
+      avgPrice: "PRIX MOYEN",
+      differentProducts: "PRODUITS DIFFÉRENTS",
+      searchResults: "Rechercher dans les résultats...",
+      colDate: "Date de vente",
+      colProduct: "Produit",
+      colBarcode: "Code-barres",
+      colQty: "Quantité",
+      colUnitPrice: "Prix unitaire",
+      colTotal: "Montant total",
+      colSource: "Source",
+      colDocument: "N° Document",
+      colClient: "Client",
+      sourcePassing: "Vente Passager",
+      sourceInvoice: "Facture",
+      showing: "Affichage de 1 à 3 sur 3 résultats",
+      print: "Imprimer",
+    },
     sidebar: {
       sectionDashboard: "TABLEAU DE BORD",
       workspace: "Espace de Travail",
       dashboard: "Tableau de Bord",
+      reports: "Rapports",
       sectionSales: "VENTES",
       invoices: "Factures",
       quotes: "Devis",
@@ -1131,12 +1732,16 @@ const fr: Dictionary = {
       deliveryNotes: "Bons de Livraison",
       sectionPurchases: "ACHATS",
       purchaseOrders: "Bons de Commande",
+      discounts: "Remises",
       expenses: "Dépenses",
+      supplierCreditNotes: "Avoirs Fournisseur",
       sectionContacts: "CONTACTS",
       clients: "Clients",
       suppliers: "Fournisseurs",
       sectionStock: "STOCK",
       products: "Produits",
+      sectionPortfolio: "PORTEFEUILLE",
+      portfolio: "Portefeuille",
       sectionSystem: "SYSTÈME",
       settings: "Paramètres",
     },
@@ -1149,6 +1754,7 @@ const en: Dictionary = {
     platform: "Platform",
     features: "Features",
     modules: "Modules",
+    reports: "Reports",
     solutions: "Solutions",
     about: "About",
     pricing: "Pricing",
@@ -1243,9 +1849,9 @@ const en: Dictionary = {
   features: {
     badge: "Features",
     title1: "An ERP built",
-    titleHighlight: "around you",
+    titleHighlight: "for your parapharmacy",
     intro:
-      "Every module is connected and adapts to the way you work, not the other way around. Built to grow with your business.",
+      "Every module—counter, batches, labs, VAT—is connected and adapts to the daily reality of your parapharmacy, not the other way around. Built to grow with your store.",
     learnMore: "Learn more",
     collaboration: {
       title: "Team collaboration",
@@ -1273,27 +1879,27 @@ const en: Dictionary = {
       calculator: {
         title: "Automatic price calculator",
         description:
-          "Enter the tax-incl. price, VAT and discount. The tax-excl. price is computed instantly. No manual math, no errors.",
+          "Enter the tax-incl. price, VAT and discount on your parapharma products. The tax-excl. price is computed instantly. No manual math, no counter errors.",
       },
       margin: {
         title: "Real-time commercial margin",
         description:
-          "Revenue, cost of sales and credits combined to show your exact net margin, detailed and traceable.",
+          "Revenue, lab purchase cost and credits combined to show your exact net margin, by product and by shelf.",
       },
       vat: {
         title: "Tax summary (VAT)",
         description:
-          "Collected, deductible and balance VAT computed automatically. Ready for your filing.",
+          "Collected, deductible and balance VAT computed automatically on your sales and lab purchases. Ready for your filing.",
       },
       alerts: {
-        title: "Smart stock alerts",
+        title: "Stock, batch & expiry alerts",
         description:
-          "Be warned before you run out: low thresholds and negative stock flagged in real time.",
+          "Be warned before a stockout or expiry: low thresholds, negative stock and batches nearing their date flagged in real time.",
       },
       dashboard: {
         title: "Financial dashboard",
         description:
-          "All your key metrics—revenue, net profit, receivables—brought together in one clear, living view.",
+          "All your key metrics—revenue, net profit, receivables and stock value—brought together in one clear, living view.",
       },
     },
     ui: {
@@ -1322,56 +1928,51 @@ const en: Dictionary = {
       expenses: "Expenses",
       netProfit: "Net profit",
       revenueTTC: "Revenue (incl. tax)",
+      monthlyFlow: "Monthly flow",
     },
   },
   industries: {
-    badge: "Our editions",
-    title1: "One solution for",
-    titleHighlight: "every business",
+    badge: "Parapharmacy solution",
+    title1: "The software built for",
+    titleHighlight: "your parapharmacy",
     intro:
-      "SmartGestion comes in industry editions, built for the specific needs of your sector — and a standard edition for any business.",
-    nicheLabel: "Industry edition",
-    standardLabel: "Standard edition",
-    cta: "Explore",
-    items: [
+      "SmartGestion is designed from the ground up for the daily reality of a Moroccan parapharmacy: batch management, expiry tracking, fast sales and VAT-compliant billing.",
+    flagshipLabel: "Our flagship solution",
+    nicheName: "Parapharmacy",
+    nicheTagline: "A dedicated platform, not a generic ERP",
+    highlights: [
       {
-        key: "parapharmacy",
-        name: "Parapharmacy",
-        tagline: "Our flagship solution",
+        title: "Batch & expiry tracking",
         description:
-          "Batch stock, expiry tracking, fast sales and VAT billing — built for the daily reality of a parapharmacy.",
-        tags: ["FIFO expiry", "Sales & VAT", "Suppliers"],
+          "FIFO management by batch with automatic low-stock and expiry alerts, so you never sell an expired product again.",
       },
       {
-        key: "optic",
-        name: "Optic",
-        tagline: "Industry edition",
+        title: "Sales & VAT billing",
         description:
-          "Manage frames, lenses and prescriptions, with customer tracking and sales tailored to optical stores.",
-        tags: ["Frames & lenses", "Prescriptions", "Customer records"],
+          "Check out in seconds, issue compliant invoices and calculate VAT automatically on every sale.",
       },
       {
-        key: "automobile",
-        name: "Automobile",
-        tagline: "Industry edition",
+        title: "Purchasing & suppliers",
         description:
-          "Spare parts, supplier references, quotes and repairs — tailored to garages and auto-parts stores.",
-        tags: ["Parts & references", "Quotes & repairs", "Purchasing"],
+          "Purchase orders, restocking and supplier tracking centralized in a single interface.",
       },
       {
-        key: "standard",
-        name: "Standard",
-        tagline: "Standard edition",
+        title: "Real-time steering",
         description:
-          "The core of an ERP for any business: sales, stock, purchasing, clients and finances in a single platform.",
-        tags: ["Sales & stock", "Purchasing & clients", "Finances"],
+          "Revenue, margins, cash and stock alerts in dirhams, visible at a glance on your dashboard.",
       },
     ],
+    stats: [
+      { value: "-40%", label: "stock-outs" },
+      { value: "2×", label: "faster checkout" },
+      { value: "100%", label: "Morocco VAT compliant" },
+    ],
+    cta: "Request a demo",
     showcase: {
-      eyebrow: "All our editions are available",
-      title: "One platform, built for your industry",
+      eyebrow: "Available today",
+      title: "A complete platform for your parapharmacy",
       description:
-        "SmartGestion brings sales, stock, suppliers and finances into a single platform — tailored by industry and available today on desktop.",
+        "SmartGestion brings sales, stock, suppliers and finances into a single platform — built for parapharmacies and available today on desktop.",
       platform: "Desktop",
       liveBadge: "Available now",
       features: [
@@ -1406,6 +2007,386 @@ const en: Dictionary = {
       videoTitle: "See SmartGestion in action",
       videoSubtitle: "Watch our video tutorial to see how the app works.",
     },
+  },
+  reports: {
+    badge: "Business Intelligence",
+    title1: "Steer every number with",
+    titleHighlight: "advanced reports",
+    intro:
+      "A complete analytics center built for your parapharmacy: counter sales, products, stock & batches, lab purchases, VAT and customers — filtered by period, product, shelf, laboratory or expiry date, with one-click export.",
+    biEyebrow: "Business Intelligence Center",
+    biTitle: "7 analytics dashboards, one 360° view",
+    biDescription:
+      "Switch between analysis modules to understand your business in depth. Each tab combines KPIs, charts and exportable tables.",
+    tabs: [
+      {
+        key: "sales",
+        label: "Sales",
+        title: "Sales analysis",
+        description:
+          "Revenue, margins, VAT collected and sales trends, with a product-by-product breakdown and your best sellers.",
+        kpis: [
+          { label: "Revenue (incl.)", value: "400.00 DH" },
+          { label: "VAT collected", value: "66.67 DH" },
+          { label: "Margin", value: "7.0%" },
+        ],
+      },
+      {
+        key: "products",
+        label: "Products",
+        title: "Product analytics",
+        description:
+          "Turnover, top revenue, top profit, fast- and slow-moving products — to optimize your assortment.",
+        kpis: [
+          { label: "Purchased", value: "20" },
+          { label: "Sold", value: "4" },
+          { label: "Stock value", value: "1,395 DH" },
+        ],
+      },
+      {
+        key: "inventory",
+        label: "Inventory",
+        title: "Stock valuation",
+        description:
+          "Purchase value, selling value, expected profit, stock movements, stock-outs and expiry alerts.",
+        kpis: [
+          { label: "Purchase value", value: "1,395 DH" },
+          { label: "Selling value", value: "1,500 DH" },
+          { label: "Expected profit", value: "105 DH" },
+        ],
+      },
+      {
+        key: "purchases",
+        label: "Purchases",
+        title: "Purchase analysis",
+        description:
+          "Total purchases, trend, cost and purchases by supplier — to negotiate and buy at the best price.",
+        kpis: [
+          { label: "Total purchases", value: "1,860 DH" },
+          { label: "Orders", value: "1" },
+          { label: "Suppliers", value: "1" },
+        ],
+      },
+      {
+        key: "finance",
+        label: "Finance",
+        title: "Profit & loss",
+        description:
+          "Revenue, cost of goods sold, gross profit, operating expenses and net profit, with expense distribution.",
+        kpis: [
+          { label: "Gross profit", value: "28 DH" },
+          { label: "Expenses", value: "1,500 DH" },
+          { label: "Net profit", value: "-1,100 DH" },
+        ],
+      },
+      {
+        key: "customers",
+        label: "Customers",
+        title: "Customer analytics",
+        description:
+          "Top customers, outstanding balances, loyalty rate, returning customers and inactive customers at 30/60/90 days.",
+        kpis: [
+          { label: "Paid", value: "300 DH" },
+          { label: "Loyalty", value: "100%" },
+          { label: "Returning", value: "1" },
+        ],
+      },
+      {
+        key: "performance",
+        label: "Performance",
+        title: "Period comparison",
+        description:
+          "Current vs previous period, revenue/profit/customer growth, per-product profitability and alerts.",
+        kpis: [
+          { label: "Revenue growth", value: "+100%" },
+          { label: "Customer growth", value: "+100%" },
+          { label: "Margin", value: "7%" },
+        ],
+      },
+    ],
+    sales: {
+      kpis: [
+        { label: "Revenue (incl.)", value: "400.00 DH" },
+        { label: "Revenue (excl.)", value: "333.33 DH" },
+        { label: "VAT collected", value: "66.67 DH" },
+        { label: "Total sales", value: "3" },
+        { label: "Avg. invoice", value: "133.33 DH" },
+        { label: "Profit", value: "28.00 DH", accent: "up" },
+        { label: "Margin %", value: "7.0%", accent: "up" },
+      ],
+      evolutionTitle: "Revenue evolution",
+      trendTitle: "Sales trend",
+      productTableTitle: "Sales by product",
+      productCols: { product: "Product", qty: "Qty", revenue: "Revenue", margin: "Margin %", stock: "Stock" },
+      products: [
+        { name: "Sunscreen SPF50", qty: "4", revenue: "400.00 DH", margin: "7.0%", stock: "15", bar: 100 },
+        { name: "Eucerin cream", qty: "3", revenue: "285.00 DH", margin: "12.5%", stock: "22", bar: 71 },
+        { name: "Vitamin C serum", qty: "2", revenue: "240.00 DH", margin: "18.0%", stock: "8", bar: 60 },
+        { name: "Cleansing gel", qty: "2", revenue: "120.00 DH", margin: "9.4%", stock: "31", bar: 30 },
+      ],
+      topTitle: "Best sellers",
+      lowTitle: "Lowest sales",
+      categoryTitle: "Sales by category",
+      categories: [
+        { name: "Sun care", percent: "46%", value: "400 DH", color: "#3FB8C4", slice: 46 },
+        { name: "Face care", percent: "34%", value: "285 DH", color: "#1D6FD6", slice: 34 },
+        { name: "Hygiene", percent: "20%", value: "120 DH", color: "#7C9CF0", slice: 20 },
+      ],
+      clientTableTitle: "Sales by customer",
+      clientCols: { client: "Customer", orders: "Orders", revenue: "Revenue", basket: "Avg. basket", last: "Last order" },
+      clients: [
+        { name: "Ahmed Benani", orders: "2", revenue: "300.00 DH", basket: "150.00 DH", last: "07/22/2026" },
+        { name: "Sofia Alami", orders: "1", revenue: "240.00 DH", basket: "240.00 DH", last: "07/21/2026" },
+        { name: "Karim Idrissi", orders: "1", revenue: "120.00 DH", basket: "120.00 DH", last: "07/20/2026" },
+      ],
+      hourTitle: "Sales by hour",
+      dayTitle: "Sales by day of week",
+      days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      dayValues: [45, 62, 100, 38, 71, 88, 24],
+    },
+    products2: {
+      tableTitle: "Product analysis",
+      cols: {
+        product: "Product",
+        category: "Category",
+        bought: "Qty bought",
+        sold: "Qty sold",
+        revenue: "Revenue",
+        margin: "Margin %",
+        stock: "Stock",
+      },
+      rows: [
+        { name: "Sunscreen SPF50", category: "Sun care", bought: "20", sold: "4", revenue: "400.00 DH", margin: "7.0%", stock: "15" },
+        { name: "Eucerin cream", category: "Face care", bought: "30", sold: "3", revenue: "285.00 DH", margin: "12.5%", stock: "22" },
+        { name: "Vitamin C serum", category: "Face care", bought: "10", sold: "2", revenue: "240.00 DH", margin: "18.0%", stock: "8" },
+        { name: "Cleansing gel", category: "Hygiene", bought: "40", sold: "2", revenue: "120.00 DH", margin: "9.4%", stock: "31" },
+      ],
+      topRevenueTitle: "Top revenue",
+      topProfitTitle: "Top profit",
+      topQtyTitle: "Top quantity",
+      topRevenue: [
+        { name: "Sunscreen", bar: 100 },
+        { name: "Eucerin cream", bar: 71 },
+        { name: "Vit. C serum", bar: 60 },
+        { name: "Cleansing gel", bar: 30 },
+      ],
+      topProfit: [
+        { name: "Vit. C serum", bar: 100 },
+        { name: "Eucerin cream", bar: 78 },
+        { name: "Sunscreen", bar: 52 },
+        { name: "Cleansing gel", bar: 34 },
+      ],
+      topQty: [
+        { name: "Sunscreen", bar: 100 },
+        { name: "Eucerin cream", bar: 75 },
+        { name: "Vit. C serum", bar: 50 },
+        { name: "Cleansing gel", bar: 50 },
+      ],
+      fastTitle: "Fast-moving products",
+      slowTitle: "Slow-moving products",
+      fast: [
+        { name: "Sunscreen", bar: 100 },
+        { name: "Eucerin cream", bar: 82 },
+        { name: "Vit. C serum", bar: 64 },
+      ],
+      slow: [
+        { name: "Cleansing gel", bar: 90 },
+        { name: "Lip balm", bar: 62 },
+        { name: "Gentle shampoo", bar: 40 },
+      ],
+    },
+    inventory2: {
+      kpis: [
+        { label: "Purchase value", value: "1,395.00 DH" },
+        { label: "Selling value", value: "1,500.00 DH" },
+        { label: "Expected profit", value: "105.00 DH", accent: "up" },
+        { label: "Inventory value", value: "1,395.00 DH" },
+      ],
+      movementsTitle: "Stock movements",
+      movementsSubtitle: "Recorded on orders / adjustments",
+      movCols: { date: "Date", product: "Product", type: "Type", qty: "Qty", ref: "Reference" },
+      movements: [
+        { date: "07/22/2026 18:34", product: "Sunscreen SPF50", type: "In", direction: "in", qty: "+20", ref: "PO-2026-0001" },
+        { date: "07/22/2026 15:10", product: "Sunscreen SPF50", type: "Out", direction: "out", qty: "-4", ref: "INV-2026-0003" },
+        { date: "07/21/2026 11:02", product: "Eucerin cream", type: "In", direction: "in", qty: "+30", ref: "PO-2026-0002" },
+        { date: "07/20/2026 16:45", product: "Vitamin C serum", type: "Out", direction: "out", qty: "-2", ref: "INV-2026-0001" },
+      ],
+      lowTitle: "Low stock",
+      lowCols: { product: "Product", stock: "Stock", min: "Min stock", value: "Stock value" },
+      low: [
+        { name: "Vitamin C serum", stock: "8", min: "10", value: "560.00 DH" },
+        { name: "Lip balm", stock: "3", min: "12", value: "90.00 DH" },
+      ],
+      overTitle: "Overstock",
+      overSubtitle: "High stock, low sales",
+      over: [
+        { name: "Cleansing gel", stock: "31", sold: "2", value: "930.00 DH" },
+        { name: "Gentle shampoo", stock: "48", sold: "1", value: "720.00 DH" },
+      ],
+      unsoldTitle: "Unsold products",
+      unsoldSubtitle: "Unsold for 30 / 60 / 90 days",
+      unsoldCols: { product: "Product", stock: "Stock", sold: "Qty sold", days: "Days", value: "Stock value" },
+      unsold: [
+        { name: "Clay mask", stock: "18", sold: "0", days: "34", value: "540.00 DH" },
+        { name: "Argan oil", stock: "9", sold: "0", days: "61", value: "810.00 DH" },
+        { name: "Hand cream", stock: "24", sold: "0", days: "92", value: "480.00 DH" },
+      ],
+    },
+    purchases2: {
+      kpis: [
+        { label: "Total purchases", value: "1,860.00 DH" },
+        { label: "Avg. purchase", value: "1,860.00 DH" },
+        { label: "Purchase cost", value: "1,860.00 DH" },
+        { label: "Number of orders", value: "1" },
+      ],
+      trendTitle: "Purchase trend",
+      supplierTitle: "Purchases by supplier",
+      supplierCols: { supplier: "Supplier", orders: "Orders", products: "Products", amount: "Amount", avg: "Avg. purchase" },
+      suppliers: [
+        { name: "Najib Distribution", orders: "1", products: "1", amount: "1,860.00 DH", avg: "1,860.00 DH" },
+        { name: "Pharma Nord", orders: "2", products: "5", amount: "1,240.00 DH", avg: "620.00 DH" },
+        { name: "CosmoMaroc", orders: "1", products: "3", amount: "780.00 DH", avg: "780.00 DH" },
+      ],
+      productTitle: "Purchases by product",
+      productCols: { product: "Product", qty: "Qty bought", cost: "Avg. cost", supplier: "Supplier", last: "Last purchase" },
+      products: [
+        { name: "Sunscreen SPF50", qty: "20", cost: "93.00 DH", supplier: "Najib Distribution", last: "07/22/2026" },
+        { name: "Eucerin cream", qty: "30", cost: "62.00 DH", supplier: "Pharma Nord", last: "07/21/2026" },
+        { name: "Vitamin C serum", qty: "10", cost: "98.00 DH", supplier: "CosmoMaroc", last: "07/20/2026" },
+      ],
+    },
+    finance2: {
+      plTitle: "Profit & loss",
+      pl: {
+        revenue: "Revenue",
+        revenueVal: "400.00 DH",
+        cogsLabel: "Cost of goods sold",
+        cogsVal: "372.00 DH",
+        grossLabel: "Gross profit",
+        grossVal: "28.00 DH",
+        opexLabel: "Operating expenses",
+        opexVal: "1,500.00 DH",
+        netLabel: "Net profit",
+        netVal: "-1,100.00 DH",
+        netNegative: true,
+      },
+      expensesTitle: "Expense report",
+      expensesCols: { category: "Category", amount: "Amount", percent: "Percentage" },
+      expenses: [
+        { name: "Rent", amount: "1,500.00 DH", percent: "62.5%", color: "#3FB8C4", slice: 62.5 },
+        { name: "Salaries", amount: "600.00 DH", percent: "25.0%", color: "#1D6FD6", slice: 25 },
+        { name: "Electricity", amount: "300.00 DH", percent: "12.5%", color: "#7C9CF0", slice: 12.5 },
+      ],
+      marginTitle: "Commercial margin",
+      marginByProduct: "By product",
+      marginByCategory: "By category",
+      marginCols: { name: "Name", revenue: "Revenue", cost: "Cost", margin: "Margin", marginPct: "Margin %" },
+      marginProducts: [
+        { name: "Sunscreen SPF50", revenue: "400.00 DH", cost: "372.00 DH", margin: "28.00 DH", marginPct: "7.0%" },
+        { name: "Eucerin cream", revenue: "285.00 DH", cost: "249.00 DH", margin: "36.00 DH", marginPct: "12.5%" },
+      ],
+      marginCategories: [
+        { name: "Sun care", revenue: "400.00 DH", cost: "372.00 DH", margin: "28.00 DH", marginPct: "7.0%" },
+        { name: "Face care", revenue: "525.00 DH", cost: "441.00 DH", margin: "84.00 DH", marginPct: "16.0%" },
+      ],
+      cashTitle: "Cash flow",
+      cashKpis: [
+        { label: "Inflows", value: "400.00 DH", accent: "up" },
+        { label: "Outflows", value: "3,360.00 DH", accent: "down" },
+        { label: "Balance", value: "-2,960.00 DH", accent: "down" },
+      ],
+      vatTitle: "VAT report",
+      vatSubtitle: "Ready for tax filing",
+      vat: {
+        collectedLabel: "VAT collected",
+        collectedVal: "66.67 DH",
+        deductibleLabel: "Deductible VAT",
+        deductibleVal: "560.00 DH",
+        balanceLabel: "VAT balance",
+        balanceVal: "-493.33 DH",
+      },
+    },
+    customers2: {
+      topTitle: "Top customers",
+      topCols: { client: "Customer", invoices: "Invoices", revenue: "Revenue", profit: "Profit", avg: "Avg. invoice", due: "Balance due", last: "Last order" },
+      top: [
+        { name: "Ahmed Benani", invoices: "2", revenue: "300.00 DH", profit: "21.00 DH", avg: "150.00 DH", due: "0.00 DH", last: "07/22/2026" },
+        { name: "Sofia Alami", invoices: "1", revenue: "240.00 DH", profit: "43.00 DH", avg: "240.00 DH", due: "120.00 DH", last: "07/21/2026" },
+        { name: "Karim Idrissi", invoices: "1", revenue: "120.00 DH", profit: "11.00 DH", avg: "120.00 DH", due: "0.00 DH", last: "07/20/2026" },
+      ],
+      balanceTitle: "Customer balance",
+      balanceKpis: [
+        { label: "Paid", value: "300.00 DH", accent: "up" },
+        { label: "Outstanding", value: "120.00 DH", accent: "down" },
+        { label: "Credit", value: "0.00 DH", accent: "neutral" },
+      ],
+      loyaltyTitle: "Loyal customers",
+      loyaltyKpis: [
+        { label: "Returning", value: "1" },
+        { label: "One-time", value: "2" },
+        { label: "Loyalty rate", value: "100%" },
+      ],
+      newTitle: "New customers",
+      newValues: [30, 55, 42, 70, 60, 88, 100],
+      inactiveTitle: "Inactive customers",
+      inactiveSubtitle: "No purchase for 30 / 60 / 90 days",
+      inactiveCols: { client: "Customer", revenue: "Revenue", last: "Last order", days: "Days" },
+      inactive: [
+        { name: "Yassine Fahim", revenue: "180.00 DH", last: "06/20/2026", days: "32" },
+        { name: "Nadia Cherkaoui", revenue: "450.00 DH", last: "05/18/2026", days: "65" },
+        { name: "Omar Tazi", revenue: "90.00 DH", last: "04/14/2026", days: "99" },
+      ],
+    },
+    performance2: {
+      compareTitle: "Period comparison",
+      compareSubtitle: "Current period vs previous period",
+      compare: [
+        { label: "Revenue", value: "400.00 DH", prev: "Previous: 0.00 DH", change: "100%", direction: "up" },
+        { label: "Profit", value: "-1,100.00 DH", prev: "Previous: 0.00 DH", change: "—", direction: "flat" },
+        { label: "Expenses", value: "1,500.00 DH", prev: "Previous: 0.00 DH", change: "100%", direction: "up" },
+        { label: "Margin", value: "7%", prev: "Previous: 0%", change: "100%", direction: "up" },
+        { label: "Sales", value: "3", prev: "Previous: 0", change: "100%", direction: "up" },
+        { label: "Purchases", value: "1,860.00 DH", prev: "Previous: 0.00 DH", change: "100%", direction: "up" },
+      ],
+      growthTitle: "Growth report",
+      growth: [
+        { label: "Revenue growth", value: "+100.0%", direction: "up" },
+        { label: "Profit growth", value: "—", direction: "flat" },
+        { label: "Expense growth", value: "+100.0%", direction: "up" },
+        { label: "Customer growth", value: "+100.0%", direction: "up" },
+      ],
+      profitTitle: "Product profitability",
+      profitSubtitle: "Sort by profit, margin, revenue or quantity",
+      profitCols: { product: "Product", qty: "Qty sold", revenue: "Revenue", profit: "Profit", margin: "Margin %" },
+      profit: [
+        { name: "Sunscreen SPF50", qty: "4", revenue: "400.00 DH", profit: "28.00 DH", margin: "7.0%" },
+        { name: "Eucerin cream", qty: "3", revenue: "285.00 DH", profit: "36.00 DH", margin: "12.5%" },
+        { name: "Vitamin C serum", qty: "2", revenue: "240.00 DH", profit: "43.00 DH", margin: "18.0%" },
+      ],
+      alertsTitle: "Alerts",
+      alerts: [
+        { text: "Negative net profit: expenses exceed gross margin.", level: "warning" },
+        { text: "Deductible VAT balance in your favor: -493.33 DH.", level: "info" },
+        { text: "Revenue up 100% vs the previous period.", level: "success" },
+      ],
+    },
+    exportNote: "Export or print any table in one click",
+    exportFormats: ["CSV", "Excel", "PDF", "Print"],
+    modulesTitle: "And much more",
+    modulesSubtitle:
+      "SmartGestion covers your entire parapharmacy management cycle, from quote to balance sheet.",
+    modules: [
+      { name: "Counter sales", description: "Fast point-of-sale checkout with barcode scanning." },
+      { name: "Quotes & invoices", description: "Quotes, invoices and one-click conversion, VAT compliant." },
+      { name: "Delivery notes", description: "Track every delivery and its reception." },
+      { name: "Client & supplier credit notes", description: "Handle returns and credits on both sides." },
+      { name: "Purchase orders & buying", description: "Supplier orders and restocking." },
+      { name: "Discounts", description: "Discounts defined on purchase orders, tracked automatically." },
+      { name: "Expenses", description: "Record and categorize all your operating costs." },
+      { name: "Document portfolio", description: "Documents, folders and notes (cheques, contracts…) centralized." },
+      { name: "Multi-warehouse", description: "Manage stock across several warehouses." },
+    ],
+    cta: "Request a demo",
   },
   modules: {
     badge: "Solutions",
@@ -1570,44 +2551,45 @@ const en: Dictionary = {
       "To build ERP solutions that are simple, accessible and transparent for",
     missionHighlight: "growing businesses",
     whyEyebrow: "Why Choose Us",
-    whyTitle1: "Intelligent ERP solutions",
-    whyTitleHighlight: "to grow",
-    whyTitle2: "your business faster",
+    whyTitle1: "The intelligent ERP",
+    whyTitleHighlight: "built",
+    whyTitle2: "for your parapharmacy",
     whyBody:
-      "SmartGestion brings sales, inventory, purchasing, clients and finances together in one fast, clear platform—built to fit every industry, so you run your business, not your software.",
+      "SmartGestion ParaPharmacie brings counter sales, inventory, batches & expiry dates, lab purchasing, clients and finances together in one fast, clear platform—built for the daily reality of a parapharmacy, so you focus on your patients, not your software.",
     whyCta: "Discover our solutions",
     points: [
       {
-        title: "All-in-one",
+        title: "All-in-one for parapharmacies",
         description:
-          "One platform for your entire business—no more scattered tools.",
+          "Counter, inventory, batches, labs and checkout in one platform—no more scattered tools.",
       },
       {
-        title: "Built for your industry",
+        title: "Built for your trade",
         description:
-          "Specialized modules tailored to your sector and the way you work.",
+          "Batch and expiry tracking, product records by INN and brand, and stockout alerts tailored to your shelves.",
       },
       {
-        title: "Simple & fast",
-        description: "Set up in minutes with guidance from our team.",
+        title: "Fast at the counter",
+        description:
+          "Barcode selling, smooth checkout and setup in minutes with guidance from our team.",
       },
       {
-        title: "Secure data",
+        title: "Compliant & secure",
         description:
-          "Encryption, backups and reporting compliant with your regulations.",
+          "Batch traceability, encryption, backups and reporting compliant with pharmaceutical regulations.",
       },
     ],
-    valuePanelTitle: "One platform, your entire business",
-    valuePanelSubtitle: "Real, measurable results for your company",
+    valuePanelTitle: "One platform, your entire parapharmacy",
+    valuePanelSubtitle: "Real, measurable results for your store",
     valueStats: [
-      { value: "+30%", label: "time saved on daily operations" },
-      { value: "−40%", label: "fewer data-entry errors and duplicates" },
-      { value: "100%", label: "of your data centralized and secured" },
-      { value: "24/7", label: "real-time access to your business" },
+      { value: "+30%", label: "time saved at the counter and on management" },
+      { value: "−40%", label: "less loss from expired products and stockouts" },
+      { value: "100%", label: "of your batches traced and data secured" },
+      { value: "24/7", label: "real-time access to your stock and sales" },
     ],
     valueModulesTitle: "Everything connected in one flow",
-    valueModules: ["Sales", "Inventory", "Purchasing", "Clients", "Finances"],
-    valueFootnote: "A single source of truth, updated in real time.",
+    valueModules: ["Counter", "Stock & Batches", "Labs", "Clients", "Finances"],
+    valueFootnote: "A single source of truth, from counter to stock, in real time.",
   },
   pricing: {
     badge: "Pricing",
@@ -1633,7 +2615,7 @@ const en: Dictionary = {
     desktopBackup: "Data backup",
     promoBadge: "-80% · Launch offer",
     promoOriginalPrice: "1500 DH",
-    promoDiscount: "Save 1201 DH",
+    promoDiscount: "Save 1200 DH",
     promoUrgency: "Limited offer · Few spots left",
     plans: [
       {
@@ -1875,10 +2857,60 @@ const en: Dictionary = {
     },
     statusPending: "Pending",
     statusPaid: "Paid",
+    productAnalysis: {
+      title: "Product Sales Analysis",
+      subtitle: "Product performance (Paid/unpaid invoices & Walk-in sales)",
+      period: "Period",
+      category: "Category (Brand)",
+      allCategories: "All categories",
+      product: "Product",
+      optional: "(optional)",
+      searchProduct: "Search by name, barcode, reference...",
+      tabOverview: "Overview",
+      tabBest: "Best products",
+      tabSlow: "Slow sales",
+      tabSmart: "Smart insights",
+      bestSeller: "BEST SELLER",
+      units: "units",
+      totalSold: "TOTAL PRODUCTS SOLD",
+      revenueTTC: "REVENUE (incl. tax)",
+      totalProfit: "TOTAL PROFIT",
+      differentProducts: "DIFFERENT PRODUCTS",
+      avgPerSale: "AVERAGE VALUE / SALE",
+      top10: "TOP 10 PRODUCTS (REVENUE)",
+      salesBreakdown: "SALES BREAKDOWN",
+    },
+    salesEvolution: {
+      title: "SALES EVOLUTION",
+    },
+    productFilter: {
+      title: "Product Filter",
+      subtitle: "Sales history by product (Invoices & Walk-in sales)",
+      qtySold: "QUANTITY SOLD",
+      totalAmount: "TOTAL AMOUNT",
+      salesCount: "NUMBER OF SALES",
+      avgPrice: "AVERAGE PRICE",
+      differentProducts: "DIFFERENT PRODUCTS",
+      searchResults: "Search in results...",
+      colDate: "Sale date",
+      colProduct: "Product",
+      colBarcode: "Barcode",
+      colQty: "Quantity",
+      colUnitPrice: "Unit price",
+      colTotal: "Total amount",
+      colSource: "Source",
+      colDocument: "Document No.",
+      colClient: "Client",
+      sourcePassing: "Walk-in Sale",
+      sourceInvoice: "Invoice",
+      showing: "Showing 1 to 3 of 3 results",
+      print: "Print",
+    },
     sidebar: {
       sectionDashboard: "DASHBOARD",
       workspace: "Workspace",
       dashboard: "Dashboard",
+      reports: "Reports",
       sectionSales: "SALES",
       invoices: "Invoices",
       quotes: "Quotes",
@@ -1887,12 +2919,16 @@ const en: Dictionary = {
       deliveryNotes: "Delivery Notes",
       sectionPurchases: "PURCHASES",
       purchaseOrders: "Purchase Orders",
+      discounts: "Discounts",
       expenses: "Expenses",
+      supplierCreditNotes: "Supplier Credit Notes",
       sectionContacts: "CONTACTS",
       clients: "Clients",
       suppliers: "Suppliers",
       sectionStock: "STOCK",
       products: "Products",
+      sectionPortfolio: "PORTFOLIO",
+      portfolio: "Portfolio",
       sectionSystem: "SYSTEM",
       settings: "Settings",
     },
@@ -1905,6 +2941,7 @@ const ar: Dictionary = {
     platform: "المنصة",
     features: "الميزات",
     modules: "الوحدات",
+    reports: "التقارير",
     solutions: "الحلول",
     about: "من نحن",
     pricing: "الأثمنة",
@@ -1999,9 +3036,9 @@ const ar: Dictionary = {
   features: {
     badge: "الميزات",
     title1: "برنامج ERP مصمم",
-    titleHighlight: "على قياسك",
+    titleHighlight: "للبارافارماسي ديالك",
     intro:
-      "كل وحدة مربوطة وكتتأقلم مع طريقة الخدمة ديالك، ماشي العكس. مصممة باش تكبر مع نشاطك.",
+      "كل وحدة—الكونتوار، اللوطات، المختبرات، الـTVA—مربوطة وكتتأقلم مع الخدمة اليومية ديال البارافارماسي، ماشي العكس. مصممة باش تكبر مع المحل ديالك.",
     learnMore: "اعرف أكثر",
     collaboration: {
       title: "تعاون الفريق",
@@ -2029,27 +3066,27 @@ const ar: Dictionary = {
       calculator: {
         title: "حاسبة الأثمنة الأوتوماتيكية",
         description:
-          "دخّل الثمن TTC، الـ TVA والتخفيض—الثمن HT كيتحسب فالحين. بلا حساب يدوي، بلا أخطاء.",
+          "دخّل الثمن TTC، الـ TVA والتخفيض على منتجات البارافارما—الثمن HT كيتحسب فالحين. بلا حساب يدوي، بلا أخطاء فالكونتوار.",
       },
       margin: {
         title: "الهامش التجاري فالوقت الحقيقي",
         description:
-          "رقم المعاملات، تكلفة المبيعات والأفوارات مجموعين باش يبان ليك الهامش الصافي بالضبط، مفصّل وقابل للتتبع.",
+          "رقم المعاملات، تكلفة الشراء من المختبر والأفوارات مجموعين باش يبان ليك الهامش الصافي بالضبط، حسب المنتج وحسب الرايون.",
       },
       vat: {
         title: "الملخص الجبائي (TVA)",
         description:
-          "الـ TVA المحصّلة، القابلة للخصم والرصيد كيتحسبو أوتوماتيكياً—جاهزين للتصريح ديالك.",
+          "الـ TVA المحصّلة، القابلة للخصم والرصيد كيتحسبو أوتوماتيكياً على المبيعات وشراء المختبرات—جاهزين للتصريح ديالك.",
       },
       alerts: {
-        title: "تنبيهات المخزون الذكية",
+        title: "تنبيهات المخزون واللوطات والصلاحية",
         description:
-          "تنبّه قبل ما ينفد المخزون: العتبات المنخفضة والمخزون السالب كيتشاورو فالوقت الحقيقي.",
+          "تنبّه قبل ما ينفد المخزون أولا تفوت الصلاحية: العتبات المنخفضة، المخزون السالب واللوطات القريبة من التاريخ كيتشاورو فالوقت الحقيقي.",
       },
       dashboard: {
         title: "لوحة القيادة المالية",
         description:
-          "كل المؤشرات المهمة—رقم المعاملات، الربح الصافي، الديون—مجموعة فعرض واضح وحي.",
+          "كل المؤشرات المهمة—رقم المعاملات، الربح الصافي، الديون وقيمة المخزون—مجموعة فعرض واضح وحي.",
       },
     },
     ui: {
@@ -2078,56 +3115,51 @@ const ar: Dictionary = {
       expenses: "المصاريف",
       netProfit: "الربح الصافي",
       revenueTTC: "رقم المعاملات (TTC)",
+      monthlyFlow: "التدفق الشهري",
     },
   },
   industries: {
-    badge: "النسخ ديالنا",
-    title1: "حل واحد",
-    titleHighlight: "لكل مجال",
+    badge: "حل البارافارماسي",
+    title1: "البرنامج المصمم",
+    titleHighlight: "للبارافارماسي ديالك",
     intro:
-      "SmartGestion كاينة بنسخ حسب المجال، مصممة للحاجيات الخاصة بالقطاع ديالك — وبنسخة ستاندارد لأي مقاولة.",
-    nicheLabel: "نسخة مجال",
-    standardLabel: "نسخة ستاندارد",
-    cta: "اكتشف",
-    items: [
+      "SmartGestion مصمم من الألف للياء لليومي ديال بارافارماسي مغربية: تدبير اللوطات، تتبّع الصلاحية، مبيعات سريعة وفوترة متوافقة مع TVA.",
+    flagshipLabel: "الحل الرئيسي ديالنا",
+    nicheName: "بارافارماسي",
+    nicheTagline: "منصة مخصصة، ماشي ERP عام",
+    highlights: [
       {
-        key: "parapharmacy",
-        name: "بارافارماسي",
-        tagline: "الحل الرئيسي ديالنا",
+        title: "تتبّع اللوطات والصلاحية",
         description:
-          "مخزون حسب اللوط، الصلاحية، مبيعات سريعة وفوترة TVA — مصممة لليومي ديال بارافارماسي.",
-        tags: ["الصلاحية FIFO", "المبيعات وTVA", "الموردون"],
+          "تدبير FIFO حسب اللوط مع تنبيهات أوتوماتيكية للنفاد والصلاحية، باش عمرك ما تبيع منتوج فايت الصلاحية.",
       },
       {
-        key: "optic",
-        name: "البصريات",
-        tagline: "نسخة مجال",
+        title: "المبيعات وفوترة TVA",
         description:
-          "تدبير الإطارات والعدسات والوصفات الطبية، مع تتبّع العملاء ومبيعات مناسبة لمحل البصريات.",
-        tags: ["إطارات وعدسات", "وصفات طبية", "ملفات العملاء"],
+          "خلّص فثواني، صيفط فواتير متوافقة وحسب TVA أوتوماتيكياً فكل عملية بيع.",
       },
       {
-        key: "automobile",
-        name: "السيارات",
-        tagline: "نسخة مجال",
+        title: "الشراء والموردون",
         description:
-          "قطع الغيار، مراجع الموردين، الدوفي والإصلاحات — مناسبة للميكانيك ومحلات قطع الغيار.",
-        tags: ["القطع والمراجع", "دوفي وإصلاحات", "الشراء"],
+          "أوامر الشراء وإعادة التموين وتتبّع الموردين مركزية فواجهة وحدة.",
       },
       {
-        key: "standard",
-        name: "ستاندارد",
-        tagline: "نسخة ستاندارد",
+        title: "قيادة فالوقت الحقيقي",
         description:
-          "أساسيات ERP لأي مقاولة: مبيعات، مخزون، شراء، عملاء ومالية فمنصة وحدة.",
-        tags: ["مبيعات ومخزون", "شراء وعملاء", "المالية"],
+          "رقم المعاملات، الهوامش، الخزينة وتنبيهات المخزون بالدرهم، بنظرة وحدة على لوحة القيادة ديالك.",
       },
     ],
+    stats: [
+      { value: "-40%", label: "من نفاد المخزون" },
+      { value: "2×", label: "أسرع فالأداء" },
+      { value: "100%", label: "متوافق مع TVA المغرب" },
+    ],
+    cta: "اطلب عرضاً تجريبياً",
     showcase: {
-      eyebrow: "جميع النسخ ديالنا متاحة",
-      title: "منصة وحدة، مصممة للمجال ديالك",
+      eyebrow: "متاح دابا",
+      title: "منصة كاملة للبارافارماسي ديالك",
       description:
-        "SmartGestion كتجمع المبيعات، المخزون، الموردين والمالية فمنصة وحدة — مقسّمة حسب المجال ومتاحة دابا على الحاسوب.",
+        "SmartGestion كتجمع المبيعات، المخزون، الموردين والمالية فمنصة وحدة — مصممة للبارافارماسي ومتاحة دابا على الحاسوب.",
       platform: "الحاسوب",
       liveBadge: "متاح دابا",
       features: [
@@ -2158,6 +3190,386 @@ const ar: Dictionary = {
       videoTitle: "شوف SmartGestion فالخدمة",
       videoSubtitle: "تفرج فالفيديو التعليمي ديالنا باش تشوف كيفاش خدام التطبيق.",
     },
+  },
+  reports: {
+    badge: "Business Intelligence",
+    title1: "دبّر كل رقم مع",
+    titleHighlight: "تقارير متقدمة",
+    intro:
+      "مركز تحليل كامل مصمم للبارافارماسي ديالك: البيع فالكونتوار، المنتجات، المخزون واللوطات، شراء المختبرات، الـTVA والزبناء — مفلترة حسب الفترة، المنتج، الرايون، المختبر أو تاريخ الصلاحية، مع تصدير بضغطة وحدة.",
+    biEyebrow: "Business Intelligence Center",
+    biTitle: "7 لوحات تحليل، رؤية وحدة 360°",
+    biDescription:
+      "بدّل بين وحدات التحليل باش تفهم النشاط ديالك بعمق. كل تبويب كيجمع KPIs، رسوم بيانية وجداول قابلة للتصدير.",
+    tabs: [
+      {
+        key: "sales",
+        label: "المبيعات",
+        title: "تحليل المبيعات",
+        description:
+          "رقم المعاملات، الهوامش، TVA المحصّلة وتطور المبيعات، مع التفصيل منتوج بمنتوج وأحسن مبيعاتك.",
+        kpis: [
+          { label: "المداخيل", value: "400٫00 درهم" },
+          { label: "TVA محصّلة", value: "66٫67 درهم" },
+          { label: "الهامش", value: "7٫0%" },
+        ],
+      },
+      {
+        key: "products",
+        label: "المنتجات",
+        title: "تحليل المنتجات",
+        description:
+          "الدوران، أعلى المداخيل، أعلى الأرباح، المنتجات سريعة وبطيئة الدوران — باش تحسّن التشكيلة ديالك.",
+        kpis: [
+          { label: "المشتراة", value: "20" },
+          { label: "المباعة", value: "4" },
+          { label: "قيمة المخزون", value: "1 395 درهم" },
+        ],
+      },
+      {
+        key: "inventory",
+        label: "المخزون",
+        title: "تقييم المخزون",
+        description:
+          "قيمة الشراء، قيمة البيع، الربح المتوقّع، حركات المخزون، النفاد وتنبيهات الصلاحية.",
+        kpis: [
+          { label: "قيمة الشراء", value: "1 395 درهم" },
+          { label: "قيمة البيع", value: "1 500 درهم" },
+          { label: "الربح المتوقّع", value: "105 درهم" },
+        ],
+      },
+      {
+        key: "purchases",
+        label: "الشراء",
+        title: "تحليل الشراء",
+        description:
+          "مجموع المشتريات، التوجّه، التكلفة والمشتريات حسب المورد — باش تفاوض وتشري بأحسن ثمن.",
+        kpis: [
+          { label: "مجموع الشراء", value: "1 860 درهم" },
+          { label: "الطلبات", value: "1" },
+          { label: "الموردون", value: "1" },
+        ],
+      },
+      {
+        key: "finance",
+        label: "المالية",
+        title: "حساب النتيجة",
+        description:
+          "رقم المعاملات، تكلفة البضاعة، الهامش الإجمالي، المصاريف والنتيجة الصافية، مع توزيع المصاريف.",
+        kpis: [
+          { label: "الهامش الإجمالي", value: "28 درهم" },
+          { label: "المصاريف", value: "1 500 درهم" },
+          { label: "النتيجة الصافية", value: "-1 100 درهم" },
+        ],
+      },
+      {
+        key: "customers",
+        label: "العملاء",
+        title: "تحليل العملاء",
+        description:
+          "أفضل العملاء، المستحقات، نسبة الوفاء، العملاء المتكررون والعملاء غير النشطين فـ 30/60/90 يوم.",
+        kpis: [
+          { label: "المحصّل", value: "300 درهم" },
+          { label: "الوفاء", value: "100%" },
+          { label: "متكررون", value: "1" },
+        ],
+      },
+      {
+        key: "performance",
+        label: "الأداء",
+        title: "مقارنة الفترات",
+        description:
+          "الفترة الحالية مقابل السابقة، نمو رقم المعاملات والربح والعملاء، الربحية حسب المنتج والتنبيهات.",
+        kpis: [
+          { label: "نمو المداخيل", value: "+100%" },
+          { label: "نمو العملاء", value: "+100%" },
+          { label: "الهامش", value: "7%" },
+        ],
+      },
+    ],
+    sales: {
+      kpis: [
+        { label: "المداخيل (بالضريبة)", value: "400٫00 درهم" },
+        { label: "المداخيل (بلا ضريبة)", value: "333٫33 درهم" },
+        { label: "TVA محصّلة", value: "66٫67 درهم" },
+        { label: "مجموع المبيعات", value: "3" },
+        { label: "متوسط الفاتورة", value: "133٫33 درهم" },
+        { label: "الربح", value: "28٫00 درهم", accent: "up" },
+        { label: "الهامش %", value: "7٫0%", accent: "up" },
+      ],
+      evolutionTitle: "تطور المداخيل",
+      trendTitle: "توجّه المبيعات",
+      productTableTitle: "المبيعات حسب المنتج",
+      productCols: { product: "المنتج", qty: "الكمية", revenue: "المداخيل", margin: "الهامش %", stock: "المخزون" },
+      products: [
+        { name: "واقي شمس SPF50", qty: "4", revenue: "400٫00 درهم", margin: "7٫0%", stock: "15", bar: 100 },
+        { name: "كريم Eucerin", qty: "3", revenue: "285٫00 درهم", margin: "12٫5%", stock: "22", bar: 71 },
+        { name: "سيروم فيتامين C", qty: "2", revenue: "240٫00 درهم", margin: "18٫0%", stock: "8", bar: 60 },
+        { name: "جل التنظيف", qty: "2", revenue: "120٫00 درهم", margin: "9٫4%", stock: "31", bar: 30 },
+      ],
+      topTitle: "أحسن المبيعات",
+      lowTitle: "أضعف المبيعات",
+      categoryTitle: "المبيعات حسب الصنف",
+      categories: [
+        { name: "واقيات الشمس", percent: "46%", value: "400 درهم", color: "#3FB8C4", slice: 46 },
+        { name: "عناية بالوجه", percent: "34%", value: "285 درهم", color: "#1D6FD6", slice: 34 },
+        { name: "النظافة", percent: "20%", value: "120 درهم", color: "#7C9CF0", slice: 20 },
+      ],
+      clientTableTitle: "المبيعات حسب العميل",
+      clientCols: { client: "العميل", orders: "المشتريات", revenue: "المداخيل", basket: "متوسط السلة", last: "آخر شراء" },
+      clients: [
+        { name: "أحمد بناني", orders: "2", revenue: "300٫00 درهم", basket: "150٫00 درهم", last: "22/07/2026" },
+        { name: "صوفيا علمي", orders: "1", revenue: "240٫00 درهم", basket: "240٫00 درهم", last: "21/07/2026" },
+        { name: "كريم الإدريسي", orders: "1", revenue: "120٫00 درهم", basket: "120٫00 درهم", last: "20/07/2026" },
+      ],
+      hourTitle: "المبيعات حسب الساعة",
+      dayTitle: "المبيعات حسب يوم الأسبوع",
+      days: ["الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"],
+      dayValues: [45, 62, 100, 38, 71, 88, 24],
+    },
+    products2: {
+      tableTitle: "تحليل المنتجات",
+      cols: {
+        product: "المنتج",
+        category: "الصنف",
+        bought: "الكمية المشتراة",
+        sold: "الكمية المباعة",
+        revenue: "المداخيل",
+        margin: "الهامش %",
+        stock: "المخزون",
+      },
+      rows: [
+        { name: "واقي شمس SPF50", category: "واقيات الشمس", bought: "20", sold: "4", revenue: "400٫00 درهم", margin: "7٫0%", stock: "15" },
+        { name: "كريم Eucerin", category: "عناية بالوجه", bought: "30", sold: "3", revenue: "285٫00 درهم", margin: "12٫5%", stock: "22" },
+        { name: "سيروم فيتامين C", category: "عناية بالوجه", bought: "10", sold: "2", revenue: "240٫00 درهم", margin: "18٫0%", stock: "8" },
+        { name: "جل التنظيف", category: "النظافة", bought: "40", sold: "2", revenue: "120٫00 درهم", margin: "9٫4%", stock: "31" },
+      ],
+      topRevenueTitle: "أعلى مداخيل",
+      topProfitTitle: "أعلى ربح",
+      topQtyTitle: "أعلى كمية",
+      topRevenue: [
+        { name: "واقي الشمس", bar: 100 },
+        { name: "كريم Eucerin", bar: 71 },
+        { name: "سيروم فيتامين C", bar: 60 },
+        { name: "جل التنظيف", bar: 30 },
+      ],
+      topProfit: [
+        { name: "سيروم فيتامين C", bar: 100 },
+        { name: "كريم Eucerin", bar: 78 },
+        { name: "واقي الشمس", bar: 52 },
+        { name: "جل التنظيف", bar: 34 },
+      ],
+      topQty: [
+        { name: "واقي الشمس", bar: 100 },
+        { name: "كريم Eucerin", bar: 75 },
+        { name: "سيروم فيتامين C", bar: 50 },
+        { name: "جل التنظيف", bar: 50 },
+      ],
+      fastTitle: "منتجات سريعة الدوران",
+      slowTitle: "منتجات بطيئة الدوران",
+      fast: [
+        { name: "واقي الشمس", bar: 100 },
+        { name: "كريم Eucerin", bar: 82 },
+        { name: "سيروم فيتامين C", bar: 64 },
+      ],
+      slow: [
+        { name: "جل التنظيف", bar: 90 },
+        { name: "بلسم الشفاه", bar: 62 },
+        { name: "شامبو لطيف", bar: 40 },
+      ],
+    },
+    inventory2: {
+      kpis: [
+        { label: "قيمة الشراء", value: "1 395٫00 درهم" },
+        { label: "قيمة البيع", value: "1 500٫00 درهم" },
+        { label: "الربح المتوقّع", value: "105٫00 درهم", accent: "up" },
+        { label: "قيمة الجرد", value: "1 395٫00 درهم" },
+      ],
+      movementsTitle: "حركات المخزون",
+      movementsSubtitle: "مسجّلة عند الطلبات / التعديلات",
+      movCols: { date: "التاريخ", product: "المنتج", type: "النوع", qty: "الكمية", ref: "المرجع" },
+      movements: [
+        { date: "22/07/2026 18:34", product: "واقي شمس SPF50", type: "دخول", direction: "in", qty: "+20", ref: "BC-2026-0001" },
+        { date: "22/07/2026 15:10", product: "واقي شمس SPF50", type: "خروج", direction: "out", qty: "-4", ref: "FAC-2026-0003" },
+        { date: "21/07/2026 11:02", product: "كريم Eucerin", type: "دخول", direction: "in", qty: "+30", ref: "BC-2026-0002" },
+        { date: "20/07/2026 16:45", product: "سيروم فيتامين C", type: "خروج", direction: "out", qty: "-2", ref: "FAC-2026-0001" },
+      ],
+      lowTitle: "مخزون منخفض",
+      lowCols: { product: "المنتج", stock: "المخزون", min: "الحد الأدنى", value: "قيمة المخزون" },
+      low: [
+        { name: "سيروم فيتامين C", stock: "8", min: "10", value: "560٫00 درهم" },
+        { name: "بلسم الشفاه", stock: "3", min: "12", value: "90٫00 درهم" },
+      ],
+      overTitle: "مخزون زائد",
+      overSubtitle: "مخزون مرتفع، مبيعات ضعيفة",
+      over: [
+        { name: "جل التنظيف", stock: "31", sold: "2", value: "930٫00 درهم" },
+        { name: "شامبو لطيف", stock: "48", sold: "1", value: "720٫00 درهم" },
+      ],
+      unsoldTitle: "منتجات غير مباعة",
+      unsoldSubtitle: "غير مباعة منذ 30 / 60 / 90 يوم",
+      unsoldCols: { product: "المنتج", stock: "المخزون", sold: "الكمية المباعة", days: "الأيام", value: "قيمة المخزون" },
+      unsold: [
+        { name: "قناع الطين", stock: "18", sold: "0", days: "34", value: "540٫00 درهم" },
+        { name: "زيت الأركان", stock: "9", sold: "0", days: "61", value: "810٫00 درهم" },
+        { name: "كريم اليدين", stock: "24", sold: "0", days: "92", value: "480٫00 درهم" },
+      ],
+    },
+    purchases2: {
+      kpis: [
+        { label: "مجموع المشتريات", value: "1 860٫00 درهم" },
+        { label: "متوسط الشراء", value: "1 860٫00 درهم" },
+        { label: "تكلفة الشراء", value: "1 860٫00 درهم" },
+        { label: "عدد الطلبات", value: "1" },
+      ],
+      trendTitle: "توجّه المشتريات",
+      supplierTitle: "المشتريات حسب المورد",
+      supplierCols: { supplier: "المورد", orders: "الطلبات", products: "المنتجات", amount: "المبلغ", avg: "متوسط الشراء" },
+      suppliers: [
+        { name: "نجيب للتوزيع", orders: "1", products: "1", amount: "1 860٫00 درهم", avg: "1 860٫00 درهم" },
+        { name: "فارما نور", orders: "2", products: "5", amount: "1 240٫00 درهم", avg: "620٫00 درهم" },
+        { name: "كوزمو المغرب", orders: "1", products: "3", amount: "780٫00 درهم", avg: "780٫00 درهم" },
+      ],
+      productTitle: "المشتريات حسب المنتج",
+      productCols: { product: "المنتج", qty: "الكمية المشتراة", cost: "متوسط التكلفة", supplier: "المورد", last: "آخر شراء" },
+      products: [
+        { name: "واقي شمس SPF50", qty: "20", cost: "93٫00 درهم", supplier: "نجيب للتوزيع", last: "22/07/2026" },
+        { name: "كريم Eucerin", qty: "30", cost: "62٫00 درهم", supplier: "فارما نور", last: "21/07/2026" },
+        { name: "سيروم فيتامين C", qty: "10", cost: "98٫00 درهم", supplier: "كوزمو المغرب", last: "20/07/2026" },
+      ],
+    },
+    finance2: {
+      plTitle: "حساب النتيجة",
+      pl: {
+        revenue: "رقم المعاملات",
+        revenueVal: "400٫00 درهم",
+        cogsLabel: "تكلفة البضاعة المباعة",
+        cogsVal: "372٫00 درهم",
+        grossLabel: "الهامش الإجمالي",
+        grossVal: "28٫00 درهم",
+        opexLabel: "مصاريف التشغيل",
+        opexVal: "1 500٫00 درهم",
+        netLabel: "النتيجة الصافية",
+        netVal: "-1 100٫00 درهم",
+        netNegative: true,
+      },
+      expensesTitle: "تقرير المصاريف",
+      expensesCols: { category: "الصنف", amount: "المبلغ", percent: "النسبة" },
+      expenses: [
+        { name: "الكراء", amount: "1 500٫00 درهم", percent: "62٫5%", color: "#3FB8C4", slice: 62.5 },
+        { name: "الأجور", amount: "600٫00 درهم", percent: "25٫0%", color: "#1D6FD6", slice: 25 },
+        { name: "الكهرباء", amount: "300٫00 درهم", percent: "12٫5%", color: "#7C9CF0", slice: 12.5 },
+      ],
+      marginTitle: "الهامش التجاري",
+      marginByProduct: "حسب المنتج",
+      marginByCategory: "حسب الصنف",
+      marginCols: { name: "الاسم", revenue: "المداخيل", cost: "التكلفة", margin: "الهامش", marginPct: "الهامش %" },
+      marginProducts: [
+        { name: "واقي شمس SPF50", revenue: "400٫00 درهم", cost: "372٫00 درهم", margin: "28٫00 درهم", marginPct: "7٫0%" },
+        { name: "كريم Eucerin", revenue: "285٫00 درهم", cost: "249٫00 درهم", margin: "36٫00 درهم", marginPct: "12٫5%" },
+      ],
+      marginCategories: [
+        { name: "واقيات الشمس", revenue: "400٫00 درهم", cost: "372٫00 درهم", margin: "28٫00 درهم", marginPct: "7٫0%" },
+        { name: "عناية بالوجه", revenue: "525٫00 درهم", cost: "441٫00 درهم", margin: "84٫00 درهم", marginPct: "16٫0%" },
+      ],
+      cashTitle: "التدفق النقدي",
+      cashKpis: [
+        { label: "المداخيل", value: "400٫00 درهم", accent: "up" },
+        { label: "المصاريف", value: "3 360٫00 درهم", accent: "down" },
+        { label: "الرصيد", value: "-2 960٫00 درهم", accent: "down" },
+      ],
+      vatTitle: "تقرير TVA",
+      vatSubtitle: "جاهز للتصريح الضريبي",
+      vat: {
+        collectedLabel: "TVA محصّلة",
+        collectedVal: "66٫67 درهم",
+        deductibleLabel: "TVA قابلة للخصم",
+        deductibleVal: "560٫00 درهم",
+        balanceLabel: "رصيد TVA",
+        balanceVal: "-493٫33 درهم",
+      },
+    },
+    customers2: {
+      topTitle: "أفضل العملاء",
+      topCols: { client: "العميل", invoices: "الفواتير", revenue: "المداخيل", profit: "الربح", avg: "متوسط الفاتورة", due: "الرصيد المستحق", last: "آخر شراء" },
+      top: [
+        { name: "أحمد بناني", invoices: "2", revenue: "300٫00 درهم", profit: "21٫00 درهم", avg: "150٫00 درهم", due: "0٫00 درهم", last: "22/07/2026" },
+        { name: "صوفيا علمي", invoices: "1", revenue: "240٫00 درهم", profit: "43٫00 درهم", avg: "240٫00 درهم", due: "120٫00 درهم", last: "21/07/2026" },
+        { name: "كريم الإدريسي", invoices: "1", revenue: "120٫00 درهم", profit: "11٫00 درهم", avg: "120٫00 درهم", due: "0٫00 درهم", last: "20/07/2026" },
+      ],
+      balanceTitle: "رصيد العملاء",
+      balanceKpis: [
+        { label: "المدفوع", value: "300٫00 درهم", accent: "up" },
+        { label: "المتبقّي", value: "120٫00 درهم", accent: "down" },
+        { label: "الائتمان", value: "0٫00 درهم", accent: "neutral" },
+      ],
+      loyaltyTitle: "العملاء الأوفياء",
+      loyaltyKpis: [
+        { label: "متكررون", value: "1" },
+        { label: "مرة واحدة", value: "2" },
+        { label: "نسبة الوفاء", value: "100%" },
+      ],
+      newTitle: "عملاء جدد",
+      newValues: [30, 55, 42, 70, 60, 88, 100],
+      inactiveTitle: "عملاء غير نشطين",
+      inactiveSubtitle: "بلا شراء منذ 30 / 60 / 90 يوم",
+      inactiveCols: { client: "العميل", revenue: "المداخيل", last: "آخر شراء", days: "الأيام" },
+      inactive: [
+        { name: "ياسين فهيم", revenue: "180٫00 درهم", last: "20/06/2026", days: "32" },
+        { name: "نادية الشرقاوي", revenue: "450٫00 درهم", last: "18/05/2026", days: "65" },
+        { name: "عمر التازي", revenue: "90٫00 درهم", last: "14/04/2026", days: "99" },
+      ],
+    },
+    performance2: {
+      compareTitle: "مقارنة الفترات",
+      compareSubtitle: "الفترة الحالية مقابل الفترة السابقة",
+      compare: [
+        { label: "رقم المعاملات", value: "400٫00 درهم", prev: "السابق: 0٫00 درهم", change: "100%", direction: "up" },
+        { label: "الربح", value: "-1 100٫00 درهم", prev: "السابق: 0٫00 درهم", change: "—", direction: "flat" },
+        { label: "المصاريف", value: "1 500٫00 درهم", prev: "السابق: 0٫00 درهم", change: "100%", direction: "up" },
+        { label: "الهامش", value: "7%", prev: "السابق: 0%", change: "100%", direction: "up" },
+        { label: "المبيعات", value: "3", prev: "السابق: 0", change: "100%", direction: "up" },
+        { label: "المشتريات", value: "1 860٫00 درهم", prev: "السابق: 0٫00 درهم", change: "100%", direction: "up" },
+      ],
+      growthTitle: "تقرير النمو",
+      growth: [
+        { label: "نمو المداخيل", value: "+100٫0%", direction: "up" },
+        { label: "نمو الربح", value: "—", direction: "flat" },
+        { label: "نمو المصاريف", value: "+100٫0%", direction: "up" },
+        { label: "نمو العملاء", value: "+100٫0%", direction: "up" },
+      ],
+      profitTitle: "ربحية المنتجات",
+      profitSubtitle: "رتّب حسب الربح أو الهامش أو المداخيل أو الكمية",
+      profitCols: { product: "المنتج", qty: "الكمية المباعة", revenue: "المداخيل", profit: "الربح", margin: "الهامش %" },
+      profit: [
+        { name: "واقي شمس SPF50", qty: "4", revenue: "400٫00 درهم", profit: "28٫00 درهم", margin: "7٫0%" },
+        { name: "كريم Eucerin", qty: "3", revenue: "285٫00 درهم", profit: "36٫00 درهم", margin: "12٫5%" },
+        { name: "سيروم فيتامين C", qty: "2", revenue: "240٫00 درهم", profit: "43٫00 درهم", margin: "18٫0%" },
+      ],
+      alertsTitle: "التنبيهات",
+      alerts: [
+        { text: "ربح صافٍ سلبي: المصاريف تتجاوز الهامش الإجمالي.", level: "warning" },
+        { text: "رصيد TVA قابل للخصم لصالحك: -493٫33 درهم.", level: "info" },
+        { text: "ارتفاع المداخيل بنسبة 100% مقارنة بالفترة السابقة.", level: "success" },
+      ],
+    },
+    exportNote: "صدّر أو اطبع أي جدول بضغطة وحدة",
+    exportFormats: ["CSV", "Excel", "PDF", "طباعة"],
+    modulesTitle: "وأكثر بكثير",
+    modulesSubtitle:
+      "SmartGestion كيغطّي دورة التدبير كاملة ديال البارافارماسي ديالك، من الدوفي حتى الحصيلة.",
+    modules: [
+      { name: "البيع فالكونطوار", description: "أداء سريع فالكونطوار مع قراءة الباركود." },
+      { name: "الدوفيات والفواتير", description: "دوفيات، فواتير وتحويل بضغطة وحدة، متوافقة مع TVA." },
+      { name: "سندات التسليم", description: "تبّع كل تسليم واستلامه." },
+      { name: "إشعارات دائنة للعملاء والموردين", description: "دبّر المرتجعات والإشعارات من الجهتين." },
+      { name: "أوامر الشراء والاقتناء", description: "طلبات الموردين وإعادة التموين." },
+      { name: "التخفيضات", description: "تخفيضات محددة على أوامر الشراء، متتبّعة أوتوماتيكياً." },
+      { name: "المصاريف", description: "سجّل وصنّف جميع مصاريفك." },
+      { name: "محفظة الوثائق", description: "وثائق، ملفات وملاحظات (شيكات، عقود…) مركزية." },
+      { name: "تعدد المستودعات", description: "دبّر المخزون على عدة مستودعات." },
+    ],
+    cta: "اطلب عرضاً تجريبياً",
   },
   modules: {
     badge: "الحلول",
@@ -2317,41 +3729,41 @@ const ar: Dictionary = {
       "نبنيو حلول ERP ساهلة، فمتناول الجميع وشفّافة بالنسبة لـ",
     missionHighlight: "المهن اللي كتنمى",
     whyEyebrow: "علاش تختارنا",
-    whyTitle1: "حلول ERP",
-    whyTitleHighlight: "ذكية",
-    whyTitle2: "باش تكبّر نشاطك بسرعة",
+    whyTitle1: "ERP",
+    whyTitleHighlight: "ذكي",
+    whyTitle2: "مصمم للبارافارماسي ديالك",
     whyBody:
-      "SmartGestion كتجمع المبيعات والمخزون والشراء والزبناء والمالية فمنصة وحدة سريعة وواضحة—مصممة باش تتأقلم مع كل مهنة، باش تسيّر نشاطك ماشي البرنامج ديالك.",
+      "SmartGestion ParaPharmacie كتجمع البيع فالكونتوار والمخزون واللوطات وتواريخ الصلاحية وشراء المختبرات والزبناء والمالية فمنصة وحدة سريعة وواضحة—مصممة للخدمة اليومية ديال البارافارماسي، باش تهتم بمرضاك ماشي بالبرنامج ديالك.",
     whyCta: "اكتشف حلولنا",
     points: [
       {
-        title: "كلشي فمنصة وحدة",
-        description: "منصة وحدة لكامل نشاطك—سالينا مع الأدوات المبعثرة.",
+        title: "كلشي فمنصة وحدة للبارافارماسي",
+        description: "الكونتوار، المخزون، اللوطات، المختبرات والصندوق فمنصة وحدة—سالينا مع الأدوات المبعثرة.",
       },
       {
         title: "مصمم لمهنتك",
-        description: "وحدات متخصصة متأقلمة مع قطاعك وطريقة خدمتك.",
+        description: "تتبع اللوطات وتواريخ الصلاحية، بطائق المنتجات بالـDCI والماركة، وتنبيهات النفاد على حسب الرايون ديالك.",
       },
       {
-        title: "ساهل وسريع",
-        description: "تهييء فدقائق مع مرافقة من الفريق ديالنا.",
+        title: "ساهل وسريع فالكونتوار",
+        description: "البيع بالباركود، صندوق سلس وتهييء فدقائق مع مرافقة من الفريق ديالنا.",
       },
       {
-        title: "بيانات آمنة",
-        description: "تشفير ونسخ احتياطي وتقارير مطابقة للتنظيمات ديالك.",
+        title: "مطابق وآمن",
+        description: "تتبع اللوطات، تشفير، نسخ احتياطي وتقارير مطابقة للتنظيمات الصيدلية.",
       },
     ],
-    valuePanelTitle: "منصة وحدة لكامل نشاطك",
-    valuePanelSubtitle: "نتائج ملموسة لشركتك",
+    valuePanelTitle: "منصة وحدة لكامل البارافارماسي ديالك",
+    valuePanelSubtitle: "نتائج ملموسة للمحل ديالك",
     valueStats: [
-      { value: "+30%", label: "ربح فالوقت فالتدبير اليومي" },
-      { value: "−40%", label: "تقليل الأخطاء والتكرار فالإدخال" },
-      { value: "100%", label: "ديال بياناتك مجمعة وآمنة" },
-      { value: "24/7", label: "ولوج فالوقت الحقيقي لنشاطك" },
+      { value: "+30%", label: "ربح فالوقت فالكونتوار وفالتدبير" },
+      { value: "−40%", label: "تقليل الخسائر ديال المنتجات الفايتة والنفاد" },
+      { value: "100%", label: "ديال اللوطات متتبعة وبياناتك آمنة" },
+      { value: "24/7", label: "ولوج فالوقت الحقيقي للمخزون والمبيعات" },
     ],
     valueModulesTitle: "كلشي مربوط فسير واحد",
-    valueModules: ["المبيعات", "المخزون", "المشتريات", "الزبناء", "المالية"],
-    valueFootnote: "مصدر واحد للحقيقة، محيّن فالوقت الحقيقي.",
+    valueModules: ["الكونتوار", "المخزون واللوطات", "المختبرات", "الزبناء", "المالية"],
+    valueFootnote: "مصدر واحد للحقيقة، من الكونتوار للمخزون، فالوقت الحقيقي.",
   },
   pricing: {
     badge: "الأثمنة",
@@ -2377,7 +3789,7 @@ const ar: Dictionary = {
     desktopBackup: "نسخة احتياطية للبيانات",
     promoBadge: "-80% · عرض الإطلاق",
     promoOriginalPrice: "1500 درهم",
-    promoDiscount: "وفّر 1201 درهم",
+    promoDiscount: "وفّر 1200 درهم",
     promoUrgency: "عرض محدود · أماكن قليلة متبقية",
     plans: [
       {
@@ -2618,10 +4030,60 @@ const ar: Dictionary = {
     },
     statusPending: "معلقة",
     statusPaid: "مدفوعة",
+    productAnalysis: {
+      title: "تحليل مبيعات المنتجات",
+      subtitle: "أداء المنتجات (الفواتير المدفوعة/غير المدفوعة ومبيعات الشباك)",
+      period: "الفترة",
+      category: "الفئة (العلامة التجارية)",
+      allCategories: "جميع الفئات",
+      product: "المنتج",
+      optional: "(اختياري)",
+      searchProduct: "البحث بالاسم أو الباركود أو المرجع...",
+      tabOverview: "نظرة عامة",
+      tabBest: "أفضل المنتجات",
+      tabSlow: "المبيعات البطيئة",
+      tabSmart: "تحليلات ذكية",
+      bestSeller: "الأكثر مبيعًا",
+      units: "وحدات",
+      totalSold: "إجمالي المنتجات المباعة",
+      revenueTTC: "رقم المعاملات (شامل الضريبة)",
+      totalProfit: "إجمالي الربح",
+      differentProducts: "منتجات مختلفة",
+      avgPerSale: "متوسط القيمة / البيع",
+      top10: "أفضل 10 منتجات (رقم المعاملات)",
+      salesBreakdown: "توزيع المبيعات",
+    },
+    salesEvolution: {
+      title: "تطور المبيعات",
+    },
+    productFilter: {
+      title: "تصفية المنتج",
+      subtitle: "سجل المبيعات حسب المنتج (الفواتير ومبيعات الشباك)",
+      qtySold: "الكمية المباعة",
+      totalAmount: "المبلغ الإجمالي",
+      salesCount: "عدد المبيعات",
+      avgPrice: "متوسط السعر",
+      differentProducts: "منتجات مختلفة",
+      searchResults: "البحث في النتائج...",
+      colDate: "تاريخ البيع",
+      colProduct: "المنتج",
+      colBarcode: "الباركود",
+      colQty: "الكمية",
+      colUnitPrice: "سعر الوحدة",
+      colTotal: "المبلغ الإجمالي",
+      colSource: "المصدر",
+      colDocument: "رقم المستند",
+      colClient: "العميل",
+      sourcePassing: "بيع شباك",
+      sourceInvoice: "فاتورة",
+      showing: "عرض 1 إلى 3 من 3 نتائج",
+      print: "طباعة",
+    },
     sidebar: {
       sectionDashboard: "لوحة التحكم",
       workspace: "مساحة العمل",
       dashboard: "لوحة التحكم",
+      reports: "التقارير",
       sectionSales: "المبيعات",
       invoices: "الفواتير",
       quotes: "العروض التجارية",
@@ -2630,12 +4092,16 @@ const ar: Dictionary = {
       deliveryNotes: "إيصالات التسليم",
       sectionPurchases: "المشتريات",
       purchaseOrders: "أوامر الشراء",
+      discounts: "الخصومات",
       expenses: "المصروفات",
+      supplierCreditNotes: "إشعارات دائن المورد",
       sectionContacts: "جهات الاتصال",
       clients: "العملاء",
       suppliers: "الموردون",
       sectionStock: "المخزون",
       products: "المنتجات",
+      sectionPortfolio: "المحفظة",
+      portfolio: "المحفظة",
       sectionSystem: "النظام",
       settings: "الإعدادات",
     },

@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { Features } from "@/components/sections/features";
+import { Reports } from "@/components/sections/reports";
 import { Industries } from "@/components/sections/industries";
 import { About } from "@/components/sections/about";
 import { Pricing } from "@/components/sections/pricing";
@@ -15,6 +16,7 @@ export default function Home() {
       <About />
       <TrustBar />
       <Features />
+      <Reports />
       <Industries />
       <Pricing />
       <Testimonials />

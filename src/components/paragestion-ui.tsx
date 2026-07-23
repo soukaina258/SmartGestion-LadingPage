@@ -31,6 +31,19 @@ import {
   AlertTriangle,
   PieChart,
   Link2,
+  BarChart3,
+  Percent,
+  Wallet,
+  Layers,
+  Trophy,
+  Search,
+  Tag,
+  ListChecks,
+  DollarSign as DollarIcon,
+  FileSpreadsheet,
+  Printer,
+  ArrowUpDown,
+  ShoppingBag,
 } from "lucide-react";
 import { useI18n } from "@/i18n/provider";
 import type { Dictionary } from "@/i18n/translations";
@@ -122,6 +135,7 @@ function buildSidebar(d: DashT) {
     { section: d.sidebar.sectionDashboard },
     { icon: LayoutGrid, label: d.sidebar.workspace },
     { icon: LayoutDashboard, label: d.sidebar.dashboard, active: true },
+    { icon: BarChart3, label: d.sidebar.reports },
     { section: d.sidebar.sectionSales },
     { icon: FileText, label: d.sidebar.invoices },
     { icon: FileSignature, label: d.sidebar.quotes },
@@ -130,13 +144,16 @@ function buildSidebar(d: DashT) {
     { icon: Truck, label: d.sidebar.deliveryNotes },
     { section: d.sidebar.sectionPurchases },
     { icon: ClipboardList, label: d.sidebar.purchaseOrders },
+    { icon: Percent, label: d.sidebar.discounts },
     { icon: DollarSign, label: d.sidebar.expenses },
-    { icon: RotateCcw, label: "Avoirs Fournisseur" },
+    { icon: RotateCcw, label: d.sidebar.supplierCreditNotes },
     { section: d.sidebar.sectionContacts },
     { icon: Users, label: d.sidebar.clients },
     { icon: Building2, label: d.sidebar.suppliers },
     { section: d.sidebar.sectionStock },
     { icon: Boxes, label: d.sidebar.products },
+    { section: d.sidebar.sectionPortfolio },
+    { icon: Wallet, label: d.sidebar.portfolio },
     { section: d.sidebar.sectionSystem },
     { icon: Settings, label: d.sidebar.settings },
   ];
@@ -217,6 +234,33 @@ export function ParaGestionDesktop() {
     d.filters.week,
     d.filters.month,
     d.filters.year,
+  ];
+
+  const pa = d.productAnalysis;
+  const pf = d.productFilter;
+
+  const paTabs = [pa.tabOverview, pa.tabBest, pa.tabSlow, pa.tabSmart];
+
+  const paKpis = [
+    { label: pa.totalSold, value: "4", icon: Layers, tone: "blue" },
+    { label: pa.revenueTTC, value: "400,00 DH", icon: DollarIcon, tone: "emerald" },
+    { label: pa.totalProfit, value: "28,00 DH", icon: TrendingUp, tone: "indigo" },
+    { label: pa.differentProducts, value: "1", icon: Package, tone: "rose" },
+    { label: pa.avgPerSale, value: "133,33 DH", icon: TrendingUp, tone: "amber" },
+  ];
+
+  const pfKpis = [
+    { label: pf.qtySold, value: "4", icon: Layers, tone: "blue" },
+    { label: pf.totalAmount, value: "400,00 DH", icon: DollarIcon, tone: "emerald" },
+    { label: pf.salesCount, value: "3", icon: ListChecks, tone: "indigo" },
+    { label: pf.avgPrice, value: "100,00 DH", icon: Tag, tone: "amber" },
+    { label: pf.differentProducts, value: "1", icon: Package, tone: "rose" },
+  ];
+
+  const pfRows = [
+    { date: "22/07/2026", product: "ecran solaire", barcode: "1234567886", qty: "1", unit: "100,00 DH", total: "100,00 DH", source: pf.sourcePassing, passing: true, doc: "VP-2026-0001", client: "—" },
+    { date: "22/07/2026", product: "ecran solaire", barcode: "1234567886", qty: "1", unit: "100,00 DH", total: "100,00 DH", source: pf.sourceInvoice, passing: false, doc: "FAC-2026-0003", client: "AHMED BENANI" },
+    { date: "22/07/2026", product: "ecran solaire", barcode: "1234567886", qty: "2", unit: "100,00 DH", total: "200,00 DH", source: pf.sourceInvoice, passing: false, doc: "FAC-2026-0001", client: "AHMED BENANI" },
   ];
 
   return (
@@ -658,6 +702,389 @@ export function ParaGestionDesktop() {
               ))}
             </div>
           </div>
+
+          {/* ===== Analyse des Ventes Produits ===== */}
+          <div className="mt-2.5 rounded-xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+            {/* section header */}
+            <div className="flex items-center gap-1.5 rounded-t-xl bg-gradient-to-r from-emerald-50/70 to-transparent p-3">
+              <span className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-100 text-emerald-600">
+                <Layers className="h-3 w-3" />
+              </span>
+              <div className="leading-tight">
+                <p className="text-[9px] font-bold text-slate-700">{pa.title}</p>
+                <p className="text-[6px] text-slate-400">{pa.subtitle}</p>
+              </div>
+            </div>
+
+            <div className="p-3 pt-1">
+              {/* filters row */}
+              <div className="flex flex-wrap items-end justify-between gap-2">
+                <div>
+                  <p className="mb-1 flex items-center gap-1 text-[6px] font-semibold text-slate-500">
+                    <Calendar className="h-2 w-2" /> {pa.period}
+                  </p>
+                  <div className="flex items-center gap-1">
+                    {filters.map((p) => (
+                      <span
+                        key={p}
+                        className={`rounded-md px-1.5 py-[3px] text-[6.5px] ${
+                          p === d.filters.month
+                            ? "bg-emerald-500 font-semibold text-white"
+                            : "border border-slate-200 text-slate-500"
+                        }`}
+                      >
+                        {p}
+                      </span>
+                    ))}
+                    <span className="flex items-center gap-1 rounded-md border border-slate-200 px-1.5 py-[3px] text-[6.5px] text-slate-500">
+                      {d.filters.month} <ChevronDown className="h-2 w-2" />
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-end gap-2">
+                  <div>
+                    <p className="mb-1 flex items-center gap-1 text-[6px] font-semibold text-slate-500">
+                      <Tag className="h-2 w-2" /> {pa.category}
+                    </p>
+                    <span className="flex w-28 items-center justify-between gap-1 rounded-md border border-slate-200 px-1.5 py-[3px] text-[6.5px] text-slate-500">
+                      {pa.allCategories} <ChevronDown className="h-2 w-2" />
+                    </span>
+                  </div>
+                  <div>
+                    <p className="mb-1 flex items-center gap-1 text-[6px] font-semibold text-slate-500">
+                      <Package className="h-2 w-2" /> {pa.product}{" "}
+                      <span className="font-normal text-slate-400">{pa.optional}</span>
+                    </p>
+                    <span className="flex w-40 items-center gap-1 rounded-md border border-slate-200 px-1.5 py-[3px] text-[6.5px] text-slate-400">
+                      <Search className="h-2 w-2" /> {pa.searchProduct}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <p className="mt-1.5 flex items-center gap-1 text-[6px] text-slate-400">
+                <Calendar className="h-2 w-2" /> 01/07/2026 — 23/07/2026
+              </p>
+
+              {/* tabs */}
+              <div className="mt-2 flex items-center gap-3 border-b border-slate-200">
+                {paTabs.map((tab, i) => (
+                  <span
+                    key={tab}
+                    className={`-mb-px border-b-2 pb-1 text-[7px] ${
+                      i === 0
+                        ? "border-emerald-500 font-semibold text-emerald-600"
+                        : "border-transparent text-slate-400"
+                    }`}
+                  >
+                    {tab}
+                  </span>
+                ))}
+              </div>
+
+              {/* KPI cards */}
+              <div className="mt-2.5 grid grid-cols-6 gap-2">
+                {/* best seller card */}
+                <div className="rounded-lg border border-amber-200 bg-amber-50/50 p-2">
+                  <p className="flex items-center gap-1 text-[6px] font-semibold uppercase tracking-wide text-amber-600">
+                    <Trophy className="h-2 w-2" /> {pa.bestSeller}
+                  </p>
+                  <div className="mt-1 flex items-center gap-1">
+                    <span className="flex h-4 w-4 items-center justify-center rounded bg-white">
+                      <Package className="h-2.5 w-2.5 text-slate-400" />
+                    </span>
+                    <div className="leading-tight">
+                      <p className="text-[7px] font-bold text-slate-700">
+                        ecran solaire
+                      </p>
+                      <p className="text-[5px] text-slate-400">
+                        4 {pa.units} · 400,00 DH
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {paKpis.map((k) => (
+                  <div
+                    key={k.label}
+                    className="rounded-lg border border-slate-200 bg-white p-2"
+                  >
+                    <div className="flex justify-end">
+                      <span
+                        className={`flex h-4 w-4 items-center justify-center rounded ${TONE[k.tone]}`}
+                      >
+                        <k.icon className="h-2.5 w-2.5" />
+                      </span>
+                    </div>
+                    <p className="mt-0.5 text-[5.5px] font-semibold uppercase tracking-wide text-slate-400">
+                      {k.label}
+                    </p>
+                    <p className="text-[10px] font-extrabold text-slate-800">
+                      {k.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* charts row */}
+              <div className="mt-2.5 grid grid-cols-2 gap-2.5">
+                {/* top 10 bar chart */}
+                <div className="rounded-lg border border-slate-200 bg-white p-2.5">
+                  <p className="mb-1.5 text-[7px] font-semibold uppercase tracking-wide text-slate-500">
+                    {pa.top10}
+                  </p>
+                  <div className="flex items-center gap-1">
+                    <span className="w-12 text-end text-[5px] text-slate-400">
+                      ecran solaire
+                    </span>
+                    <div className="h-3 flex-1 rounded-sm bg-emerald-500" />
+                  </div>
+                  <div className="ms-12 mt-1 flex justify-between text-[5px] text-slate-300">
+                    {["0,00", "100,00", "200,00", "300,00", "400,00"].map((n) => (
+                      <span key={n}>{n}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* répartition donut */}
+                <div className="rounded-lg border border-slate-200 bg-white p-2.5">
+                  <p className="mb-1.5 text-[7px] font-semibold uppercase tracking-wide text-slate-500">
+                    {pa.salesBreakdown}
+                  </p>
+                  <div className="flex items-center justify-center gap-2">
+                    <span className="text-[8px] font-bold text-emerald-600">
+                      100%
+                    </span>
+                    <Donut
+                      segments={[{ value: 100, color: "#10b981" }]}
+                      centerLabel=""
+                      centerValue=""
+                    />
+                  </div>
+                  <div className="mt-1 flex items-center justify-center gap-1 text-[6px] text-slate-500">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    ecran solaire
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== Évolution des Ventes ===== */}
+          <div className="mt-2.5 rounded-xl border border-slate-200 bg-white p-3 shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+            <p className="mb-1.5 text-[7px] font-semibold uppercase tracking-wide text-slate-500">
+              {d.salesEvolution.title}
+            </p>
+            <div className="flex gap-1">
+              <div className="flex flex-col justify-between py-1 text-[5px] text-slate-300">
+                <span>400,00</span>
+                <span>300,00</span>
+                <span>200,00</span>
+                <span>100,00</span>
+                <span>0,00</span>
+              </div>
+              <svg viewBox="0 0 230 70" className="h-20 w-full">
+                {[6, 21, 36, 51, 64].map((y) => (
+                  <line
+                    key={y}
+                    x1="0"
+                    y1={y}
+                    x2="230"
+                    y2={y}
+                    stroke="#e2e8f0"
+                    strokeWidth="0.4"
+                    strokeDasharray="2 2"
+                  />
+                ))}
+                {/* flat line that spikes up at the very end */}
+                <path
+                  d="M2 64 L200 64 C 212 64 218 40 224 6"
+                  fill="none"
+                  stroke="#10b981"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                />
+                {Array.from({ length: 23 }, (_, i) => i).map((i) => {
+                  const x = 2 + (i * 218) / 22;
+                  const y = i < 21 ? 64 : i === 21 ? 60 : 6;
+                  return (
+                    <circle
+                      key={i}
+                      cx={x}
+                      cy={y}
+                      r="1.4"
+                      fill="#fff"
+                      stroke="#10b981"
+                      strokeWidth="0.8"
+                    />
+                  );
+                })}
+              </svg>
+            </div>
+            <div className="ms-6 mt-0.5 flex justify-between text-[5px] text-slate-300">
+              {Array.from({ length: 23 }, (_, i) => i + 1).map((n) => (
+                <span key={n}>{n}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* ===== Filtre Produit ===== */}
+          <div className="mt-2.5 rounded-xl border border-slate-200 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+            <div className="flex items-center gap-1.5 rounded-t-xl bg-gradient-to-r from-emerald-50/70 to-transparent p-3">
+              <span className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-100 text-emerald-600">
+                <ShoppingBag className="h-3 w-3" />
+              </span>
+              <div className="leading-tight">
+                <p className="text-[9px] font-bold text-slate-700">{pf.title}</p>
+                <p className="text-[6px] text-slate-400">{pf.subtitle}</p>
+              </div>
+            </div>
+
+            <div className="p-3 pt-1">
+              {/* filters */}
+              <div className="flex flex-wrap items-end justify-between gap-2">
+                <div>
+                  <p className="mb-1 flex items-center gap-1 text-[6px] font-semibold text-slate-500">
+                    <Calendar className="h-2 w-2" /> {pa.period}
+                  </p>
+                  <div className="flex items-center gap-1">
+                    {filters.map((p) => (
+                      <span
+                        key={p}
+                        className={`rounded-md px-1.5 py-[3px] text-[6.5px] ${
+                          p === d.filters.month
+                            ? "bg-emerald-500 font-semibold text-white"
+                            : "border border-slate-200 text-slate-500"
+                        }`}
+                      >
+                        {p}
+                      </span>
+                    ))}
+                    <span className="flex items-center gap-1 rounded-md border border-slate-200 px-1.5 py-[3px] text-[6.5px] text-slate-500">
+                      {d.filters.month} <ChevronDown className="h-2 w-2" />
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <p className="mb-1 flex items-center gap-1 text-[6px] font-semibold text-slate-500">
+                    <Package className="h-2 w-2" /> {pa.product}{" "}
+                    <span className="font-normal text-slate-400">{pa.optional}</span>
+                  </p>
+                  <span className="flex w-44 items-center gap-1 rounded-md border border-slate-200 px-1.5 py-[3px] text-[6.5px] text-slate-400">
+                    <Search className="h-2 w-2" /> {pa.searchProduct}
+                  </span>
+                </div>
+              </div>
+              <p className="mt-1.5 flex items-center gap-1 text-[6px] text-slate-400">
+                <Calendar className="h-2 w-2" /> 01/07/2026 — 23/07/2026
+              </p>
+
+              {/* KPI cards */}
+              <div className="mt-2.5 grid grid-cols-5 gap-2">
+                {pfKpis.map((k) => (
+                  <div
+                    key={k.label}
+                    className="rounded-lg border border-slate-200 bg-white p-2"
+                  >
+                    <div className="flex justify-end">
+                      <span
+                        className={`flex h-4 w-4 items-center justify-center rounded ${TONE[k.tone]}`}
+                      >
+                        <k.icon className="h-2.5 w-2.5" />
+                      </span>
+                    </div>
+                    <p className="mt-0.5 text-[5.5px] font-semibold uppercase tracking-wide text-slate-400">
+                      {k.label}
+                    </p>
+                    <p className="text-[10px] font-extrabold text-slate-800">
+                      {k.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* search + export */}
+              <div className="mt-2.5 flex items-center justify-between gap-2">
+                <span className="flex flex-1 items-center gap-1 rounded-md border border-slate-200 px-2 py-1 text-[6.5px] text-slate-400">
+                  <Search className="h-2 w-2" /> {pf.searchResults}
+                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="flex items-center gap-1 rounded-md border border-slate-200 px-1.5 py-1 text-[6.5px] font-medium text-slate-600">
+                    <FileSpreadsheet className="h-2 w-2 text-emerald-500" /> Excel
+                  </span>
+                  <span className="flex items-center gap-1 rounded-md border border-slate-200 px-1.5 py-1 text-[6.5px] font-medium text-slate-600">
+                    <FileText className="h-2 w-2 text-rose-500" /> PDF
+                  </span>
+                  <span className="flex items-center gap-1 rounded-md border border-slate-200 px-1.5 py-1 text-[6.5px] font-medium text-slate-600">
+                    <Printer className="h-2 w-2 text-slate-500" /> {pf.print}
+                  </span>
+                </div>
+              </div>
+
+              {/* table */}
+              <div className="mt-2 overflow-hidden rounded-lg border border-slate-200">
+                <table className="w-full border-collapse text-start">
+                  <thead>
+                    <tr className="bg-slate-50 text-[5.5px] font-semibold uppercase tracking-wide text-slate-400">
+                      {[
+                        pf.colDate,
+                        pf.colProduct,
+                        pf.colBarcode,
+                        pf.colQty,
+                        pf.colUnitPrice,
+                        pf.colTotal,
+                        pf.colSource,
+                        pf.colDocument,
+                        pf.colClient,
+                      ].map((c) => (
+                        <th key={c} className="px-2 py-1.5 text-start">
+                          <span className="flex items-center gap-0.5">
+                            {c} <ArrowUpDown className="h-1.5 w-1.5 text-slate-300" />
+                          </span>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {pfRows.map((r, i) => (
+                      <tr
+                        key={i}
+                        className="border-t border-slate-100 text-[6px] text-slate-600"
+                      >
+                        <td className="px-2 py-1.5">{r.date}</td>
+                        <td className="px-2 py-1.5 font-medium text-slate-700">
+                          {r.product}
+                        </td>
+                        <td className="px-2 py-1.5 text-slate-400">{r.barcode}</td>
+                        <td className="px-2 py-1.5">{r.qty}</td>
+                        <td className="px-2 py-1.5">{r.unit}</td>
+                        <td className="px-2 py-1.5 font-semibold text-slate-800">
+                          {r.total}
+                        </td>
+                        <td className="px-2 py-1.5">
+                          <span
+                            className={`inline-flex items-center gap-0.5 rounded px-1 py-[1px] text-[5.5px] font-semibold ${
+                              r.passing
+                                ? "bg-emerald-50 text-emerald-600"
+                                : "bg-sky-50 text-sky-600"
+                            }`}
+                          >
+                            {r.passing ? (
+                              <ShoppingCart className="h-1.5 w-1.5" />
+                            ) : (
+                              <FileText className="h-1.5 w-1.5" />
+                            )}
+                            {r.source}
+                          </span>
+                        </td>
+                        <td className="px-2 py-1.5 text-slate-500">{r.doc}</td>
+                        <td className="px-2 py-1.5">{r.client}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-1.5 text-[6px] text-slate-400">{pf.showing}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -675,6 +1102,7 @@ function buildSidebarV2(d: DashT) {
     { section: d.sidebar.sectionDashboard },
     { icon: LayoutGrid, label: d.sidebar.workspace },
     { icon: LayoutDashboard, label: d.sidebar.dashboard, active: true },
+    { icon: BarChart3, label: d.sidebar.reports },
     { section: d.sidebar.sectionSales },
     { icon: FileText, label: d.sidebar.invoices },
     { icon: FileSignature, label: d.sidebar.quotes },
@@ -683,10 +1111,16 @@ function buildSidebarV2(d: DashT) {
     { icon: Truck, label: d.sidebar.deliveryNotes },
     { section: d.sidebar.sectionPurchases },
     { icon: ClipboardList, label: d.sidebar.purchaseOrders },
+    { icon: Percent, label: d.sidebar.discounts },
     { icon: DollarSign, label: d.sidebar.expenses },
+    { icon: RotateCcw, label: d.sidebar.supplierCreditNotes },
     { section: d.sidebar.sectionContacts },
     { icon: Users, label: d.sidebar.clients },
     { icon: Building2, label: d.sidebar.suppliers },
+    { section: d.sidebar.sectionStock },
+    { icon: Boxes, label: d.sidebar.products },
+    { section: d.sidebar.sectionPortfolio },
+    { icon: Wallet, label: d.sidebar.portfolio },
     { section: d.sidebar.sectionSystem },
     { icon: Settings, label: d.sidebar.settings },
   ];

@@ -5,18 +5,15 @@ import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import {
   Cross,
-  Glasses,
-  Car,
-  LayoutGrid,
   Boxes,
   Receipt,
   LineChart,
   Truck,
   Monitor,
   ArrowRight,
-  Check,
   Sparkles,
   PlayCircle,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -35,13 +32,7 @@ const reveal: Variants = {
   }),
 };
 
-const CARD_ICONS: Record<string, LucideIcon> = {
-  parapharmacy: Cross,
-  optic: Glasses,
-  automobile: Car,
-  standard: LayoutGrid,
-};
-
+const HIGHLIGHT_ICONS: LucideIcon[] = [Boxes, Receipt, Truck, LineChart];
 const FEATURE_ICONS: LucideIcon[] = [Boxes, Receipt, LineChart, Truck];
 
 export function Industries() {
@@ -57,88 +48,163 @@ export function Industries() {
       {/* soft ambient accents */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-72 w-[760px] -translate-x-1/2 rounded-full bg-radial-glow opacity-50 blur-3xl" />
+        <div className="absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(63,184,196,0.18),transparent_70%)] blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center">
           <Badge variant="light" className="mb-4 gap-1.5 shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent-gradient" />
+            <Cross className="h-3 w-3 text-[#3FB8C4]" strokeWidth={2.5} />
             {s.badge}
           </Badge>
           <h2 className="text-4xl font-bold leading-[1.1] tracking-tight text-dark-900 dark:text-white sm:text-5xl">
             {s.title1}{" "}
             <span className="text-gradient">{s.titleHighlight}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm text-dark-900/55 dark:text-white/55">
+          <p className="mx-auto mt-4 max-w-xl text-sm text-dark-900/55 dark:text-white/55">
             {s.intro}
           </p>
         </div>
 
-        {/* Edition cards */}
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {s.items.map((item, i) => {
-            const Icon = CARD_ICONS[item.key] ?? LayoutGrid;
-            const isStandard = item.key === "standard";
+        {/* ===== Hero feature block: ParaPharmacie ===== */}
+        <div className="relative mt-16 overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50/70 p-6 sm:p-10 dark:border-white/10 dark:bg-white/[0.03]">
+          {/* decorative gradient corner */}
+          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(63,184,196,0.25),transparent_70%)] blur-2xl" />
 
-            return (
+          <div className="relative grid items-center gap-10 lg:grid-cols-2">
+            {/* left: identity + highlights */}
+            <div>
               <motion.div
-                key={item.key}
-                custom={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-60px" }}
+                transition={{ duration: 0.6, ease: EASE }}
+                className="flex items-center gap-4"
+              >
+                <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-gradient shadow-neon">
+                  <Cross className="h-7 w-7 text-white" strokeWidth={2.2} />
+                </span>
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-[#2a9fa9] dark:text-[#3FB8C4]">
+                    {s.flagshipLabel}
+                  </p>
+                  <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
+                    {s.nicheName}
+                  </h3>
+                </div>
+              </motion.div>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+                className="mt-5 max-w-md text-sm font-medium text-slate-600 dark:text-white/70"
+              >
+                {s.nicheTagline}
+              </motion.p>
+
+              {/* highlights list */}
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {s.highlights.map((h, i) => {
+                  const Icon = HIGHLIGHT_ICONS[i % HIGHLIGHT_ICONS.length];
+                  return (
+                    <motion.div
+                      key={h.title}
+                      custom={i}
+                      variants={reveal}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: false }}
+                      whileHover={{ y: -5 }}
+                      className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 hover:border-[#3FB8C4]/50 hover:shadow-[0_18px_44px_-18px_rgba(63,184,196,0.5)] dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-[#3FB8C4]/40"
+                    >
+                      {/* hover gradient wash */}
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#3FB8C4]/[0.08] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      />
+                      {/* corner glow */}
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute -right-8 -top-8 h-20 w-20 rounded-full bg-[radial-gradient(circle,rgba(63,184,196,0.22),transparent_70%)] opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-100"
+                      />
+
+                      <div className="relative flex items-start justify-between">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#3FB8C4]/15 to-[#3FB8C4]/5 text-[#2a9fa9] ring-1 ring-inset ring-[#3FB8C4]/10 transition-all duration-300 group-hover:scale-110 group-hover:from-[#3FB8C4] group-hover:to-[#2a9fa9] group-hover:text-white group-hover:ring-[#3FB8C4]/30 group-hover:shadow-[0_8px_18px_-6px_rgba(63,184,196,0.6)] dark:text-[#3FB8C4] dark:ring-white/10 dark:group-hover:text-white">
+                          <Icon className="h-[18px] w-[18px]" strokeWidth={2.2} />
+                        </span>
+                        <ArrowRight
+                          aria-hidden
+                          className="mt-1 h-4 w-4 -translate-x-1 text-[#3FB8C4] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                          strokeWidth={2.2}
+                        />
+                      </div>
+
+                      <p className="relative mt-4 text-sm font-bold text-slate-800 transition-colors duration-300 group-hover:text-[#2a9fa9] dark:text-white dark:group-hover:text-[#3FB8C4]">
+                        {h.title}
+                      </p>
+                      <p className="relative mt-1.5 text-xs leading-relaxed text-slate-500 dark:text-white/55">
+                        {h.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
+                className="mt-8"
+              >
+                <Button asChild variant="gradient" size="md">
+                  <a href="#contact">
+                    {s.cta} <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* right: stats panel */}
+            <div className="grid gap-4">
+              {s.stats.map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  custom={i}
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: false }}
+                  whileHover={{ x: 4 }}
+                  className="flex items-center gap-5 rounded-2xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-[#3FB8C4]/40 hover:shadow-[0_12px_40px_-18px_rgba(63,184,196,0.45)] dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20"
+                >
+                  <span className="bg-accent-gradient bg-clip-text text-4xl font-black tracking-tight text-transparent sm:text-5xl">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm font-semibold leading-snug text-slate-600 dark:text-white/70">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+
+              <motion.div
+                custom={s.stats.length}
                 variants={reveal}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: false, margin: "-60px" }}
-                whileHover={{ y: -6 }}
-                className="group relative flex flex-col rounded-3xl border border-slate-200 bg-slate-50/70 p-6 transition-all duration-300 hover:border-[#3FB8C4]/40 hover:bg-white hover:shadow-[0_12px_40px_-16px_rgba(63,184,196,0.4)] dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/20 dark:hover:bg-white/[0.06]"
+                viewport={{ once: false }}
+                className="flex items-center gap-3 rounded-2xl border border-[#3FB8C4]/30 bg-[#3FB8C4]/8 p-5"
               >
-                <div className="flex items-center justify-between">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-gradient shadow-neon transition-transform duration-300 group-hover:scale-110">
-                    <Icon className="h-5 w-5 text-white" strokeWidth={2} />
-                  </span>
-                </div>
-
-                {/* edition label */}
-                <p className="mt-5 text-[11px] font-semibold uppercase tracking-wide text-[#2a9fa9] dark:text-[#3FB8C4]">
-                  {isStandard ? s.standardLabel : s.nicheLabel}
+                <ShieldCheck className="h-6 w-6 shrink-0 text-[#2a9fa9] dark:text-[#3FB8C4]" />
+                <p className="text-xs font-semibold text-[#2a9fa9] dark:text-[#3FB8C4]">
+                  {sc.eyebrow}
                 </p>
-
-                <h3 className="mt-1 text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-                  {item.name}
-                </h3>
-
-                <p className="mt-2 text-xs leading-relaxed text-slate-500 dark:text-white/55">
-                  {item.description}
-                </p>
-
-                {/* tags */}
-                <ul className="mt-5 space-y-2">
-                  {item.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-white/70"
-                    >
-                      <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#3FB8C4]/15">
-                        <Check
-                          className="h-2.5 w-2.5 text-[#2a9fa9] dark:text-[#3FB8C4]"
-                          strokeWidth={3}
-                        />
-                      </span>
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="#industries-showcase"
-                  className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-[#1D6FD6] transition-colors group-hover:gap-2.5 dark:text-[#3FB8C4]"
-                >
-                  {s.cta}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                </a>
               </motion.div>
-            );
-          })}
+            </div>
+          </div>
         </div>
 
         {/* ===== Platform showcase ===== */}
